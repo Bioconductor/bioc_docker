@@ -1,0 +1,42 @@
+# DO NOT EDIT FILES CALLED 'Dockerfile'; they are automatically
+# generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
+# with the 'rake' command.
+
+# The suggested name for this image is: <%= image_name %>.
+
+FROM <%= parent %>
+
+MAINTAINER dtenenba@fredhutch.org
+
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update -qq && apt-get dist-upgrade -y
+
+RUN DEBIAN_FRONTEND=noninteractive \ 
+    apt-get build-dep -y r-base
+
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y \
+    biber \
+    curl \
+    dvipng \
+    gdb \
+    gdebi-core \
+    libarchive-zip-perl \
+    libcurl4-openssl-dev \
+    libdbd-mysql-perl \
+    libdbi-perl \
+    libmpich2-dev \
+    libopenmpi-dev \
+    libopenmpi1.6 \
+    libprotobuf-dev \
+    libxml2-dev \
+    mpich2 \
+    openmpi-bin \
+    openmpi-checkpoint \
+    openmpi-common \
+    pandoc \
+    python-pip \
+    texlive-science \
+    valgrind
+
+RUN pip install -U awscli

@@ -1,0 +1,29 @@
+---
+devel:
+    source_dir: bioc_common
+    out_dir: devel
+    data:
+        parent: "bioconductor/rdeps"
+        image_name: "bioconductor/bioc_devel"
+        r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
+        use_devel: false
+        bioc_upgrade: false
+        bioc_version: "3.1"
+        devel_extra_rpacks: [] # anything too new for release
+release:
+    source_dir: bioc_common
+    out_dir: release
+    data:
+        parent: "bioconductor/rdeps"
+        image_name: "bioconductor/bioc_release"
+        r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
+        use_devel: false
+        bioc_upgrade: false
+        bioc_version: "3.0"
+        devel_extra_rpacks: [] # should always be empty in release
+rdeps:
+    source_dir: rdeps
+    out_dir: rdeps/out
+    data:
+        image_name: "bioconductor/rdeps"
+        parent: "ubuntu:14.04"

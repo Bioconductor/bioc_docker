@@ -32,16 +32,21 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libopenmpi-dev \
     libopenmpi1.6 \
     libqt4-opengl-dev \
+    libssl-0.9.8 \
     libxml2-dev \
     mpich2 \
     openmpi-bin \
     openmpi-checkpoint \
     openmpi-common \
     pandoc \
+    pandoc-citeproc \
+    psmisc \
     python-pip \
+    supervisor \
     texlive-science \
     unzip \
-    valgrind
+    valgrind \
+    wget
 
 RUN pip install -U awscli
 

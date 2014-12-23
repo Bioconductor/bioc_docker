@@ -31,4 +31,24 @@ RUN /tmp/install_vep.sh
 
 # create .Rprofile...
 
+RUN echo "library(BiocInstaller)" > $HOME/.Rprofile
+
+
+# rstudio
+
+RUN VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) && \
+    wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb && \
+    dpkg -i rstudio-server-${VER}-amd64.deb && \
+    rm rstudio-server-*-amd64.deb && \
+
+ADD userconf.sh /tmp/
+
+RUN /tmp/userconf.sh
+
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 8787
+
+CMD ["/usr/bin/supervisord"] 
 

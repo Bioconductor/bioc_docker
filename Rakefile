@@ -18,7 +18,6 @@ task :build  do
         hsh = config[key]
         source_dir = hsh['source_dir']
         out_dir = hsh['out_dir'].gsub("/", File::SEPARATOR)
-        out_dir = source_dir + File::SEPARATOR + "out"
         data = hsh['data']
         infiles = Dir.new(source_dir).entries
         for file in infiles

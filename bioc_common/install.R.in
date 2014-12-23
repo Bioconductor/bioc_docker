@@ -110,3 +110,6 @@ pkgs_to_install <- pkgs[pkgs %in% ap]
 
 biocLite(pkgs_to_install)
 
+# just in case there were warnings, we want to see them 
+# without having to scroll up:
+warnings()

@@ -40,14 +40,15 @@ RUN DEBIAN_FRONTEND=noninteractive \
     pandoc \
     python-pip \
     texlive-science \
+    unzip \
     valgrind
 
 RUN pip install -U awscli
 
-# will this link expire? can ADD follow redirects?
-ADD https://s3.amazonaws.com/github-cloud/releases/23357588/0a2433bc-5a29-11e4-8e74-fbea8721fcc7.gz?response-content-disposition=attachment%3B%20filename%3Dprotobuf-2.6.1.tar.gz&response-content-type=application/octet-stream&AWSAccessKeyId=AKIAISTNZFOVBIJMK3TQ&Expires=1419370092&Signature=drjozraupY%2FlH9%2FVmewq%2BcXFU8w%3D /tmp/protobuf-2.6.1.tar.gz
+# flowWorkspace needs a newer version of protobuf than is available via apt-get
+ADD https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz /tmp/protobuf-2.6.1.tar.gz
 
-RUN cd /tmp/R-source && \
+RUN cd /tmp && \
     tar -zxf /tmp/protobuf-2.6.1.tar.gz && \
     rm protobuf-2.6.1.tar.gz && \
     cd protobuf-2.6.1 && \
@@ -55,3 +56,5 @@ RUN cd /tmp/R-source && \
     ./configure && \
     make && \
     make install
+
+

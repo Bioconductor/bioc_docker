@@ -20,7 +20,7 @@ release:
         use_devel: false
         bioc_upgrade: false
         bioc_version: "3.0"
-2.14:
+2.14: # BiocInstaller was introduced in BioC 2.9
     source_dir: bioc_common
     out_dir: "2.14"
     data:

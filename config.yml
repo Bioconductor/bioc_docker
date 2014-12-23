@@ -6,10 +6,7 @@ devel:
         parent: "bioconductor/rdeps"
         image_name: "bioconductor/bioc_devel"
         r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
-        use_devel: false
-        bioc_upgrade: false
-        bioc_version: "3.1"
-        devel_extra_rpacks: [] # anything too new for release
+        bioc_version: "3.1" # change me at release time
 release:
     source_dir: bioc_common
     out_dir: release
@@ -17,9 +14,7 @@ release:
         parent: "bioconductor/rdeps"
         image_name: "bioconductor/bioc_release"
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
-        use_devel: false
-        bioc_upgrade: false
-        bioc_version: "3.0"
+        bioc_version: "3.0" # change me at release time
 2.14: # BiocInstaller was introduced in BioC 2.9
     source_dir: bioc_common
     out_dir: "2.14"
@@ -27,9 +22,6 @@ release:
         parent: "bioconductor.org/rdeps"
         image_name: "bioconductor/bioc_2.14"
         r_url: "http://cran.r-project.org/src/base/R-3/R-3.1.2.tar.gz"
-        use_devel: false
-        bioc_upgrade: false
-        bioc_downgrade: true
         bioc_version: "2.14"
 rdeps:
     source_dir: rdeps

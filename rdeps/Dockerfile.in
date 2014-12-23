@@ -18,6 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
     biber \
     curl \
+    dh-autoreconf \
     dvipng \
     gdb \
     gdebi-core \
@@ -25,10 +26,12 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libcurl4-openssl-dev \
     libdbd-mysql-perl \
     libdbi-perl \
+    libhdf5-dev \
     libmpich2-dev \
+    libnetcdf-dev \
     libopenmpi-dev \
     libopenmpi1.6 \
-    libprotobuf-dev \
+    libqt4-opengl-dev \
     libxml2-dev \
     mpich2 \
     openmpi-bin \
@@ -40,3 +43,15 @@ RUN DEBIAN_FRONTEND=noninteractive \
     valgrind
 
 RUN pip install -U awscli
+
+# will this link expire? can ADD follow redirects?
+ADD https://s3.amazonaws.com/github-cloud/releases/23357588/0a2433bc-5a29-11e4-8e74-fbea8721fcc7.gz?response-content-disposition=attachment%3B%20filename%3Dprotobuf-2.6.1.tar.gz&response-content-type=application/octet-stream&AWSAccessKeyId=AKIAISTNZFOVBIJMK3TQ&Expires=1419370092&Signature=drjozraupY%2FlH9%2FVmewq%2BcXFU8w%3D /tmp/protobuf-2.6.1.tar.gz
+
+RUN cd /tmp/R-source && \
+    tar -zxf /tmp/protobuf-2.6.1.tar.gz && \
+    rm protobuf-2.6.1.tar.gz && \
+    cd protobuf-2.6.1 && \
+    ./autogen.sh && \
+    ./configure && \
+    make && \
+    make install

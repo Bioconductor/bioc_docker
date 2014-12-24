@@ -32,7 +32,7 @@ task :build  do
                 out_fh.close()
             else
                 # FIXME only do this if files differ
-                FileUtils.cp(source_dir + File::SEPARATOR + file, out_dir)
+                FileUtils.cp(source_dir + File::SEPARATOR + file, out_dir, :preserve => true)
             end
         end
     end

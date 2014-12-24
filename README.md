@@ -39,9 +39,11 @@ At present, the following containers <strikethrough>are</strikethrough>
 * bioconductor/release_small
 * bioconductor/release_medium
 * bioconductor/release_large
+<!--
 * bioconductor/2.14_small
 * bioconductor/2.14_medium
 * bioconductor/2.14_large
+-->
 
 ## Using the containers
 

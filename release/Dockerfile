@@ -39,7 +39,7 @@ RUN echo "library(BiocInstaller)" > $HOME/.Rprofile
 RUN VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) && \
     wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb && \
     dpkg -i rstudio-server-${VER}-amd64.deb && \
-    rm rstudio-server-*-amd64.deb && \
+    rm rstudio-server-*-amd64.deb
 
 ADD userconf.sh /tmp/
 

@@ -2,15 +2,15 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/bioc_release.
+# The suggested name for this image is: bioconductor/devel_large.
 
-FROM bioconductor/rdeps
+FROM bioconductor/devel_medium
 
 MAINTAINER dtenenba@fredhutch.org
 
 RUN rm -rf /tmp/R-source && mkdir /tmp/R-source
 
-ADD http://cran.fhcrc.org/src/base/R-latest.tar.gz /tmp/R-source/
+ADD  /tmp/R-source/
 
 RUN cd /tmp/R-source && \
     tar -zxf /tmp/R-source/*.tar.gz && \

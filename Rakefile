@@ -12,12 +12,15 @@ end
 
 desc "create Dockerfiles from templated input (default)"
 task :build  do
-    basedir = File.dirname(__FILE__)
+    basedir = File.dirname(__FILE__) + File::SEPARATOR
     config = YAML.load_file(basedir + File::SEPARATOR + "config.yml")
     for key in config.keys
         hsh = config[key]
-        source_dir = hsh['source_dir']
-        out_dir = hsh['out_dir'].gsub("/", File::SEPARATOR)
+        source_dir = basedir +  hsh['source_dir']
+        out_dir = basedir + hsh['out_dir'].gsub("/", File::SEPARATOR)
+        unless File.exists? out_dir
+            FileUtils::mkdir_p out_dir
+        end
         data = hsh['data']
         infiles = Dir.new(source_dir).entries
         for file in infiles

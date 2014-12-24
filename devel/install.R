@@ -41,6 +41,7 @@ pkgs <- c(
 "EDASeq",
 "edgeR",
 "epivizr",
+"ensemblVEP",
 "flowWorkspace",
 "gage",
 "genefilter",

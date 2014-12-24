@@ -8,11 +8,11 @@ USERID=${USERID:=1000}
 ROOT=${ROOT:=FALSE}
 
 ## Configure user account name and password (used by rstudio)
-#useradd -m $USER -u $USERID 
+useradd -m $USER -u $USERID 
 echo "$USER:$PASSWORD" | chpasswd
 ## User must own their home directory, or RStudio won't be able to load
 ## (Note this is only necessary if the user is linking a shared volume to a subdir of this directory)
-#mkdir /home/$USER 
+mkdir /home/$USER 
 
 chown $USER:$USER /home/$USER
 

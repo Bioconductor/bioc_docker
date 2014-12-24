@@ -32,7 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libopenmpi-dev \
     libopenmpi1.6 \
     libqt4-opengl-dev \
-    libssl-0.9.8 \
+    libssl0.9.8 \
     libxml2-dev \
     mpich2 \
     openmpi-bin \

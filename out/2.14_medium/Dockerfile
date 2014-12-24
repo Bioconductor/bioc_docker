@@ -2,15 +2,15 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/bioc_devel.
+# The suggested name for this image is: bioconductor/2.14_medium.
 
-FROM bioconductor/rdeps
+FROM bioconductor/2.14_small
 
 MAINTAINER dtenenba@fredhutch.org
 
 RUN rm -rf /tmp/R-source && mkdir /tmp/R-source
 
-ADD http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz /tmp/R-source/
+ADD  /tmp/R-source/
 
 RUN cd /tmp/R-source && \
     tar -zxf /tmp/R-source/*.tar.gz && \

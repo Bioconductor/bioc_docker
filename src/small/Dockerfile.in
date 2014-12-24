@@ -9,12 +9,10 @@ FROM <%= parent %>
 MAINTAINER dtenenba@fredhutch.org
 
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update -qq && apt-get dist-upgrade -y
-
-RUN DEBIAN_FRONTEND=noninteractive \ 
-    apt-get build-dep -y r-base
-
-RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update -qq && apt-get dist-upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive \ 
+    apt-get build-dep -y r-base && \
+    DEBIAN_FRONTEND=noninteractive \
     apt-get install -y \
     biber \
     curl \
@@ -46,9 +44,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
     texlive-science \
     unzip \
     valgrind \
-    wget
+    wget && \
+    pip install -U awscli
 
-RUN pip install -U awscli
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+&& locale-gen en_US.utf8 \
+&& /usr/sbin/update-locale LANG=en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 # flowWorkspace needs a newer version of protobuf than is available via apt-get
 ADD https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz /tmp/protobuf-2.6.1.tar.gz
@@ -62,4 +64,38 @@ RUN cd /tmp && \
     make && \
     make install
 
+RUN rm -rf /tmp/R-source && mkdir /tmp/R-source
 
+ADD <%= r_url %> /tmp/R-source/
+
+RUN cd /tmp/R-source && \
+    tar -zxf /tmp/R-source/*.tar.gz && \
+    rm *.tar.gz && \
+    cd R-* && \
+    ./configure --enable-R-shlib && \
+    make && \
+    make install
+
+
+ADD install.R /tmp/
+
+RUN R -f /tmp/install.R && \
+    echo "library(BiocInstaller)" > $HOME/.Rprofile
+
+# rstudio
+
+RUN VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) && \
+    wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb && \
+    dpkg -i rstudio-server-${VER}-amd64.deb && \
+    rm rstudio-server-*-amd64.deb
+
+ADD userconf.sh /tmp/
+
+RUN /tmp/userconf.sh && \
+    mkdir -p /var/log/supervisor
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 8787
+
+CMD ["/usr/bin/supervisord"] 

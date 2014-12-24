@@ -1,11 +1,7 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
-url <- "http://bioconductor.org/packages/<%= bioc_version %>/bioc"
-
-install.packages("BiocInstaller", repos=url)
-
-library(BiocInstaller)
+library(BiocInstaller) # shouldn't be necessary
 
 pkgs <- c(
 "affxparser",

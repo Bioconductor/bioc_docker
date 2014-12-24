@@ -50,18 +50,18 @@ release_large:
         parent: "ubuntu:14.04"
         image_name: "bioconductor/2.14_small"
         r_url: "http://cran.r-project.org/src/base/R-3/R-3.1.2.tar.gz"
-        bioc_version: "3.0" # change me at 2.14 time
+        bioc_version: "2.14"
 2.14_medium:
     source_dir: src/medium
     out_dir: out/2.14_medium
     data:
         parent: "bioconductor/2.14_small"
         image_name: "bioconductor/2.14_medium"
-        bioc_version: "3.0" # change me at 2.14 time
+        bioc_version: "2.14" 
 2.14_large:
     source_dir: src/large
     out_dir: out/2.14_large
     data:
         parent: "bioconductor/2.14_medium"
         image_name: "bioconductor/2.14_large"
-        bioc_version: "3.0" # change me at 2.14 time
+        bioc_version: "2.14"

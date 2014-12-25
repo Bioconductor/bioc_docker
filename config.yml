@@ -13,14 +13,12 @@ devel_medium:
     data:
         parent: "bioconductor/devel_small"
         image_name: "bioconductor/devel_medium"
-        bioc_version: "3.1" # change me at release time
 devel_large:
     source_dir: src/large
     out_dir: out/devel_large
     data:
         parent: "bioconductor/devel_medium"
         image_name: "bioconductor/devel_large"
-        bioc_version: "3.1" # change me at release time
 release_small:
     source_dir: src/small
     out_dir: out/release_small
@@ -35,14 +33,12 @@ release_medium:
     data:
         parent: "bioconductor/release_small"
         image_name: "bioconductor/release_medium"
-        bioc_version: "3.0" # change me at release time
 release_large:
     source_dir: src/large
     out_dir: out/release_large
     data:
         parent: "bioconductor/release_medium"
         image_name: "bioconductor/release_large"
-        bioc_version: "3.0" # change me at release time
 2.14_small:
     source_dir: src/small
     out_dir: out/2.14_small
@@ -57,11 +53,9 @@ release_large:
     data:
         parent: "bioconductor/2.14_small"
         image_name: "bioconductor/2.14_medium"
-        bioc_version: "2.14" 
 2.14_large:
     source_dir: src/large
     out_dir: out/2.14_large
     data:
         parent: "bioconductor/2.14_medium"
         image_name: "bioconductor/2.14_large"
-        bioc_version: "2.14"

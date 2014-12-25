@@ -1,67 +1,29 @@
 ---
-devel_small:
-    source_dir: src/small
-    out_dir: out/devel_small
-    data:
-        parent: "ubuntu:14.04"
-        image_name: "bioconductor/devel_small"
-        r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
-        bioc_version: "3.1" # change me at release time
-devel_medium:
-    source_dir: src/medium
-    out_dir: out/devel_medium
-    data:
-        parent: "bioconductor/devel_small"
-        image_name: "bioconductor/devel_medium"
-        bioc_version: "3.1" # change me at release time
-devel_large:
-    source_dir: src/large
-    out_dir: out/devel_large
-    data:
-        parent: "bioconductor/devel_medium"
-        image_name: "bioconductor/devel_large"
-        bioc_version: "3.1" # change me at release time
-release_small:
-    source_dir: src/small
-    out_dir: out/release_small
-    data:
-        parent: "ubuntu:14.04"
-        image_name: "bioconductor/release_small"
+versions:
+    release:
+        version_number: "3.0"
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
-        bioc_version: "3.0" # change me at release time
-release_medium:
-    source_dir: src/medium
-    out_dir: out/release_medium
-    data:
-        parent: "bioconductor/release_small"
-        image_name: "bioconductor/release_medium"
-        bioc_version: "3.0" # change me at release time
-release_large:
-    source_dir: src/large
-    out_dir: out/release_large
-    data:
-        parent: "bioconductor/release_medium"
-        image_name: "bioconductor/release_large"
-        bioc_version: "3.0" # change me at release time
-2.14_small:
-    source_dir: src/small
-    out_dir: out/2.14_small
-    data:
+    devel:
+        version_number: "3.1"
+        r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
+containers: # FIXME (?) rename this to 'images' (?)
+    base:
         parent: "ubuntu:14.04"
-        image_name: "bioconductor/2.14_small"
-        r_url: "http://cran.r-project.org/src/base/R-3/R-3.1.2.tar.gz"
-        bioc_version: "2.14"
-2.14_medium:
-    source_dir: src/medium
-    out_dir: out/2.14_medium
-    data:
-        parent: "bioconductor/2.14_small"
-        image_name: "bioconductor/2.14_medium"
-        bioc_version: "2.14" 
-2.14_large:
-    source_dir: src/large
-    out_dir: out/2.14_large
-    data:
-        parent: "bioconductor/2.14_medium"
-        image_name: "bioconductor/2.14_large"
-        bioc_version: "2.14"
+    core:
+        parent: bioconductor/base
+    flow:
+        parent: bioconductor/core
+        biocViews: 
+            - FlowCytometry
+    microarray:
+        parent: bioconductor/core
+        biocViews:
+            - Microarray
+    sequencing:
+        parent: bioconductor/core
+        biocViews:
+            - Sequencing
+    proteomics:
+        parent: bioconductor/core
+        biocViews:
+            - Proteomics

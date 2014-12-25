@@ -110,3 +110,11 @@ biocLite(pkgs_to_install)
 # just in case there were warnings, we want to see them 
 # without having to scroll up:
 warnings()
+
+if (!is.null(warnings()))
+{
+    w <- capture.output(warnings())
+    if (grep("is not available", w))
+        quit("no", 1L)
+}
+

@@ -9,3 +9,13 @@ annoPkgs <-
     ap[grep("^org\\.|^BSgenome\\.|^PolyPhen\\.|^SIFT\\.|^TxDb\\.", ap)]
 
 biocLite(annoPkgs)
+
+warnings()
+
+if (!is.null(warnings()))
+{
+    w <- capture.output(warnings())
+    if (grep("is not available", w))
+        quit("no", 1L)
+}
+

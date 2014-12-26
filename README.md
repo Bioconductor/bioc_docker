@@ -21,8 +21,8 @@ flavors:
   flow cytometry, and proteomics workflows. See [the full list](#the-full-list)
   of packages installed.
 * *large*: everything in *medium*, plus all 
-  org.\* BSgenome.\* PolyPhen.\* SIFT.\* TxDb.\* annotation packages.
-  This is a large download (?? GB). Only use if you really
+  org.\* BSgenome.\* PolyPhen.\* SIFT.\* TxDb.\* XtraSNPlocs.\* annotation packages.
+  This is a large download (over ?? GB). Only use if you really
   need all those annotation packages. If you only need
   a few, consider making your own container based on
   *medium* containing only the annotation packages
@@ -30,8 +30,7 @@ flavors:
 
 ## List of Containers
 
-At present, the following containers <strikethrough>are</strikethrough>
-(will soon be) available:
+At present, the following containers are available:
 
 * bioconductor/devel_small
 * bioconductor/devel_medium

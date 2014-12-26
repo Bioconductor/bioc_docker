@@ -21,8 +21,9 @@ dir.create(destdir)
 fun <- function(x)
 {
     print(paste("downloading and installing", x))
-    res <- download.packages(x, destdir, repos=biocinstallRepos())
-    install.packages(res[2], repos=NULL)
+    #res <- download.packages(x, destdir, repos=biocinstallRepos())
+    #install.packages(res[2], repos=NULL)
+    biocLite(x)
 }
 
 library(parallel)

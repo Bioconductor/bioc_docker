@@ -23,7 +23,7 @@ fun <- function(x)
     print(paste("downloading and installing", x))
     #res <- download.packages(x, destdir, repos=biocinstallRepos())
     #install.packages(res[2], repos=NULL)
-    unlink(paste("/usr/local/lib/R/library/00LOCK-", x, sep=""))
+    unlink(paste("/usr/local/lib/R/library/00LOCK-", x, sep=""), recursive=TRUE, force=TRUE)
     biocLite(x)
 }
 
@@ -43,5 +43,6 @@ mclapply(annoPkgs, fun, mc.cores=detectCores())
 #        quit("no", 1L)
 #}
 
+unlink("/usr/local/lib/R/library/00LOCK-*", recursive=TRUE, force=TRUE)
 reinstallMe <- annoPkgs[!annoPkgs %in% rownames(installed.packages())]
 biocLite(reinstallMe)

@@ -43,3 +43,5 @@ mclapply(annoPkgs, fun, mc.cores=detectCores())
 #        quit("no", 1L)
 #}
 
+reinstallMe <- annoPkgs[!annoPkgs %in% rownames(installed.packages())]
+biocLite(reinstallMe)

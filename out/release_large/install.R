@@ -23,6 +23,7 @@ fun <- function(x)
     print(paste("downloading and installing", x))
     #res <- download.packages(x, destdir, repos=biocinstallRepos())
     #install.packages(res[2], repos=NULL)
+    unlink(paste("/usr/local/lib/R/library/00LOCK-", x, sep=""))
     biocLite(x)
 }
 

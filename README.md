@@ -22,7 +22,7 @@ flavors:
   of packages installed.
 * *large*: everything in *medium*, plus all 
   org.\* BSgenome.\* PolyPhen.\* SIFT.\* TxDb.\* XtraSNPlocs.\* annotation packages.
-  This is a large download (over ?? GB). Only use if you really
+  This is a large download (over 20 GB). Only use if you really
   need all those annotation packages. If you only need
   a few, consider making your own container based on
   *medium* containing only the annotation packages

@@ -100,6 +100,7 @@ small, so it is not feasible to add every Bioconductor package to it.
 * chipseq
 * ChIPseqR
 * ChIPsim
+* COMPASS
 * CSAR
 * cummeRbund
 * DESeq
@@ -148,6 +149,7 @@ small, so it is not feasible to add every Bioconductor package to it.
 * preprocessCore
 * qpgraph
 * qrqc
+* QUALIFIER
 * R453Plus1Toolbox
 * RBGL
 * Repitools

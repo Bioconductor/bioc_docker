@@ -1,61 +1,43 @@
 ---
-devel_small:
-    source_dir: src/small
-    out_dir: out/devel_small
+devel_base:
+    source_dir: src/base
+    out_dir: out/devel_base
     data:
         parent: "ubuntu:14.04"
-        image_name: "bioconductor/devel_small"
+        image_name: "bioconductor/devel_base"
         r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
         bioc_version: "3.1" # change me at release time
-devel_medium:
-    source_dir: src/medium
-    out_dir: out/devel_medium
+devel_core:
+    source_dir: src/core
+    out_dir: out/devel_core
     data:
-        parent: "bioconductor/devel_small"
-        image_name: "bioconductor/devel_medium"
-devel_large:
-    source_dir: src/large
-    out_dir: out/devel_large
+        parent: "bioconductor/devel_base"
+        image_name: "bioconductor/devel_core"
+devel_flowCytometry:
+    source_dir: src/flowCytometry
+    out_dir: out/devel_flowCytometry
     data:
-        parent: "bioconductor/devel_medium"
-        image_name: "bioconductor/devel_large"
-release_small:
-    source_dir: src/small
-    out_dir: out/release_small
+        parent: bioconductor/devel_core
+        image_name: bioconductor/devel_flowcytometry
+        bioc_version: "3.1" # change me at release time
+release_base:
+    source_dir: src/base
+    out_dir: out/release_base
     data:
         parent: "ubuntu:14.04"
-        image_name: "bioconductor/release_small"
+        image_name: "bioconductor/release_base"
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
         bioc_version: "3.0" # change me at release time
-release_medium:
-    source_dir: src/medium
-    out_dir: out/release_medium
+release_core:
+    source_dir: src/core
+    out_dir: out/release_core
     data:
-        parent: "bioconductor/release_small"
-        image_name: "bioconductor/release_medium"
-release_large:
-    source_dir: src/large
-    out_dir: out/release_large
+        parent: "bioconductor/release_base"
+        image_name: "bioconductor/release_core"
+release_flowCytometry:
+    source_dir: src/flowCytometry
+    out_dir: out/release_flowCytometry
     data:
-        parent: "bioconductor/release_medium"
-        image_name: "bioconductor/release_large"
-2.14_small:
-    source_dir: src/small
-    out_dir: out/2.14_small
-    data:
-        parent: "ubuntu:14.04"
-        image_name: "bioconductor/2.14_small"
-        r_url: "http://cran.r-project.org/src/base/R-3/R-3.1.2.tar.gz"
-        bioc_version: "2.14"
-2.14_medium:
-    source_dir: src/medium
-    out_dir: out/2.14_medium
-    data:
-        parent: "bioconductor/2.14_small"
-        image_name: "bioconductor/2.14_medium"
-2.14_large:
-    source_dir: src/large
-    out_dir: out/2.14_large
-    data:
-        parent: "bioconductor/2.14_medium"
-        image_name: "bioconductor/2.14_large"
+        parent: bioconductor/release_core
+        image_name: bioconductor/release_flowcytometry
+        bioc_version: "3.0" # change me at release time

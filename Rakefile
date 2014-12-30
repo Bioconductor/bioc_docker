@@ -3,6 +3,10 @@ require 'ostruct'
 require 'yaml'
 require 'fileutils'
 require 'pp'
+require 'rake'
+
+require 'docker'
+require 'parallel'
 
 class ErbBinding < OpenStruct
     def get_binding

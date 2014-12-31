@@ -8,6 +8,9 @@ FROM <%= parent %>
 
 MAINTAINER dtenenba@fredhutch.org
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libgsl0-dev libgsl0ldbl libfftw3-dev imagemagick
+
 # flowWorkspace needs a newer version of protobuf than is available via apt-get
 ADD https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz /tmp/protobuf-2.6.1.tar.gz
 

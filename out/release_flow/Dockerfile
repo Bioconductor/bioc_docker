@@ -2,7 +2,7 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/release_flowcytometry.
+# The suggested name for this image is: bioconductor/release_flow.
 
 FROM bioconductor/release_core
 

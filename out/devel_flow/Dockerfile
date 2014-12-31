@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: <%= image_name %>.
+# The suggested name for this image is: bioconductor/devel_flow.
 
-FROM <%= parent %>
+FROM bioconductor/devel_core
 
 MAINTAINER dtenenba@fredhutch.org
 

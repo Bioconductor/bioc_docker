@@ -14,6 +14,7 @@ RUN cd /tmp && \
     curl -L http://sourceforge.net/projects/mcmc-jags/files/JAGS/3.x/Source/JAGS-3.4.0.tar.gz/download > JAGS-3.4.0.tar.gz && \
     tar zxf JAGS-3.4.0.tar.gz && \
     cd JAGS-3.4.0 && \
+    ./configure --prefix=/usr/local && \
     make -j && \
     make install && \
 

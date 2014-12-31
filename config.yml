@@ -27,10 +27,19 @@ devel_microarray:
     out_dir: out/devel_microarray
     data:
         parent: bioconductor/devel_core
-        image_name: bioconductor/devel/microarray
+        image_name: bioconductor/devel_microarray
         bioc_version: "3.1" # change me at release time
         biocViews:
             - Microarray
+devel_sequencing:
+    source_dir: src/sequencing
+    out_dir: out/devel_sequencing
+    data:
+        parent: bioconductor/devel_core
+        image_name: bioconductor/devel_sequencing
+        bioc_version: "3.1" # change me at release time
+        biocViews:
+            - Sequencing
 release_base:
     source_dir: src/base
     out_dir: out/release_base
@@ -59,7 +68,26 @@ release_microarray:
     out_dir: out/release_microarray
     data:
         parent: bioconductor/release_core
-        image_name: bioconductor/release/microarray
+        image_name: bioconductor/release_microarray
         bioc_version: "3.0" # change me at release time
         biocViews:
             - Microarray
+release_variants:
+    source_dir: src/variants
+    out_dir: out/release_variants
+    data:
+        parent: bioconductor/release_core
+        image_name: bioconductor/release_variants
+        bioc_version: "3.0" # change me at release time
+        biocViews:
+            - VariantAnnotation
+            - VariantDetection
+release_sequencing:
+    source_dir: src/sequencing
+    out_dir: out/release_sequencing
+    data:
+        parent: bioconductor/release_core
+        image_name: bioconductor/release_sequencing
+        bioc_version: "3.0" # change me at release time
+        biocViews:
+            - Sequencing

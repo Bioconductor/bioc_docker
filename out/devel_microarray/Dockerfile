@@ -2,7 +2,7 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/devel/microarray.
+# The suggested name for this image is: bioconductor/devel_microarray.
 
 FROM bioconductor/devel_core
 

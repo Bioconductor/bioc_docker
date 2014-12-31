@@ -3,7 +3,7 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
-wantedBiocViews <- c("FlowCytometry")
+wantedBiocViews <- c("Microarray")
 
 url <- "http://www.bioconductor.org/packages/3.1/bioc/VIEWS"
 

@@ -3,9 +3,9 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
-wantedBiocViews <- c("FlowCytometry")
+wantedBiocViews <- c("Microarray")
 
-url <- "http://www.bioconductor.org/packages/3.1/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.0/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)

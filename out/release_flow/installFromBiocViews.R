@@ -1,5 +1,5 @@
-# DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
-# use 'rake' to generate 'install.R'.
+# DO NOT EDIT 'installFromBiocViews.R'; instead, edit 'installFromBiocViews.R.in' and
+# use 'rake' to generate 'installFromBiocViews.R'.
 
 library(BiocInstaller) # shouldn't be necessary
 

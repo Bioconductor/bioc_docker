@@ -24,8 +24,8 @@ RUN cd /tmp && \
     make install
 
 
-ADD install.R /tmp/
+ADD installFromBiocViews.R /tmp/
 
-RUN R -f /tmp/install.R
+RUN R -f /tmp/installFromBiocViews.R
 
 

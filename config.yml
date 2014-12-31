@@ -72,16 +72,6 @@ release_microarray:
         bioc_version: "3.0" # change me at release time
         biocViews:
             - Microarray
-release_variants:
-    source_dir: src/variants
-    out_dir: out/release_variants
-    data:
-        parent: bioconductor/release_core
-        image_name: bioconductor/release_variants
-        bioc_version: "3.0" # change me at release time
-        biocViews:
-            - VariantAnnotation
-            - VariantDetection
 release_sequencing:
     source_dir: src/sequencing
     out_dir: out/release_sequencing

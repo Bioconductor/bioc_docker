@@ -38,7 +38,7 @@ warnings()
 if (!is.null(warnings()))
 {
     w <- capture.output(warnings())
-    if (grep("is not available", w))
+    if (length(grep("is not available", w)))
         quit("no", 1L)
 }
 

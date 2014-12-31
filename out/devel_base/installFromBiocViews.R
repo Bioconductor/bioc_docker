@@ -29,6 +29,10 @@ ap <- rownames(ap.db)
 
 pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 
+# temporarily don't install XPS until ROOT issue is resolved
+pkgs_to_install <- pkgs_to_install[grep("xps", pkgs_to_install, invert=TRUE)]
+
+
 biocLite(pkgs_to_install)
 
 # just in case there were warnings, we want to see them 

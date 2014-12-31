@@ -16,7 +16,7 @@ RUN cd /tmp && \
     cd JAGS-3.4.0 && \
     ./configure --prefix=/usr/local && \
     make -j && \
-    make install && \
+    make install \
 
 ENV JAGS_INCLUDE=/usr/local/include/JAGS \
     JAGS_LIB=/usr/local/lib \

@@ -35,4 +35,5 @@ RUN cd /tmp && \
     curl -O http://cran.r-project.org/src/contrib/Archive/VGAM/VGAM_0.9-4.tar.gz && \
     R CMD INSTALL /tmp/VGAM_0.9-4.tar.gz && \
     ./startx.sh && \
+    export DISPLAY=:1.0 && \
     R -f /tmp/installFromBiocViews.R

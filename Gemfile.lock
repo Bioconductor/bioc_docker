@@ -1,4 +1,5 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     archive-tar-minitar (0.5.2)
     docker-api (1.17.0)

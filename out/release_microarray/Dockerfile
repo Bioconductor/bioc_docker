@@ -11,13 +11,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
      libgtk2.0-dev libgmp3-dev libxpm-dev git dpkg-dev make g++ \
      gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev ggobi
 
+ENV PATH $PATH:/usr/local/root/bin
+ENV ROOTSYS /usr/local/root
+
  RUN cd /tmp && \
      curl -kO ftp://root.cern.ch/root/root_v5.34.24.source.tar.gz && \
      tar zxf root_v5.34.24.source.tar.gz && cd root && \
      ./configure --prefix=/usr/local/root && \
      make -j2 && make install && \
-     echo "export PATH=\$PATH:/usr/local/root/bin" >> /etc/profile && \
-    . /etc/profile && \
      echo /usr/local/root/lib/root > /etc/ld.so.conf.d/ROOT.conf && \
      ldconfig
 

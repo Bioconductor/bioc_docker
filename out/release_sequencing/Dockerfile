@@ -19,9 +19,11 @@ RUN cd /tmp && \
     make install 
 
 
-ENV JAGS_INCLUDE="/usr/local/include/JAGS" \
-    JAGS_LIB="/usr/local/lib" \
-    JAGS_MODULES="/usr/local/lib/JAGS/modules-3" 
+# in docker 1.4.0 these can be merged into one line (with = between key and value)
+# in order to use only one layer
+ENV JAGS_INCLUDE /usr/local/include/JAGS
+ENV JAGS_LIB /usr/local/lib
+ENV JAGS_MODULES /usr/local/lib/JAGS/modules-3
 
 ADD startx.sh /tmp/
 

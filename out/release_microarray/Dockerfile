@@ -13,7 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
  RUN cd /tmp && \
      curl -kO ftp://root.cern.ch/root/root_v5.34.24.source.tar.gz && \
-     tar zxf rroot_v5.34.24.source.tar.gz && cd root && \
+     tar zxf root_v5.34.24.source.tar.gz && cd root && \
      ./configure --prefix=/usr/local/root && \
      make -j && make install && \
      echo "export PATH=\$PATH:/usr/local/root/bin" >> /etc/profile && \

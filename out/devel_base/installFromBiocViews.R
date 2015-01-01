@@ -32,6 +32,8 @@ pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 # temporarily don't install XPS until ROOT issue is resolved
 pkgs_to_install <- pkgs_to_install[grep("xps", pkgs_to_install, invert=TRUE)]
 
+# don't reinstall anything that's installed already
+pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 
 biocLite(pkgs_to_install)
 

@@ -40,6 +40,15 @@ devel_sequencing:
         bioc_version: "3.1" # change me at release time
         biocViews:
             - Sequencing
+devel_proteomics:
+    source_dir: src/proteomics
+    out_dir: out/devel_proteomics
+    data:
+        parent: bioconductor/devel_core
+        image_name: bioconductor/devel_proteomics
+        bioc_version: "3.1" # change me at release time
+        biocViews:
+            - Proteomics
 release_base:
     source_dir: src/base
     out_dir: out/release_base
@@ -81,3 +90,12 @@ release_sequencing:
         bioc_version: "3.0" # change me at release time
         biocViews:
             - Sequencing
+release_proteomics:
+    source_dir: src/proteomics
+    out_dir: out/release_proteomics
+    data:
+        parent: bioconductor/release_core
+        image_name: bioconductor/release_proteomics
+        bioc_version: "3.0" # change me at release time
+        biocViews:
+            - Proteomics

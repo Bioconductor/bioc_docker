@@ -5,3 +5,8 @@
 # The suggested name for this image is: bioconductor/devel_proteomics.
 
 FROM bioconductor/devel_core
+
+ADD installFromBiocViews.R /tmp/
+
+RUN R -f /tmp/installFromBiocViews.R
+

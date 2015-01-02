@@ -5,3 +5,8 @@
 # The suggested name for this image is: bioconductor/release_proteomics.
 
 FROM bioconductor/release_core
+
+ADD installFromBiocViews.R /tmp/
+
+RUN R -f /tmp/installFromBiocViews.R
+

@@ -6,7 +6,6 @@ library(BiocInstaller) # shouldn't be necessary
 pkgs <- c(
 "AnnotationDbi",
 "AnnotationHub",
-"aroma.light",
 "Biobase",
 "BiocParallel",
 "biocViews",

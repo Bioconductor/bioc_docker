@@ -52,9 +52,10 @@ end
 
 task :default => :build
 
-# increase read and write timeouts to 1 hour
-Excon.defaults[:write_timeout] = 60 * 60
-Excon.defaults[:read_timeout] = 60 * 60
+# increase read and write timeouts to 2 hours
+timeout = (60 * 60) * 2
+Excon.defaults[:write_timeout] = timeout
+Excon.defaults[:read_timeout] = timeout
 
 
 if defined? ENV['DOCKER_HOST']
@@ -87,7 +88,7 @@ for dir in e
         image = Docker::Image.build_from_dir File.dirname(t.name)
         today = Time.now.strftime "%Y%m%d"
         ['atest', today].each do |tag|
-            "tagging #{image_name} with tag #{tag}..."
+            puts "tagging #{image_name} with tag #{tag}..."
             image.tag("repo" => image_name, "tag" => tag)
         end
         puts "pushing #{image_name}..."

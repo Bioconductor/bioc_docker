@@ -87,9 +87,10 @@ for dir in e
         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
         image = Docker::Image.build_from_dir File.dirname(t.name)
         today = Time.now.strftime "%Y%m%d"
-        ['atest', today].each do |tag|
-            puts "tagging #{image_name} with tag #{tag}..."
-            image.tag("repo" => image_name, "tag" => tag)
+        ['latest', today].each do |tag|
+            force = (tag == 'latest')
+            puts "tagging #{image_name} with tag #{tag} and force == #{force}..."
+            image.tag("repo" => image_name, "tag" => tag, "force" => force)
         end
         puts "pushing #{image_name}..."
         image.push()

@@ -17,73 +17,43 @@ class ErbBinding < OpenStruct
     end
 end
 
-desc "create Dockerfiles from templated input (default)"
-task :build  do
-    puts "in build"
-    basedir = File.dirname(__FILE__) + File::SEPARATOR
-    config = YAML.load_file(basedir + File::SEPARATOR + "config.yml")
-    for key in config.keys
-        hsh = config[key]
-        common_dir = basedir + "common"
-        source_dir = basedir +  hsh['source_dir']
-        out_dir = basedir + hsh['out_dir'].gsub("/", File::SEPARATOR)
-        unless File.exists? out_dir
-            FileUtils::mkdir_p out_dir
-        end
-        data = hsh['data']
-        infiles = Dir.new(source_dir).entries.reject{|i| i == "." or i == ".."}
-        infiles = infiles.map{|i| source_dir + File::SEPARATOR + i}
-        common_files = Dir.new(common_dir).entries.reject{|i| i == "." or i == ".."}
-        common_files = common_files.map{|i| common_dir + File::SEPARATOR + i}
 
-        for file in infiles+common_files
-            if file.end_with? ".in"
-                vars = ErbBinding.new(data)
-                erb = ERB.new(File.new(file).read, nil, "%")
-                vars_binding = vars.send(:get_binding)
-                out_filename = out_dir + File::SEPARATOR + File.basename(file).sub(/\.in$/, "")
-                out_fh = File.open(out_filename, "w")
-                out_fh.write(erb.result(vars_binding)) # FIXME only do this if file has changed
-                out_fh.close()
-            else
-                # FIXME only do this if files differ
-                FileUtils.cp(file, out_dir, :preserve => true)
-            end
-        end
+CONFIG = YAML.load_file "config.yml"
+SEP = File::SEPARATOR
+
+@docker_setup = nil
+
+def setup_docker
+    return unless @docker_setup.nil?
+    # increase read and write timeouts to 2 hours
+    timeout = (60 * 60) * 2
+    Excon.defaults[:write_timeout] = timeout
+    Excon.defaults[:read_timeout] = timeout
+    if defined? ENV['DOCKER_HOST']
+        puts "setting docker url"
+        Docker.url = ENV['DOCKER_HOST']
     end
+    auth = YAML.load_file('auth.yml')
+    Docker.authenticate!(auth)    
+    @docker_setup = true
 end
 
-####task :default => :build
-
-# increase read and write timeouts to 2 hours
-timeout = (60 * 60) * 2
-Excon.defaults[:write_timeout] = timeout
-Excon.defaults[:read_timeout] = timeout
 
 
-# if defined? ENV['DOCKER_HOST']
-#     puts "setting docker url"
-#     Docker.url = ENV['DOCKER_HOST']
-# end
-# auth = YAML.load_file('auth.yml')
-
-# Docker.authenticate!(auth)
-
-# basedir = File.dirname(__FILE__) + File::SEPARATOR
-# config = YAML.load_file(basedir + File::SEPARATOR + "config.yml")
-# e = Dir.new("out").entries.reject{|i| i.start_with? "."}.find_all{|i| File.directory? "out" + File::SEPARATOR + i}
+# basedir = File.dirname(__FILE__) + SEP
+# e = Dir.new("out").entries.reject{|i| i.start_with? "."}.find_all{|i| File.directory? "out" + SEP + i}
 # for dir in e
-#     obj = config[dir]
-#     deps = [:build]
+#     obj = CONFIG[dir]
+#     deps = [:build_files]
 #     if obj['data']['parent'].start_with? "bioconductor/"
-#         deps << "out" + File::SEPARATOR + obj['data']['parent'].sub('bioconductor/','') \
-#             + File::SEPARATOR +  "ticket.txt"
+#         deps << "out" + SEP + obj['data']['parent'].sub('bioconductor/','') \
+#             + SEP +  "ticket.txt"
 #     end
-#     ticketfile = "out" + File::SEPARATOR + dir + File::SEPARATOR + "ticket.txt"
+#     ticketfile = "out" + SEP + dir + SEP + "ticket.txt"
 #     puts ticketfile
 #     file ticketfile => deps do |t|
 #         puts "in target #{t.name}"
-#         image_name = "bioconductor/" +  t.name.split(File::SEPARATOR)[1]
+#         image_name = "bioconductor/" +  t.name.split(SEP)[1]
 #         puts "image_name is #{image_name}"
 #         today = Time.now.strftime "%Y%m%d"
 #         puts "checking for existing image #{image_name}:#{today}...."
@@ -129,14 +99,28 @@ Excon.defaults[:read_timeout] = timeout
 
 # common_files = Rake::FileList["common" + sep + "*"]
 
-CONFIG = YAML.load_file "config.yml"
-SEP = File::SEPARATOR
 alldeps = []
+mkimg_deps = []
 for version_name in CONFIG['versions'].keys
     version_hash= CONFIG['versions'][version_name]
     for container_name in CONFIG['containers'].keys
+        taskname = version_name + "_" + container_name
+        mkimg_deps << taskname
+
+
         vcontainer_name = version_name + "_" + container_name
         container_hash = CONFIG['containers'][container_name]
+        parent = container_hash['parent']
+        parent = container_hash['parent'].sub("bioconductor/", "bioconductor/#{version_name}_")
+
+        ptasks = []
+        if parent.start_with? "bioconductor/"
+            ptasks << parent.sub("bioconductor/", "")
+        end
+        task taskname => ptasks do |t|
+           puts "hello from #{t.name}"
+        end
+
         srcdir = "src" + SEP + container_name
         destdir = "out" + SEP + version_name + "_" + container_name
         copyfiles = Rake::FileList.new(srcdir + SEP + "**" + SEP + "*", "common" + SEP + "*") do |fl|
@@ -182,7 +166,7 @@ for version_name in CONFIG['versions'].keys
                 end
             end
         end
-        task vcontainer_name => deps
+        #task vcontainer_name => deps
         task :build_files => alldeps
         #directory destdir # ensure output dir exists, make this a dep of following tasks
     end
@@ -190,3 +174,4 @@ end
 
 task :default => :build_files
 
+task :build_all_containers => mkimg_deps

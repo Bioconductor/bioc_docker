@@ -4,9 +4,9 @@ require 'yaml'
 require 'fileutils'
 require 'pp'
 require 'rake'
+require 'pp'
 
 require 'docker'
-require 'parallel'
 
 class ErbBinding < OpenStruct
     def get_binding
@@ -16,6 +16,7 @@ end
 
 desc "create Dockerfiles from templated input (default)"
 task :build  do
+    puts "in build"
     basedir = File.dirname(__FILE__) + File::SEPARATOR
     config = YAML.load_file(basedir + File::SEPARATOR + "config.yml")
     for key in config.keys
@@ -50,3 +51,54 @@ task :build  do
 end
 
 task :default => :build
+
+# increase read and write timeouts to 1 hour
+Excon.defaults[:write_timeout] = 60 * 60
+Excon.defaults[:read_timeout] = 60 * 60
+
+
+if defined? ENV['DOCKER_HOST']
+    puts "setting docker url"
+    Docker.url = ENV['DOCKER_HOST']
+end
+auth = YAML.load_file('auth.yml')
+
+Docker.authenticate!(auth)
+
+basedir = File.dirname(__FILE__) + File::SEPARATOR
+config = YAML.load_file(basedir + File::SEPARATOR + "config.yml")
+e = Dir.new("out").entries.reject{|i| i.start_with? "."}.find_all{|i| File.directory? "out" + File::SEPARATOR + i}
+for dir in e
+    obj = config[dir]
+    deps = [:build]
+    if obj['data']['parent'].start_with? "bioconductor/"
+        deps << "out" + File::SEPARATOR + obj['data']['parent'].sub('bioconductor/','') \
+            + File::SEPARATOR +  "ticket.txt"
+        puts 'deps:'
+        pp deps
+    end
+    ticketfile = "out" + File::SEPARATOR + dir + File::SEPARATOR + "ticket.txt"
+    puts ticketfile
+    file ticketfile => deps do |t|
+        puts "in target #{t.name}"
+        image_name = "bioconductor/" +  t.name.split(File::SEPARATOR)[1]
+        puts "image_name is #{image_name}"
+        puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
+        image = Docker::Image.build_from_dir File.dirname(t.name)
+        today = Time.now.strftime "%Y%m%d"
+        ['atest', today].each do |tag|
+            "tagging #{image_name} with tag #{tag}..."
+            image.tag("repo" => image_name, "tag" => tag)
+        end
+        puts "pushing #{image_name}..."
+        image.push()
+        puts "push done!"
+        touch ticketfile
+    end
+end
+
+task :phony do
+    puts "phony"
+end
+
+puts "yow"

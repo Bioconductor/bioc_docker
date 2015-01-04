@@ -6,7 +6,6 @@ library(BiocInstaller) # shouldn't be necessary
 pkgs <- c(
 "AnnotationDbi",
 "AnnotationHub",
-"aroma.light",
 "Biobase",
 "BiocParallel",
 "biocViews",
@@ -18,12 +17,12 @@ pkgs <- c(
 "GenomicRanges",
 "graph",
 "Gviz",
-"httr"
+"httr",
 "IRanges",
 "knitr",
 "RBGL",
 "RCurl",
-"ReportingTools"
+"ReportingTools",
 "Rgraphviz",
 "rmarkdown",
 "XML",

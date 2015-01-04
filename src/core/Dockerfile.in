@@ -14,8 +14,5 @@ ADD install.R /tmp/
 
 RUN R -f /tmp/install.R
 
-ADD install_vep.sh /tmp/
-
-RUN /tmp/install_vep.sh
 
 

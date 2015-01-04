@@ -17,12 +17,12 @@ pkgs <- c(
 "GenomicRanges",
 "graph",
 "Gviz",
-"httr"
+"httr",
 "IRanges",
 "knitr",
 "RBGL",
 "RCurl",
-"ReportingTools"
+"ReportingTools",
 "Rgraphviz",
 "rmarkdown",
 "XML",

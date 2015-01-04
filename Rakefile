@@ -89,7 +89,7 @@ for dir in e
         images = Docker::Image.all
         existing = images.find {|i|i.info['RepoTags'].include? "#{image_name}:#{today}"}
         unless existing.nil?
-            puts "found an existing image with id #{id}..."
+            puts "found an existing image with id #{existing.id}..."
             prev_id = existing.id
         end
         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."

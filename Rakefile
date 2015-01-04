@@ -85,7 +85,9 @@ for dir in e
         image_name = "bioconductor/" +  t.name.split(File::SEPARATOR)[1]
         puts "image_name is #{image_name}"
         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
-        image = Docker::Image.build_from_dir File.dirname(t.name)
+        image = Docker::Image.build_from_dir(File.dirname(t.name)) do |ch|
+            puts ch
+        end
         today = Time.now.strftime "%Y%m%d"
         ['latest', today].each do |tag|
             puts "tagging #{image_name} with tag #{tag}..."

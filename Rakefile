@@ -84,11 +84,22 @@ for dir in e
         puts "in target #{t.name}"
         image_name = "bioconductor/" +  t.name.split(File::SEPARATOR)[1]
         puts "image_name is #{image_name}"
+        today = Time.now.strftime "%Y%m%d"
+        puts "checking for existing image #{image_name}:#{today}...."
+        images = Docker::Image.all
+        existing = images.find {|i|i.info['RepoTags'].include? "#{image_name}:#{today}"}
+        unless existing.nil?
+            puts "found an existing image with id #{id}..."
+            prev_id = existing.id
+        end
         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
         image = Docker::Image.build_from_dir(File.dirname(t.name)) do |ch|
             puts ch
         end
-        today = Time.now.strftime "%Y%m%d"
+        if defined? prev_id and prev_id == image.id
+            puts "built id matches pre-existing id, skipping tag and push steps..."
+            next # this should exit the block??
+        end
         ['latest', today].each do |tag|
             puts "tagging #{image_name} with tag #{tag}..."
             image.tag("repo" => image_name, "tag" => tag, "force" => true)

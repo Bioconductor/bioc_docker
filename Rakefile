@@ -90,13 +90,12 @@ for dir in e
         existing = images.find {|i|i.info['RepoTags'].include? "#{image_name}:#{today}"}
         unless existing.nil?
             puts "found an existing image with id #{existing.id}..."
-            prev_id = existing.id
         end
         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
         image = Docker::Image.build_from_dir(File.dirname(t.name)) do |ch|
             puts ch
         end
-        if defined? prev_id and prev_id == image.id
+        if (!existing.nil?) and existing.id.start_with? image.id
             puts "built id matches pre-existing id, skipping tag and push steps..."
             next # this should exit the block??
         end

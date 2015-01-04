@@ -94,7 +94,7 @@ for dir in e
         puts "pushing #{image_name}..."
         image.push()
         puts "push done!"
-        touch ticketfile
+        touch t.name
     end
 end
 

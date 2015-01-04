@@ -75,8 +75,6 @@ for dir in e
     if obj['data']['parent'].start_with? "bioconductor/"
         deps << "out" + File::SEPARATOR + obj['data']['parent'].sub('bioconductor/','') \
             + File::SEPARATOR +  "ticket.txt"
-        puts 'deps:'
-        pp deps
     end
     ticketfile = "out" + File::SEPARATOR + dir + File::SEPARATOR + "ticket.txt"
     puts ticketfile
@@ -115,3 +113,12 @@ task :phony do
 end
 
 puts "yow"
+
+
+# infiles = Rake::FileList["src/**/*.in"]
+# copyfiles = Rake::FileList.new("src/**/*") do |fl|
+#     fl.exclude(/\.in$/)
+#     fl.exclude do |f|
+#         File.directory? f
+#     end
+# end

@@ -191,6 +191,7 @@ for version_name in CONFIG['versions'].keys
             end
         end
         #task vcontainer_name => deps
+        desc "merge metadata values into templates (default)"
         task :build_files => alldeps
         #directory destdir # ensure output dir exists, make this a dep of following tasks
     end
@@ -198,4 +199,5 @@ end
 
 task :default => :build_files
 
+desc "(re)build all containers that require it"
 task :build_all_containers => mkimg_deps

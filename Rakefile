@@ -118,7 +118,31 @@ for version_name in CONFIG['versions'].keys
             ptasks << parent.sub("bioconductor/", "")
         end
         task taskname => ptasks do |t|
-           puts "hello from #{t.name}"
+           puts "running task #{t.name}..."
+           setup_docker
+           today = Time.now.strftime "%Y%m%d"
+           puts "checking for existing image #{t.name}:#{today}...."
+           images = Docker::Image.all
+           existing = images.find {|i|i.info['RepoTags'].include? "#{t.name}:#{today}"}
+           unless existing.nil?
+               puts "found an existing image with id #{existing.id}..."
+           end
+           puts "building #{t.name} from Dockerfile in out#{SEP}#{t.name}..."
+           image = Docker::Image.build_from_dir("out" + SEP + t.name) do |ch|
+               puts ch
+           end
+           if (!existing.nil?) and existing.id.start_with? image.id
+               puts "built id matches pre-existing id, skipping tag and push steps..."
+               next # this should exit the block??
+           end
+          ['latest', today].each do |tag|
+              puts "tagging #{t.name} with tag #{tag}..."
+              image.tag("repo" => t.name, "tag" => tag, "force" => true)
+          end
+          puts "pushing #{t.name}..."
+          image.push()
+          puts "push done!"
+
         end
 
         srcdir = "src" + SEP + container_name

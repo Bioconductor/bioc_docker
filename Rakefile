@@ -162,8 +162,9 @@ for version_name in CONFIG['versions'].keys
             alldeps << destfile
             CLOBBER.include(destfile)
             file destfile => inputfile do |t|
-                if t.prerequisites.first.end_with? ".in"
-                    puts "building #{t.name} from #{t.prerequisites.first}..."
+                source = (t.source.nil?) ? t.prerequisites.first : t.source
+                if source.end_with? ".in"
+                    puts "building #{t.name} from #{source}..."
                     # in here you can't refer to anything outside, only 't'
                     vcont_name = t.name.split(SEP)[1]
                     version, cont_name = vcont_name.split('_')
@@ -178,7 +179,7 @@ for version_name in CONFIG['versions'].keys
                     data['r_url'] = vhash['r_url']
                     data['bioc_version'] = vhash['version_number']
                     vars = ErbBinding.new(data)
-                    erb = ERB.new(File.new(t.prerequisites.first).read, nil, "%")
+                    erb = ERB.new(File.new(source).read, nil, "%")
                     vars_binding = vars.send(:get_binding)
                     out_fh = File.open(t.name, "w")
                     out_fh.write(erb.result(vars_binding)) 
@@ -186,7 +187,7 @@ for version_name in CONFIG['versions'].keys
 
 
                 else
-                    cp t.prerequisites.first, t.name, :preserve => true
+                    cp source, t.name, :preserve => true
                 end
             end
         end

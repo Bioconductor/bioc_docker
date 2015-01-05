@@ -1,10 +1,10 @@
 ---
 versions:
     release:
-        version_number: "3.0"
+        version_number: "3.0" # change this at release time
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
     devel:
-        version_number: "3.1"
+        version_number: "3.1" # change this at release time
         r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
 containers: # FIXME (?) rename this to 'images' (?)
     base:

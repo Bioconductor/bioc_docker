@@ -137,7 +137,7 @@ for version_name in CONFIG['versions'].keys
            end
           ['latest', today].each do |tag|
               puts "tagging #{t.name} with tag #{tag}..."
-              image.tag("repo" => t.name, "tag" => tag, "force" => true)
+              image.tag("repo" => "bioconductor/" + t.name, "tag" => tag, "force" => true)
           end
           puts "pushing #{t.name}..."
           image.push()

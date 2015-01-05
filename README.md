@@ -19,7 +19,7 @@ images:
   daily with the latest versions of R-release or R-devel.
 * *core*: Built on *base*, so it contains everything in *base*, plus
   a selection of core Bioconductor packages.
-  See [the full list](#the-full-list)
+  See [the full list](#the-full-list).
 * *microarray*: everything in *core*, plus 
   all packages tagged with the 
   [Microarray](/packages/release/BiocViews.html#___Microarray) biocView.

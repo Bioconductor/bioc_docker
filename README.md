@@ -1,52 +1,60 @@
-# Docker containers for Bioconductor
+## Docker containers for Bioconductor
 
 Our aim is to provide up-to-date containers for the current 
 release and devel versions of Bioconductor, and (probably, eventually)
 some older versions.
 
-For each supported version of Bioconductor, we provide three
-flavors:
+For each supported version of Bioconductor, we provide several
+images:
 
-* *small*: Contains R and a single Bioconductor package (`BiocInstaller`,
+
+* *base*: Contains R and a single Bioconductor package (`BiocInstaller`,
   providing the `biocLite()` function for installing additional
   packages).
   Also contains many system dependencies for Bioconductor packages.
   Useful when you want a relatively blank slate for testing purposes. 
   R is accessible via the command line or via RStudio Server.
-  The release and devel versions of these containers (and the 
-  *medium* and *large* containers built from them) are rebuilt
+  The release and devel versions of these containers (and the
+  containers built from them, below) are rebuilt
   daily with the latest versions of R-release or R-devel.
-* *medium*: Built on *small*, so it contains everything in *small*, plus
-  a number of Bioconductor packages to support many microarray, sequencing,
-  flow cytometry, and proteomics workflows. See [the full list](#the-full-list)
-  of packages installed.
-* *large*: everything in *medium*, plus all 
-  org.\* BSgenome.\* PolyPhen.\* SIFT.\* TxDb.\* XtraSNPlocs.\* annotation packages.
-  This is a large download (over 20 GB). Only use if you really
-  need all those annotation packages. If you only need
-  a few, consider making your own container based on
-  *medium* containing only the annotation packages
-  you need.
+* *core*: Built on *base*, so it contains everything in *base*, plus
+  a selection of core Bioconductor packages.
+  See [the full list](#the-full-list)
+* *microarray*: everything in *core*, plus 
+  all packages tagged with the 
+  [Microarray](/packages/release/BiocViews.html#___Microarray) biocView.
+* *flow* everything in *core*, plus all packages tagged with the
+  [FlowCytometry](/packages/release/BiocViews.html#___FlowCytometry) biocView.
+* *proteomics* everything in *core*, plus all packages tagged with the
+  [Proteomics](/packages/release/BiocViews.html#___Proteomics) biocView.
+* *sequencing* everything in *core*, plus all packages tagged with the
+  [Sequencing](/packages/release/BiocViews.html#___Sequencing) biocView.
 
 ## List of Containers
 
 At present, the following containers are available:
 
-* bioconductor/devel_small
-* bioconductor/devel_medium
-* bioconductor/devel_large
-* bioconductor/release_small
-* bioconductor/release_medium
-* bioconductor/release_large
+* bioconductor/devel_base
+* bioconductor/devel_core
+* bioconductor/devel_flow
+* bioconductor/devel_microarray
+* bioconductor/devel_proteomics
+* bioconductor/devel_sequencing
+* bioconductor/release_base
+* bioconductor/release_core
+* bioconductor/release_flow
+* bioconductor/release_microarray
+* bioconductor/release_proteomics
+* bioconductor/release_sequencing
 
 ## Using the containers
 
-The following examples use the `bioconductor/devel_small` container.
+The following examples use the `bioconductor/devel_base` container.
 Note that you may need to prepend `sudo` to all `docker` commands.
 
 ##### To run RStudio Server:
 
-    docker run -p 8787:8787 bioconductor/devel_small
+    docker run -p 8787:8787 bioconductor/devel_base
 
 You can then open a web browser pointing to your docker host on port 8787.
 If you're on Linux and using default settings, the docker host is
@@ -59,118 +67,40 @@ Log in to RStudio with the username `rstudio` and password `rstudio`.
 
 ##### To run R from the command line:
 
-    docker run -ti bioconductor/devel_small R
+    docker run -ti bioconductor/devel_base R
 
 ##### To open a Bash shell on the container:
 
-    docker run -ti bioconductor/devel_small bash
+    docker run -ti bioconductor/devel_base bash
 
 *Note*: The `docker run` command is very powerful and versatile. 
 For full documentation, type `docker run --help` or visit
 the [help page](https://docs.docker.com/reference/run/).
 
 <a name="the-full-list"></a>
-## List of packages installed on the *medium* container
+## List of packages installed on the *core* container
 
-These packages (and their dependencies) are installed.
-If you have a suggestion or request for this list, please
-[contact us](http://www.bioconductor.org/help/support/).
-Note that we want to keep the *medium* container relatively
-small, so it is not feasible to add every Bioconductor package to it.
-
-* affxparser
-* affy
-* affyio
-* affylmGUI
-* annaffy
-* annotate
 * AnnotationDbi
 * AnnotationHub
-* aroma.light
-* BayesPeak
-* baySeq
 * Biobase
-* BiocInstaller
 * BiocParallel
+* biocViews
 * biomaRt
 * Biostrings
 * BSgenome
-* Category
-* ChIPpeakAnno
-* chipseq
-* ChIPseqR
-* ChIPsim
-* COMPASS
-* CSAR
-* cummeRbund
-* DESeq
-* DESeq2
-* DEXSeq
-* DiffBind
-* DNAcopy
-* DynDoc
-* EDASeq
-* edgeR
 * epivizr
-* ensemblVEP
-* flowWorkspace
-* gage
-* genefilter
-* geneplotter
-* GenomeGraphs
-* genomeIntervals
 * GenomicFeatures
 * GenomicRanges
-* Genominator
-* GEOquery
-* GGBase
-* GGtools
-* girafe
-* goseq
-* GOstats
 * graph
-* GSEABase
 * Gviz
-* HilbertVis
-* impute
+* httr
 * IRanges
 * knitr
-* limma
-* MEDIPS
-* MSnbase
-* MSnID
-* multtest
-* mzID
-* mzR
-* oligo
-* oneChannelGUI
-* openCyto
-* PAnnBuilder
-* preprocessCore
-* qpgraph
-* qrqc
-* QUALIFIER
-* R453Plus1Toolbox
 * RBGL
-* Repitools
-* rGADEM
+* RCurl
+* ReportingTools
 * Rgraphviz
-* Ringo
 * rmarkdown
-* Rolexa
-* Rsamtools
-* Rsubread
-* rtracklayer
-* segmentSeq
-* seqbias
-* seqLogo
-* ShortRead
-* snpStats
-* splots
-* SRAdb
-* tkWidgets
-* VariantAnnotation
-* vsn
-* widgetTools
-* xcms
+* XML
 * zlibbioc
+

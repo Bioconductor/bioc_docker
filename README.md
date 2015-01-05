@@ -23,11 +23,11 @@ images:
 * *microarray*: everything in *core*, plus 
   all packages tagged with the 
   [Microarray](/packages/release/BiocViews.html#___Microarray) biocView.
-* *flow* everything in *core*, plus all packages tagged with the
+* *flow*: everything in *core*, plus all packages tagged with the
   [FlowCytometry](/packages/release/BiocViews.html#___FlowCytometry) biocView.
-* *proteomics* everything in *core*, plus all packages tagged with the
+* *proteomics*: everything in *core*, plus all packages tagged with the
   [Proteomics](/packages/release/BiocViews.html#___Proteomics) biocView.
-* *sequencing* everything in *core*, plus all packages tagged with the
+* *sequencing*: everything in *core*, plus all packages tagged with the
   [Sequencing](/packages/release/BiocViews.html#___Sequencing) biocView.
 
 ## List of Containers

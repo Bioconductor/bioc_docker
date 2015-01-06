@@ -3,7 +3,7 @@
 require 'docker'
 
 basedir = File.dirname(__FILE__)
-auth = YAML.load_file(basedir + File::SEPARATOR + 'auth.yml')
+@auth = YAML.load_file(basedir + File::SEPARATOR + 'auth.yml')
 
 @authenticated = false
 
@@ -41,7 +41,7 @@ def retag(name)
     end
     unless @authenticated
         @authenticated = true
-        Docker.authenticate!(auth)    
+        Docker.authenticate!(@auth)    
     end
     image.push()
 end

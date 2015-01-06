@@ -32,7 +32,7 @@ end
 
 #e.g. devel_flow
 def retag(name)
-    name = "bioconductor/" + name unless name.starts_with? "bioconductor/"
+    name = "bioconductor/" + name unless name.start_with? "bioconductor/"
     images = Docker::Image.all
     image = images.find{|i| i.info['RepoTags'].first.start_with? name}
     if image.nil?

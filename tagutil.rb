@@ -37,7 +37,7 @@ def retag(name)
     image = images.find{|i| i.info['RepoTags'].first.start_with? name}
     if image.nil?
         puts "#{name}: no such image found"
-        exit 1
+        return
     end
     unless @authenticated
         @authenticated = true

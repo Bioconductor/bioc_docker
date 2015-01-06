@@ -9,11 +9,11 @@ auth = YAML.load_file(basedir + File::SEPARATOR + 'auth.yml')
 
 
 
-imagenames = %w(base core flow microarray proteomics sequencing)
-repo = 'bioconductor'
-versions = %w(release devel)
 
 def get_image_info()
+    imagenames = %w(base core flow microarray proteomics sequencing)
+    repo = 'bioconductor'
+    versions = %w(release devel)
     for version in versions
         for imagename in imagenames
             name = "#{repo}/#{version}_#{imagename}"

@@ -9,7 +9,6 @@ basedir = File.dirname(__FILE__)
 
 
 
-
 def get_image_info()
     imagenames = %w(base core flow microarray proteomics sequencing)
     repo = 'bioconductor'
@@ -29,6 +28,16 @@ def get_image_info()
     end
 end
 
+def get_local_image_info(name)
+    name = "bioconductor/" + name unless name.start_with? "bioconductor/"
+    images = Docker::Image.all
+    image = images.find{|i| i.info['RepoTags'].first.start_with? name}
+    if image.nil?
+        puts "#{name}: no such image found"
+        return
+    end
+    image.info['RepoTags']    
+end
 
 #e.g. devel_flow
 def retag(name)

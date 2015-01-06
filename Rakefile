@@ -40,64 +40,7 @@ end
 
 
 
-# basedir = File.dirname(__FILE__) + SEP
-# e = Dir.new("out").entries.reject{|i| i.start_with? "."}.find_all{|i| File.directory? "out" + SEP + i}
-# for dir in e
-#     obj = CONFIG[dir]
-#     deps = [:build_files]
-#     if obj['data']['parent'].start_with? "bioconductor/"
-#         deps << "out" + SEP + obj['data']['parent'].sub('bioconductor/','') \
-#             + SEP +  "ticket.txt"
-#     end
-#     ticketfile = "out" + SEP + dir + SEP + "ticket.txt"
-#     puts ticketfile
-#     file ticketfile => deps do |t|
-#         puts "in target #{t.name}"
-#         image_name = "bioconductor/" +  t.name.split(SEP)[1]
-#         puts "image_name is #{image_name}"
-#         today = Time.now.strftime "%Y%m%d"
-#         puts "checking for existing image #{image_name}:#{today}...."
-#         images = Docker::Image.all
-#         existing = images.find {|i|i.info['RepoTags'].include? "#{image_name}:#{today}"}
-#         unless existing.nil?
-#             puts "found an existing image with id #{existing.id}..."
-#         end
-#         puts "building #{image_name} from Dockerfile in #{File.dirname(t.name)}..."
-#         image = Docker::Image.build_from_dir(File.dirname(t.name)) do |ch|
-#             puts ch
-#         end
-#         if (!existing.nil?) and existing.id.start_with? image.id
-#             puts "built id matches pre-existing id, skipping tag and push steps..."
-#             next # this should exit the block??
-#         end
-#         ['latest', today].each do |tag|
-#             puts "tagging #{image_name} with tag #{tag}..."
-#             image.tag("repo" => image_name, "tag" => tag, "force" => true)
-#         end
-#         puts "pushing #{image_name}..."
-#         image.push()
-#         puts "push done!"
-#         touch t.name
-#     end
-# end
 
-# task :phony do
-#     puts "phony"
-# end
-
-# puts "yow"
-
-
-# make these portable:
-# infiles = Rake::FileList["src" + sep + "**" + sep  + "*.in", "common" + sep + "*.in"]
-# copyfiles = Rake::FileList.new("src" + sep + "**" + sep + "*", "common" + sep + "*") do |fl|
-#     fl.exclude(/\.in$/)
-#     fl.exclude do |f|
-#         File.directory? f
-#     end
-# end
-
-# common_files = Rake::FileList["common" + sep + "*"]
 
 alldeps = []
 mkimg_deps = []
@@ -201,4 +144,12 @@ end
 task :default => :build_files
 
 desc "(re)build all containers that require it"
-task :build_all_containers => mkimg_deps
+task build_all_containers:  mkimg_deps
+
+
+# be careful using the following...it could theoretically
+# try and build 8 containers at once (all leaf containers
+# for release and devel) which could use a lot of memory
+# and other resources.
+desc "in parallel, (re)build all containers that require it"
+multitask parallel_build_all_containers:  mkimg_deps

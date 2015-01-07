@@ -38,6 +38,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openmpi-common \
     pandoc \
     pandoc-citeproc \
+    pgf \
     psmisc \
     python-pip \
     supervisor \

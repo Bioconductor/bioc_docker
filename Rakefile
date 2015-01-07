@@ -66,7 +66,7 @@ for version_name in CONFIG['versions'].keys
            today = Time.now.strftime "%Y%m%d"
            puts "checking for existing image #{t.name}:#{today}...."
            images = Docker::Image.all
-           existing = images.find {|i|i.info['RepoTags'].include? "#{t.name}:#{today}"}
+           existing = images.find {|i|i.info['RepoTags'].include? "bioconductor/#{t.name}:#{today}"}
            unless existing.nil?
                puts "found an existing image with id #{existing.id}..."
            end

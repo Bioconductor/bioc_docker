@@ -4,17 +4,24 @@ require 'docker'
 
 basedir = File.dirname(__FILE__)
 @auth = YAML.load_file(basedir + File::SEPARATOR + 'auth.yml')
+@imagenames = %w(base core flow microarray proteomics sequencing)
+@versioned_imagenames = []
+%w(release devel).each do |version|
+    @imagenames.each do |name|
+        @versioned_imagenames << "#{version}_#{name}"
+    end
+end
+
 
 @authenticated = false
 
 
 
 def get_image_info()
-    imagenames = %w(base core flow microarray proteomics sequencing)
     repo = 'bioconductor'
     versions = %w(release devel)
     for version in versions
-        for imagename in imagenames
+        for imagename in @imagenames
             name = "#{repo}/#{version}_#{imagename}"
             output = `docker run --rm rufus/docker-registry-debug -q info #{name}`
             lines = output.split("\n")

@@ -78,14 +78,31 @@ for version_name in CONFIG['versions'].keys
                puts "built id matches pre-existing id, skipping tag and push steps..."
                next # this should exit the block??
            end
-          ['latest', today].each do |tag|
+          wanted_tags = ['latest', today]
+          wanted_tags.each do |tag|
               puts "tagging #{t.name} with tag #{tag}..."
               image.tag("repo" => "bioconductor/" + t.name, "tag" => tag, "force" => true)
           end
+          puts "image tags are: #{image.info['RepoTags'].join(", ")}"
           puts "pushing #{t.name}..."
           image.push()
           puts "push done!"
-
+          # confirm that image in repo is properly tagged
+          output = `docker run --rm rufus/docker-registry-debug -q info bioconductor/#{t.name}`
+          lines = output.split("\n")
+          found_tags = []
+          puts "inspecting tags in image on hub..."
+          for line in lines
+              next if line.start_with? '-'
+              tag = line.strip.split(" ").first
+              puts "found tag #{tag}..."
+              found_tags << tag
+          end
+          # if wanted_tags.sort == found_tags.sort
+          #     puts "tags matched!"
+          # else
+          #   puts "tags did not match, retrying"
+          # end
         end
 
         srcdir = "src" + SEP + container_name

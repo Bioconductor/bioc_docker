@@ -31,5 +31,6 @@ RUN cd /tmp && \
     ./startx.sh && \
     export DISPLAY=:1.0 && \
     curl -O http://cran.r-project.org/src/contrib/Archive/gdsfmt/gdsfmt_1.1.0.tar.gz && \
-    R CMD INSTALL /tmp/gdsfmt_1.1.0.tar.gz && \    R -f /tmp/installFromBiocViews.R
+    R CMD INSTALL /tmp/gdsfmt_1.1.0.tar.gz && \
+    R -f /tmp/installFromBiocViews.R
 

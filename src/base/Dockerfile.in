@@ -79,10 +79,9 @@ RUN VER=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-serv
     dpkg -i rstudio-server-${VER}-amd64.deb && \
     rm rstudio-server-*-amd64.deb
 
-ADD userconf.sh /tmp/
+ADD userconf.sh /usr/bin/
 
-RUN /tmp/userconf.sh && \
-    mkdir -p /var/log/supervisor
+RUN mkdir -p /var/log/supervisor
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

@@ -5,11 +5,6 @@ require 'fileutils'
 require 'pp'
 require 'rake'
 require 'rake/clean'
-require 'pp'
-
-require 'docker'
-
-require 'pry' # remove this line
 
 class ErbBinding < OpenStruct
     def get_binding
@@ -25,6 +20,7 @@ SEP = File::SEPARATOR
 
 def setup_docker
     return unless @docker_setup.nil?
+    require 'docker'
     # increase read and write timeouts to 2 hours
     timeout = (60 * 60) * 2
     Excon.defaults[:write_timeout] = timeout
@@ -76,7 +72,7 @@ for version_name in CONFIG['versions'].keys
            end
            if (!existing.nil?) and existing.id.start_with? image.id
                puts "built id matches pre-existing id, skipping tag and push steps..."
-               next # this should exit the block??
+               next # exit the block
            end
           wanted_tags = ['latest', today]
           wanted_tags.each do |tag|
@@ -85,7 +81,9 @@ for version_name in CONFIG['versions'].keys
           end
           puts "image tags are: #{image.info['RepoTags'].join(", ")}"
           puts "pushing #{t.name}..."
-          image.push()
+          # see if this fixes pushing issues:
+          image_to_push = images.find{|i| i.info['RepoTags'].include? "bioconductor/#{t.name}:latest"}
+          image_to_push.push()
           puts "push done!"
           # confirm that image in repo is properly tagged
           output = `docker run --rm rufus/docker-registry-debug -q info bioconductor/#{t.name}`
@@ -151,10 +149,8 @@ for version_name in CONFIG['versions'].keys
                 end
             end
         end
-        #task vcontainer_name => deps
         desc "merge metadata values into templates (default)"
         task :build_files => alldeps
-        #directory destdir # ensure output dir exists, make this a dep of following tasks
     end
 end
 

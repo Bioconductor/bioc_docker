@@ -56,8 +56,8 @@ def retag(name)
         return
     end
     unless @authenticated
-        @authenticated = true
         Docker.authenticate!(@auth)    
+        @authenticated = true
     end
     image.push()
 end

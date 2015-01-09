@@ -1,2 +1,2 @@
-gem 'parallel'
 gem 'docker-api'
+gem 'pry'

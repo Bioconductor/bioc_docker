@@ -5,6 +5,7 @@ versions:
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
     devel:
         version_number: "3.1" # change this at release time
+        ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
         r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
 containers: # FIXME (?) rename this to 'images' (?)
     base:

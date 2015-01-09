@@ -30,7 +30,7 @@ def get_image_info()
                 next if line.start_with? '-'
                 found_tags << line.strip.split(' ').first
             end
-            puts "#{name} has tags: #{found_tags.join ', '}"
+            puts "#{name} has tags: #{found_tags.sort.join ', '}"
         end
     end
 end

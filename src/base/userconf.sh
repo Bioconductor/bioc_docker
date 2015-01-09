@@ -20,21 +20,21 @@ ROOT=${ROOT:=FALSE}
 
 ## Things get messy if we have more than one user.
 ## (Docker cares only about uid, not username; diff users with same uid = confusion)
-if [ "$USERID" -ne 1000 ]
+# if [ "$USERID" -ne 1000 ]
 ## Configure user with a different USERID if requested.
-    then
+    # then
         echo "creating new $USER with UID $USERID"
         useradd -m $USER -u $USERID
         mkdir /home/$USER
         chown -R $USER /home/$USER
-else
-    ## RENAME the existing user. (because deleting a user can be trouble, i.e. if we're logged in as that user)
-    usermod -l $USER rstudio
-    usermod -m -d /home/$USER $USER 
-    groupmod -n $USER rstudio 
-    echo "USER is now $USER"
-fi
-## Assing password to user
+# else
+#     ## RENAME the existing user. (because deleting a user can be trouble, i.e. if we're logged in as that user)
+#     usermod -l $USER rstudio
+#     usermod -m -d /home/$USER $USER 
+#     groupmod -n $USER rstudio 
+#     echo "USER is now $USER"
+# fi
+## Assingn password to user
 echo "$USER:$PASSWORD" | chpasswd
 
 ## Configure git for the User. Since root is running this script, cannot use `git config`

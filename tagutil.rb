@@ -63,7 +63,7 @@ def retag(name)
     # image.push()
     # use docker executable instead of api
     # because api pushes seem flaky
-    cmd = "docker push #{name}:latest"
+    cmd = "docker push #{name}"
     Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
         while line = stdout_err.gets
             puts line

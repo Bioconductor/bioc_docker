@@ -88,7 +88,7 @@ for version_name in CONFIG['versions'].keys
           # use docker executable instead of api
           # because api pushes seem flaky
 
-          cmd = "docker push bioconductor/#{t.name}:latest"
+          cmd = "docker push bioconductor/#{t.name}"
           Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
               while line = stdout_err.gets
                   puts line

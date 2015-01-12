@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'docker'
+require 'open3'
 
 basedir = File.dirname(__FILE__)
 @auth = YAML.load_file(basedir + File::SEPARATOR + 'auth.yml')
@@ -55,9 +56,23 @@ def retag(name)
         puts "#{name}: no such image found"
         return
     end
-    unless @authenticated
-        Docker.authenticate!(@auth)    
-        @authenticated = true
+    # unless @authenticated
+    #     Docker.authenticate!(@auth)    
+    #     @authenticated = true
+    # end
+    # image.push()
+    # use docker executable instead of api
+    # because api pushes seem flaky
+    cmd = "docker push #{name}:latest"
+    Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
+        while line = stdout_err.gets
+            puts line
+        end
+
+      exit_status = wait_thr.value
+      unless exit_status.success?
+          abort "FAILED !!! '#{cmd}' returned exit code #{exit_status.exitstatus}"
+      end
     end
-    image.push()
+
 end

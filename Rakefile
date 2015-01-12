@@ -3,6 +3,7 @@ require 'ostruct'
 require 'yaml'
 require 'fileutils'
 require 'pp'
+require 'open3'
 require 'rake'
 require 'rake/clean'
 
@@ -82,8 +83,22 @@ for version_name in CONFIG['versions'].keys
           puts "image tags are: #{image.info['RepoTags'].join(", ")}"
           puts "pushing #{t.name}..."
           # see if this fixes pushing issues:
-          image_to_push = images.find{|i| i.info['RepoTags'].include? "bioconductor/#{t.name}:latest"}
-          image_to_push.push()
+          # image_to_push = images.find{|i| i.info['RepoTags'].include? "bioconductor/#{t.name}:latest"}
+          # image_to_push.push()
+          # use docker executable instead of api
+          # because api pushes seem flaky
+
+          cmd = "docker push bioconductor/#{t.name}:latest"
+          Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
+              while line = stdout_err.gets
+                  puts line
+              end
+
+              exit_status = wait_thr.value
+              unless exit_status.success?
+                  abort "FAILED !!! '#{cmd}' returned exit code #{exit_status.exitstatus}"
+              end
+          end
           puts "push done!"
           # confirm that image in repo is properly tagged
           output = `docker run --rm rufus/docker-registry-debug -q info bioconductor/#{t.name}`

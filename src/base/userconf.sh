@@ -34,7 +34,7 @@ ROOT=${ROOT:=FALSE}
 #     groupmod -n $USER rstudio 
 #     echo "USER is now $USER"
 # fi
-## Assingn password to user
+## Assign password to user
 echo "$USER:$PASSWORD" | chpasswd
 
 ## Configure git for the User. Since root is running this script, cannot use `git config`

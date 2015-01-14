@@ -27,5 +27,5 @@ RUN cd /tmp && \
 ADD installFromBiocViews.R /tmp/
 
 RUN R -f /tmp/installFromBiocViews.R
-
+RUN R -e "biocLite(c('flowWorkspaceData', 'RSVGTipsDevice'))"
 

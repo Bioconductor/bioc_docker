@@ -43,7 +43,7 @@ warnings()
 if (!is.null(warnings()))
 {
     w <- capture.output(warnings())
-    if (grep("is not available", w))
+    if (length(grep("is not available|had non-zero exit status", w)))
         quit("no", 1L)
 }
 

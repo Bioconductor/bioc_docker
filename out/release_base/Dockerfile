@@ -36,8 +36,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
     openmpi-bin \
     openmpi-checkpoint \
     openmpi-common \
-    pandoc \
-    pandoc-citeproc \
     pgf \
     psmisc \
     python-pip \
@@ -47,6 +45,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
     valgrind \
     wget && \
     pip install -U awscli
+
+# we need a pandoc that's newer than what apt-get provides
+RUN cd /tmp && curl -LO https://github.com/jgm/pandoc/releases/download/1.13.2/pandoc-1.13.2-1-amd64.deb && \
+    dpkg -i pandoc-1.13.2-1-amd64.deb && rm pandoc-1.13.2-1-amd64.deb
 
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 && locale-gen en_US.utf8 \

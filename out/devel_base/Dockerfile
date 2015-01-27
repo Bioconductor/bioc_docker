@@ -8,8 +8,8 @@ FROM ubuntu:14.04
 
 MAINTAINER dtenenba@fredhutch.org
 
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get update -qq && apt-get dist-upgrade -y && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
+    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive \ 
     apt-get build-dep -y r-base && \
     DEBIAN_FRONTEND=noninteractive \

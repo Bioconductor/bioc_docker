@@ -6,7 +6,9 @@
 
 FROM bioconductor/devel_core
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libgmp3-dev libopenbabel-dev libgsl0-dev libgsl0ldbl
 
 ADD installFromBiocViews.R /tmp/

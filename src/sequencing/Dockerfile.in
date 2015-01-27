@@ -7,7 +7,9 @@
 FROM <%= parent %>
 
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libgsl0-dev libgsl0ldbl libgtk2.0-dev
 
 RUN cd /tmp && \

@@ -6,7 +6,9 @@
 
 FROM bioconductor/devel_core
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update -qq && apt-get dist-upgrade -y && \
+    apt-get install -y \
     libgsl0-dev libgsl0ldbl mysql-server libmysqlclient15-dev \
      libgtk2.0-dev libgmp3-dev libxpm-dev git dpkg-dev make g++ \
      gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev ggobi

@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/release_base.
 
-FROM ubuntu:14.04
+FROM r-base
 
 MAINTAINER dtenenba@fredhutch.org
 

@@ -52,8 +52,11 @@ for version_name in CONFIG['versions'].keys
         container_hash = CONFIG['containers'][container_name]
         parent = container_hash['parent']
         parent = container_hash['parent'].sub("bioconductor/", "bioconductor/#{version_name}_")
-
+        if parent =~ /bogus/
+          parent = version_hash['parent']
+        end
         ptasks = []
+        ptasks << parent
         if parent.start_with? "bioconductor/"
             ptasks << parent.sub("bioconductor/", "")
         end
@@ -147,6 +150,9 @@ for version_name in CONFIG['versions'].keys
                     data = rodata.dup
                     if data['parent'].start_with? "bioconductor/"
                         data['parent'] = rodata['parent'].sub("bioconductor/", "bioconductor/#{version}_")
+                    end
+                    if data['parent'] == 'bogus'
+                      data['parent'] = vhash['parent']
                     end
                     data['image_name'] = "bioconductor/#{vcont_name}"
                     data['r_url'] = vhash['r_url']

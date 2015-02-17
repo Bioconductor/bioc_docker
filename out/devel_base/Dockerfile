@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_base.
 
-FROM ubuntu:14.04
+FROM rocker/drd
 
 MAINTAINER dtenenba@fredhutch.org
 

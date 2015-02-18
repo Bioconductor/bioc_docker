@@ -154,6 +154,7 @@ for version_name in CONFIG['versions'].keys
                     if data['parent'] == 'bogus'
                       data['parent'] = vhash['parent']
                     end
+                    data['is_devel'] = (version == 'devel')
                     data['image_name'] = "bioconductor/#{vcont_name}"
                     data['r_url'] = vhash['r_url']
                     data['bioc_version'] = vhash['version_number']

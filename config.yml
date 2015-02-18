@@ -3,7 +3,7 @@ versions:
     release:
         version_number: "3.0" # change this at release time
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
-        parent: "r-base"
+        parent: "rocker/rstudio"
     devel:
         version_number: "3.1" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel

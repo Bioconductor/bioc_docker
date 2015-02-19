@@ -16,10 +16,18 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
 ENV PATH=$PATH:/usr/local/root/bin \
     ROOTSYS=/usr/local/root
 
+# FIXME - merge this w/above:
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl libx11-dev
+
+
  RUN cd /tmp && \
+     ln -s /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib && \
+     ln -s /usr/lib/x86_64-linux-gnu/libXft.so /usr/lib && \
+     ln -s /usr/lib/x86_64-linux-gnu/libXpm.so /usr/lib && \
+     ln -s /usr/lib/x86_64-linux-gnu/libXext.so /usr/lib  && \
      curl -kO ftp://root.cern.ch/root/root_v5.34.24.source.tar.gz && \
      tar zxf root_v5.34.24.source.tar.gz && cd root && \
-     ./configure --prefix=/usr/local/root && \
+     ./configure linuxx8664gcc --prefix=/usr/local/root && \
      make -j2 && make install && \
      echo /usr/local/root/lib/root > /etc/ld.so.conf.d/ROOT.conf && \
      ldconfig

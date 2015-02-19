@@ -13,8 +13,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         gdb \
         libxml2-dev \
-        python-pip \
-        valgrind
+        python-pip 
+#        valgrind
+
+RUN pip install awscli
 
 ADD install.R /tmp/
 

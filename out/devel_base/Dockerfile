@@ -11,7 +11,10 @@ MAINTAINER dtenenba@fredhutch.org
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        libxml2-dev
+        gdb \
+        libxml2-dev \
+        python-pip \
+        valgrind
 
 ADD install.R /tmp/
 

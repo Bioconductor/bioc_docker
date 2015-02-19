@@ -9,18 +9,42 @@ FROM <%= parent %>
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libgsl0-dev libgsl0ldbl mysql-server libmysqlclient15-dev \
-     libgtk2.0-dev libgmp3-dev libxpm-dev git dpkg-dev make g++ \
-     gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev ggobi
+    curl \
+    libcairo2-dev \
+    libgsl0-dev \
+    libgsl0ldbl \
+    libjpeg-dev \
+    libgtk2.0-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
+    libgmp3-dev \
+    libpng-dev \
+    libmysqlclient15-dev \
+    libnetcdf-dev \
+    libtiff-dev \
+    libxpm-dev \
+    ggobi \
+    git \
+    dpkg-dev \
+    make \
+    g++ \
+    gcc \
+    binutils \
+    libx11-dev \
+    libxpm-dev \
+    libxft-dev \
+    libxext-dev \
+    mysql-server \
+    openjdk-8-jdk \
+    tk-dev
 
 ENV PATH=$PATH:/usr/local/root/bin \
     ROOTSYS=/usr/local/root
 
-# FIXME - merge this w/above:
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl libx11-dev
-
-
  RUN cd /tmp && \
+     ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib && \
+     ln -s /usr/lib/x86_64-linux-gnu/libtiff.so /usr/lib && \
+     ln -s /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib && \
      ln -s /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib && \
      ln -s /usr/lib/x86_64-linux-gnu/libXft.so /usr/lib && \
      ln -s /usr/lib/x86_64-linux-gnu/libXpm.so /usr/lib && \
@@ -34,6 +58,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl libx11-dev
 
 
 ADD startx.sh /tmp/
+
+RUN R CMD javareconf
+
+ENV NETCDF_INCLUDE=/usr/include
 
 ADD installFromBiocViews.R /tmp/
 

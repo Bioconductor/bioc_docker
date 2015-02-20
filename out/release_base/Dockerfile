@@ -6,6 +6,8 @@
 
 FROM rocker/rstudio
 
+# FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
+
 MAINTAINER dtenenba@fredhutch.org
 
 

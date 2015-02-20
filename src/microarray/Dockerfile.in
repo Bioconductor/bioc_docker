@@ -11,7 +11,13 @@ MAINTAINER dtenenba@fredhutch.org
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    binutils \
     curl \
+    dpkg-dev \
+    g++ \
+    gcc \
+    git \
+    ggobi \
     libcairo2-dev \
     libgsl0-dev \
     libgsl0ldbl \
@@ -25,17 +31,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     libnetcdf-dev \
     libtiff-dev \
     libxpm-dev \
-    ggobi \
-    git \
-    dpkg-dev \
-    make \
-    g++ \
-    gcc \
-    binutils \
     libx11-dev \
     libxpm-dev \
     libxft-dev \
     libxext-dev \
+    make \
     mysql-server \
     openjdk-8-jdk \
     tk-dev

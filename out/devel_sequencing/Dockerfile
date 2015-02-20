@@ -12,7 +12,17 @@ MAINTAINER dtenenba@fredhutch.org
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libgsl0-dev libgsl0ldbl libgtk2.0-dev
+    curl \
+    libcairo2-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
+    libgsl0-dev \
+    libgsl0ldbl \
+    libgtk2.0-dev \
+    openjdk-8-jdk \
+    tk-dev
+
+
 
 RUN cd /tmp && \
     curl -L http://sourceforge.net/projects/mcmc-jags/files/JAGS/3.x/Source/JAGS-3.4.0.tar.gz/download > JAGS-3.4.0.tar.gz && \
@@ -29,6 +39,8 @@ ENV JAGS_INCLUDE=/usr/local/include/JAGS JAGS_LIB=/usr/local/lib \
 ADD startx.sh /tmp/
 
 ADD installFromBiocViews.R /tmp/
+
+RUN R CMD javareconf
 
 RUN cd /tmp && \
     ./startx.sh && \

@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libexpat1-dev \
     libgmp3-dev \
+    libnetcdf-dev \
     libopenbabel-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \

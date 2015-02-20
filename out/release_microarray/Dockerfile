@@ -67,6 +67,9 @@ ENV NETCDF_INCLUDE=/usr/include
 
 ADD installFromBiocViews.R /tmp/
 
+# FIXME - note that Xvfb is never actually installed, and yet
+# things seem to work(?). Do we need to invoke startx.sh below?
+
 RUN cd /tmp && \
     ./startx.sh && \
     export DISPLAY=:1.0 && \

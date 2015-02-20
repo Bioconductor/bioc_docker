@@ -25,7 +25,7 @@ RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
-<% unless is_devel  # R devel that is! FIXME for bioc-devel that uses R-release %>
+<% unless use_r_devel %>
 # long term fix is to fix CNORode
 RUN cd /usr/lib/R/etc && \
     sed s/error=format-security/format-security/g < Makeconf > Makeconf.new && \

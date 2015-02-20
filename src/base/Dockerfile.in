@@ -10,7 +10,7 @@ FROM <%= parent %>
 
 MAINTAINER dtenenba@fredhutch.org
 
-<% if is_devel %>
+<% if use_r_devel %>
 # There should only be one version of R on this container
 RUN dpkg --purge --force-depends r-base-core
 <% end %>

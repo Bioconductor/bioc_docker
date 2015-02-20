@@ -35,7 +35,13 @@ pkgs_to_install <- pkgs_to_install[grep("casper", pkgs_to_install, invert=TRUE)]
 # don't reinstall anything that's installed already
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 
-biocLite(pkgs_to_install)
+#oldwarn <- getOption(warn)
+#on.exit(options(warn=oldwarn))
+#options(warn=1)
+
+# FIXME This assumes there are always at least 2 cores; is that safe?
+cores <- max(2, parallel::detectCores()-2)
+biocLite(pkgs_to_install, Ncpus=cores)
 
 # just in case there were warnings, we want to see them 
 # without having to scroll up:

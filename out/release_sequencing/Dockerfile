@@ -20,7 +20,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libgsl0ldbl \
     libgtk2.0-dev \
     openjdk-8-jdk \
-    tk-dev
+    tk-dev 
 
 
 
@@ -41,6 +41,9 @@ ADD startx.sh /tmp/
 ADD installFromBiocViews.R /tmp/
 
 RUN R CMD javareconf
+
+# FIXME move above:
+RUN apt-get install -y xvfb
 
 RUN cd /tmp && \
     ./startx.sh && \

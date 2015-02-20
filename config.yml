@@ -8,7 +8,7 @@ versions:
         version_number: "3.1" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
         r_url: "http://s3.amazonaws.com/r-devel-source/R-devel.tar.gz" # gets updated daily by cron
-        parent: "rocker/drd"# specify latest?   
+        parent: "rocker/rstudio-daily"# specify latest?   
 containers: # FIXME (?) rename this to 'images' (?)
     base:
         parent: bogus

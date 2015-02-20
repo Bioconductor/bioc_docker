@@ -4,9 +4,14 @@
 
 # The suggested name for this image is: bioconductor/devel_base.
 
-FROM rocker/drd
+FROM rocker/rstudio-daily
 
 MAINTAINER dtenenba@fredhutch.org
+
+
+# There should only be one version of R on this container
+RUN dpkg --purge --force-depends r-base-core
+
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \

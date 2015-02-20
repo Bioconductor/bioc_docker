@@ -8,8 +8,6 @@ FROM bioconductor/devel_base
 
 MAINTAINER dtenenba@fredhutch.org
 
-
-
 ADD install.R /tmp/
 
 RUN R -f /tmp/install.R

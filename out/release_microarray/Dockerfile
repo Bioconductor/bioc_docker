@@ -67,7 +67,12 @@ RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
+
 ADD installFromBiocViews.R /tmp/
+
+# invalidates cache every 24 hours
+ADD http://master.bioconductor.org/todays-date /tmp/
+
 
 # FIXME - note that Xvfb is never actually installed, and yet
 # things seem to work(?). Do we need to invoke startx.sh below?

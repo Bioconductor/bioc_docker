@@ -32,9 +32,14 @@ RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
+ADD startx.sh /tmp/
+
+
 ADD installFromBiocViews.R /tmp/
 
-ADD startx.sh /tmp/
+# invalidates cache every 24 hours
+ADD http://master.bioconductor.org/todays-date /tmp/
+
 
 RUN cd /tmp && \
     ./startx.sh && \

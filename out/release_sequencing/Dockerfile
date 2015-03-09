@@ -43,9 +43,15 @@ ENV LD_LIBRARY_PATH=${JAGS_LIB}
 
 ADD startx.sh /tmp/
 
+RUN R CMD javareconf
+
+
+
+
 ADD installFromBiocViews.R /tmp/
 
-RUN R CMD javareconf
+# invalidates cache every 24 hours
+ADD http://master.bioconductor.org/todays-date /tmp/
 
 RUN cd /tmp && \
     ./startx.sh && \

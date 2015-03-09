@@ -39,6 +39,7 @@ RUN cd /tmp && \
 ENV JAGS_INCLUDE=/usr/local/include/JAGS JAGS_LIB=/usr/local/lib \
     JAGS_MODULES=/usr/local/lib/JAGS/modules-3
 
+ENV LD_LIBRARY_PATH=${JAGS_LIB}
 
 ADD startx.sh /tmp/
 

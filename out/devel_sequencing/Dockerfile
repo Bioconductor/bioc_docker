@@ -20,7 +20,17 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libgsl0ldbl \
     libgtk2.0-dev \
     openjdk-8-jdk \
-    tk-dev 
+    tk-dev \
+    xvfb
+
+
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libblas-dev \
+    libbz2-dev \
+    liblapack-dev \
+    liblzma-dev && \
+    sed -i''  's/-pedantic//' /usr/local/lib/R/etc/Makeconf 
 
 
 
@@ -36,14 +46,12 @@ RUN cd /tmp && \
 ENV JAGS_INCLUDE=/usr/local/include/JAGS JAGS_LIB=/usr/local/lib \
     JAGS_MODULES=/usr/local/lib/JAGS/modules-3
 
+
 ADD startx.sh /tmp/
 
 ADD installFromBiocViews.R /tmp/
 
 RUN R CMD javareconf
-
-# FIXME move above:
-RUN apt-get install -y xvfb
 
 RUN cd /tmp && \
     ./startx.sh && \

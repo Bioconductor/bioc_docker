@@ -50,7 +50,8 @@ warnings()
 if (!is.null(warnings()))
 {
     w <- capture.output(warnings())
-    if (length(grep("is not available|had non-zero exit status", w)))
+    if (length(grep(
+     "is not available|had non-zero exit status|installation of one or more packages failed", w)))
         quit("no", 1L)
 }
 

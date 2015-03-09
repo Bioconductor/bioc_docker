@@ -21,18 +21,17 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libgsl0ldbl \
     openjdk-8-jdk
 
+
+
 RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
-
-# long term fix is to fix CNORode
-RUN cd /usr/lib/R/etc && \
-    sed s/error=format-security/format-security/g < Makeconf > Makeconf.new && \
-    mv Makeconf Makeconf.old && \
-    mv Makeconf.new Makeconf && cd -
-
-
 ADD installFromBiocViews.R /tmp/
 
-RUN R -f /tmp/installFromBiocViews.R
+ADD startx.sh /tmp/
+
+RUN cd /tmp && \
+    ./startx.sh && \
+    export DISPLAY=:1.0 && \
+    R -f /tmp/installFromBiocViews.R

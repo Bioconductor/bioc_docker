@@ -21,12 +21,22 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libgsl0ldbl \
     openjdk-8-jdk
 
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev && \
+    sed -i''  's/-pedantic//' /usr/local/lib/R/etc/Makeconf 
+
+
+
 RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
-
-
 ADD installFromBiocViews.R /tmp/
 
-RUN R -f /tmp/installFromBiocViews.R
+ADD startx.sh /tmp/
+
+RUN cd /tmp && \
+    ./startx.sh && \
+    export DISPLAY=:1.0 && \
+    R -f /tmp/installFromBiocViews.R

@@ -40,6 +40,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     openjdk-8-jdk \
     tk-dev
 
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libblas-dev \
+    libbz2-dev \
+    liblapack-dev
+
+
 ENV PATH=$PATH:/usr/local/root/bin \
     ROOTSYS=/usr/local/root
 

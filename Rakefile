@@ -56,7 +56,6 @@ for version_name in CONFIG['versions'].keys
           parent = version_hash['parent']
         end
         ptasks = []
-        ptasks << parent unless parent.start_with? "rocker"
         if parent.start_with? "bioconductor/"
             ptasks << parent.sub("bioconductor/", "")
         end

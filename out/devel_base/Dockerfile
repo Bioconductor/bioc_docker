@@ -32,8 +32,8 @@ RUN pip install awscli
 
 RUN cd /tmp && \
 svn co https://svn.r-project.org/R/branches/R-3-2-branch R \
-  cd R && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  && cd R \
+  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \

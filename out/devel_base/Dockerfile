@@ -30,6 +30,8 @@ RUN pip install awscli
 
 
 
+RUN apt-get remove -y libfreetype6
+
 RUN cd /tmp && \
 svn co https://svn.r-project.org/R/branches/R-3-2-branch R \
   && cd R \

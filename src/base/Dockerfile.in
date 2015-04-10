@@ -30,6 +30,8 @@ RUN pip install awscli
 
 <% if use_numbered_branch.is_a? String %>
 
+RUN apt-get remove -y libfreetype6
+
 RUN cd /tmp && \
 svn co https://svn.r-project.org/R/branches/R-<%= use_numbered_branch.sub(".", "-")%>-branch R \
   && cd R \

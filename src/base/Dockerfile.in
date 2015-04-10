@@ -71,7 +71,7 @@ svn co https://svn.r-project.org/R/branches/R-<%= use_numbered_branch.sub(".", "
                 AWK=/usr/bin/awk \
                 CFLAGS=$(R CMD config CFLAGS) \
                 CXXFLAGS=$(R CMD config CXXFLAGS) \
-                ./configure --enable-R-shlib \
+                ./configure --prefix=/usr/local --enable-R-shlib \
                         --without-blas \
                         --without-lapack \
                         --with-readline \

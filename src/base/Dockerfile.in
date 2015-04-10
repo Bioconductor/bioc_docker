@@ -82,8 +82,8 @@ svn co https://svn.r-project.org/R/branches/R-<%= use_numbered_branch.sub(".", "
           cd / && \
           rm -rf /tmp/R /tmp/downloaded_packages/ /tmp/*.rds \
   && echo "R_LIBS=\${R_LIBS-'/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library'}" >> /usr/local/lib/R/etc/Renviron \
-    && echo 'options("repos"="http://cran.rstudio.com")' >> /usr/local/lib/R/etc/Rprofile.site \
-       && dpkg --purge  \
+    && echo 'options("repos"="http://cran.rstudio.com")' >> /usr/local/lib/R/etc/Rprofile.site 
+RUN dpkg --purge  \
                 libblas-dev \
                 libbz2-dev  \
                 libcairo2-dev \
@@ -108,8 +108,8 @@ svn co https://svn.r-project.org/R/branches/R-<%= use_numbered_branch.sub(".", "
                 texlive-generic-recommended \
                 texlive-latex-base \
                 texlive-latex-recommended  ; \ 
-                echo "ignoring return value" \
-        && apt-get autoremove -qy          
+                echo "ignoring return value" 
+RUN apt-get autoremove -qy          
 
 
 <% end  #  use_numbered_branch %> 

@@ -21,7 +21,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
 
 RUN pip install awscli
 
-RUN apt-get remove -y libfreetype6; echo "ignoring return value"
 
 
 

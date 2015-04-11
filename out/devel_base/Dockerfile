@@ -21,6 +21,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
 
 RUN pip install awscli
 
+RUN apt-get remove -y libfreetype6; echo "ignoring return value"
+
 
 
 # There should only be one version of R on this container
@@ -30,7 +32,6 @@ RUN pip install awscli
 
 
 
-RUN apt-get remove -y libfreetype6
 
 RUN cd /tmp && \
 svn co https://svn.r-project.org/R/branches/R-3-2-branch R \

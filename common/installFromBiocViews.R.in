@@ -41,8 +41,9 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 #on.exit(options(warn=oldwarn))
 #options(warn=1)
 
-# FIXME This assumes there are always at least 2 cores; is that safe?
 cores <- max(2, parallel::detectCores()-2)
+if (parallel::detectCores() == 1)
+    cores <- 1
 biocLite(pkgs_to_install, Ncpus=cores)
 
 # just in case there were warnings, we want to see them 

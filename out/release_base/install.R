@@ -3,5 +3,9 @@
 
 url <- "http://bioconductor.org/packages/3.0/bioc"
 
+
+if(!require(Matrix))
+    biocLite("Matrix")
+
 install.packages("BiocInstaller", repos=url)
 

@@ -35,7 +35,7 @@ RUN R -e "biocLite('rhdf5')" && \
     ln -s /usr/local/lib/R/site-library/rhdf5/libs/rhdf5.so \
         /usr/lib/x86_64-linux-gnu/libhdf5.so && \
     R -e "biocLite(c('flowCore', 'flowViz', 'RcppArmadillo', 'BH', \
-        'Biobase', 'zlibbioc'))" && \
+        'Biobase', 'zlibbioc', 'KernSmooth'))" && \
     R -e "download.packages('ncdfFlow', '/tmp', repos=biocinstallRepos())" && \
     R CMD INSTALL /tmp/ncdfFlow_*.tar.gz --configure-args="--with-hdf5='/tmp/fakehdf5'"
 

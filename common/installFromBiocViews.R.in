@@ -44,6 +44,14 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 #on.exit(options(warn=oldwarn))
 #options(warn=1)
 
+
+builtins <- c("Matrix", "KernSmooth", "mgcv")
+
+for (builtin in builtins)
+    if(!do.call(require, list(builtin)))
+        biocLite(builtin)
+
+
 cores <- max(2, parallel::detectCores()-2)
 if (parallel::detectCores() == 1)
     cores <- 1

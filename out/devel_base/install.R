@@ -7,7 +7,7 @@ url <- "http://bioconductor.org/packages/3.1/bioc"
 
 install.packages("BiocInstaller", repos=url)
 
-builtins <- c("Matrix", "KernSmooth")
+builtins <- c("Matrix", "KernSmooth", "mgcv")
 
 for (builtin in builtins)
     if(!do.call(require, list(builtin)))

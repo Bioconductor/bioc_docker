@@ -8,9 +8,11 @@ FROM bioconductor/devel_core
 
 MAINTAINER dtenenba@fredhutch.org
 
+# temporarily block dist-upgrade:
+#    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     libcairo2-dev \

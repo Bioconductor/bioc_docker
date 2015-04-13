@@ -35,6 +35,9 @@ pkgs_to_install <- pkgs_to_install[grep("casper", pkgs_to_install, invert=TRUE)]
 # don't install COPDSexualDimorphism (probably to be removed from bioc, depends on defunct cran pkg)
 pkgs_to_install <- pkgs_to_install[grep("COPDSexualDimorphism", pkgs_to_install, invert=TRUE)]
 
+if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
+     pkgs_to_install <- pkgs_to_install[!pkgs_to_install == "flowVS"]
+
 # don't reinstall anything that's installed already
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 

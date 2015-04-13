@@ -42,7 +42,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
     make \
     mysql-server \
     openjdk-8-jdk \
-    tk-dev
+    tk-dev \
+    Xvfb
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -83,8 +84,6 @@ ADD installFromBiocViews.R /tmp/
 ADD http://master.bioconductor.org/todays-date /tmp/
 
 
-# FIXME - note that Xvfb is never actually installed, and yet
-# things seem to work(?). Do we need to invoke startx.sh below?
 
 RUN cd /tmp && \
     ./startx.sh && \

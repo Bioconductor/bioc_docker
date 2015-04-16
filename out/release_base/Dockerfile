@@ -10,12 +10,10 @@ FROM rocker/rstudio
 
 MAINTAINER dtenenba@fredhutch.org
 
-# TEMPORARILY REMOVING LINE THAT DOES A DIST-UPGRADE:
-#     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
-# BECAUSE IT UPGRADES PREMATURELY TO R-3.2.0.
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
+    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
         gdb \
         libxml2-dev \

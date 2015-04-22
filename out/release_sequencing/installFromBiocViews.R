@@ -56,7 +56,12 @@ for (builtin in builtins)
 cores <- max(2, parallel::detectCores()-2)
 if (parallel::detectCores() == 1)
     cores <- 1
-biocLite(pkgs_to_install, Ncpus=cores)
+
+tryCatch(biocLite(pkgs_to_install, Ncpus=cores),
+warning=function(w){
+    if(length(grep("is not available|had non-zero exit status|installation of one or more packages failed", w$message)))
+        stop(sprintf("got a fatal warning: %s", w$message))
+})
 
 # just in case there were warnings, we want to see them 
 # without having to scroll up:

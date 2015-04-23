@@ -33,8 +33,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libblas-dev \
     libbz2-dev \
     liblapack-dev \
-    liblzma-dev && \
-    sed -i''  's/-pedantic//' /usr/local/lib/R/etc/Makeconf 
+    liblzma-dev 
 
 
 

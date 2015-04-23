@@ -28,8 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev && \
-    sed -i''  's/-pedantic//' /usr/local/lib/R/etc/Makeconf 
+    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev 
 
 
 

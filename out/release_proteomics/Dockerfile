@@ -45,3 +45,6 @@ RUN cd /tmp && \
     ./startx.sh && \
     export DISPLAY=:1.0 && \
     R -f /tmp/installFromBiocViews.R
+
+RUN R -e "biocLite(c('rols', 'RforProteomics'))"
+

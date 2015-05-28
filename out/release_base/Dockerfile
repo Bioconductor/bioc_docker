@@ -11,14 +11,9 @@ FROM rocker/rstudio
 MAINTAINER dtenenba@fredhutch.org
 
 
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        gdb \
-        libxml2-dev \
-        python-pip 
-#        valgrind
+RUN apt-get update && \
+    apt-get -y -t unstable install gdb libxml2-dev python-pip
+    # valgrind
 
 RUN pip install awscli
 

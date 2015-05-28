@@ -9,12 +9,12 @@ FROM bioconductor/release_core
 MAINTAINER dtenenba@fredhutch.org
 
 # temporarily block dist-upgrade:
-#     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+#     apt-get dist-upgrade -y && \
 
-RUN DEBIAN_FRONT_END=noninteractive apt-get install -y --force-yes libfreetype6=2.5.2-3
+RUN apt-get -t unstable install -y --force-yes libfreetype6=2.5.2-3
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get update -qq && \
+    apt-get -t unstable install -y \
     binutils \
     curl \
     dpkg-dev \

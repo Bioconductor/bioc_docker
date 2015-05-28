@@ -13,8 +13,10 @@ MAINTAINER dtenenba@fredhutch.org
 
 RUN apt-get -t unstable install -y --force-yes libfreetype6=2.5.2-3
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
-    apt-get -t unstable install -q -y \
+RUN echo "" | sudo debconf-set-selections
+
+RUN apt-get update -qq && \
+    DEBIAN_FRONTEND=noninteractive apt-get -t unstable install -q -y \
     binutils \
     curl \
     dpkg-dev \

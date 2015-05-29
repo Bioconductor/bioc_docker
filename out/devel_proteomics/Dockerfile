@@ -9,13 +9,13 @@ FROM bioconductor/devel_core
 MAINTAINER dtenenba@fredhutch.org
 
 # temporarily block dist-upgrade:
-#    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y && \
+#    apt-get dist-upgrade -y && \
 
 
-RUN DEBIAN_FRONT_END=noninteractive apt-get install -y --force-yes libfreetype6=2.5.2-3
+RUN apt-get install -y -t unstable --force-yes libfreetype6=2.5.2-3
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get update && \
+    apt-get install -y -t unstable \
     libexpat1-dev \
     libgmp3-dev \
     libnetcdf-dev \
@@ -27,7 +27,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     openjdk-8-jdk
 
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt-get install -y -t unstable \
     libbz2-dev liblzma-dev libpcre3-dev libpng12-dev 
 
 

@@ -14,6 +14,9 @@ MAINTAINER dtenenba@fredhutch.org
 
 RUN apt-get install -y -t unstable --force-yes libfreetype6=2.5.2-3
 
+
+
+
 RUN apt-get update && \
     apt-get install -y -t unstable\
     curl \

@@ -19,7 +19,8 @@ RUN pip install awscli
 
 <% if is_devel %>
 
-RUN apt-get -y -t unstable install --fix-missing  texlive texinfo
+RUN apt-get -y -t unstable install --fix-missing \
+    texlive texinfo texlive-latex-extra
 
 <% end %>
 

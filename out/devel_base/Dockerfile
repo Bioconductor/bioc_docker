@@ -19,7 +19,8 @@ RUN pip install awscli
 
 
 
-RUN apt-get -y -t unstable install --fix-missing  texlive texinfo
+RUN apt-get -y -t unstable install --fix-missing \
+    pandoc texlive texinfo texlive-latex-extra
 
 
 

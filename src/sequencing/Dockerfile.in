@@ -20,7 +20,7 @@ RUN  rm /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 
 RUN apt-get update && \
-    apt-get install -y -t unstable\
+    apt-get install -y -t unstable --fix-missing \
     curl \
     libcairo2-dev \
     libgl1-mesa-dev \

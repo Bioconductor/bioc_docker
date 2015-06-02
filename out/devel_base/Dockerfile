@@ -12,10 +12,14 @@ MAINTAINER dtenenba@fredhutch.org
 
 
 RUN apt-get update && \
-    apt-get -y -t unstable install gdb libxml2-dev python-pip texlive texinfo
+    apt-get -y -t unstable install gdb libxml2-dev python-pip
     # valgrind
 
 RUN pip install awscli
+
+
+
+RUN apt-get -y -t unstable install --fix-missing  texlive texinfo
 
 
 

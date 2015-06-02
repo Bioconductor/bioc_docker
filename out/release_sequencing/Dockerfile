@@ -18,7 +18,7 @@ RUN apt-get install -y -t unstable --force-yes libfreetype6=2.5.2-3
 
 
 RUN apt-get update && \
-    apt-get install -y -t unstable\
+    apt-get install -y -t unstable --fix-missing \
     curl \
     libcairo2-dev \
     libgl1-mesa-dev \

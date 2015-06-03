@@ -11,6 +11,9 @@ MAINTAINER dtenenba@fredhutch.org
 # temporarily block dist-upgrade:
 #    apt-get dist-upgrade -y && \
 
+# nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
+RUN  rm /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
+
 
 RUN apt-get install -y -t unstable --force-yes libfreetype6=2.5.2-3
 

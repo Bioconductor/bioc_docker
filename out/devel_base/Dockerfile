@@ -10,6 +10,9 @@ FROM rocker/rstudio
 
 MAINTAINER dtenenba@fredhutch.org
 
+# nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
+RUN  rm /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
+
 
 RUN apt-get update && \
     apt-get -y -t unstable install gdb libxml2-dev python-pip

@@ -12,6 +12,12 @@ MAINTAINER dtenenba@fredhutch.org
 #     apt-get dist-upgrade -y && \
 
 
+RUN apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean -y && \
+    apt-get update -y && \
+    apt-get -t unstable upgrade -y
+
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 

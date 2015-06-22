@@ -77,7 +77,8 @@ for version_name in CONFIG['versions'].keys
                puts "built id matches pre-existing id, skipping tag and push steps..."
                next # exit the block
            end
-          wanted_tags = ['latest', today]
+          version_number = version_hash['version_number']
+          wanted_tags = ['latest', today, version_number]
           wanted_tags.each do |tag|
               puts "tagging #{t.name} with tag #{tag}..."
               image.tag("repo" => "bioconductor/" + t.name, "tag" => tag, "force" => true)

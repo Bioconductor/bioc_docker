@@ -11,6 +11,9 @@ MAINTAINER dtenenba@fredhutch.org
 # temporarily block dist-upgrade:
 #   RUN apt-get dist-upgrade -y && \
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
+
+
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 

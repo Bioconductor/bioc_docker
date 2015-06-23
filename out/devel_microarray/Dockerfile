@@ -15,6 +15,7 @@ MAINTAINER dtenenba@fredhutch.org
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
 
 RUN apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \

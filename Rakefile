@@ -77,7 +77,11 @@ for version_name in CONFIG['versions'].keys
                puts "built id matches pre-existing id, skipping tag and push steps..."
                next # exit the block
            end
-          version_number = version_hash['version_number']
+          if t.name.start_with? "release"
+            version_number = CONFIG['versions']['release']['version_number']
+          else
+            version_number = CONFIG['versions']['devel']['version_number']
+          end
           wanted_tags = ['latest', today, version_number]
           wanted_tags.each do |tag|
               puts "tagging #{t.name} with tag #{tag}..."

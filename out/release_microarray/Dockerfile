@@ -46,7 +46,7 @@ RUN apt-get update -qq && \
     libglu1-mesa-dev \
     libgmp3-dev \
     libpng-dev \
-    libmysqlclient15-dev \
+    libmysqlclient-dev \
     libnetcdf-dev \
     libtiff-dev \
     libxpm-dev \

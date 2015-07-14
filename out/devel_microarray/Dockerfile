@@ -24,7 +24,7 @@ RUN apt-get clean -y && \
     apt-get -t unstable upgrade -y
 
 
-RUN apt-get -t unstable install -y --force-yes libfreetype6#=2.5.2-3
+RUN apt-get -t unstable install -y --force-yes libfreetype6
 
 RUN echo "" | sudo debconf-set-selections
 

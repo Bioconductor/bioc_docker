@@ -10,7 +10,7 @@ MAINTAINER dtenenba@fredhutch.org
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN apt-get -t unstable install -y --force-yes libfreetype6#=2.5.2-3
+RUN apt-get -t unstable install -y --force-yes libfreetype6
 RUN apt-get -t unstable install -y \
     autoconf libcairo2-dev libgsl0-dev libgsl0ldbl libfftw3-dev \
     libgl1-mesa-dev libglu1-mesa-dev libhdf5-dev libjpeg-dev \

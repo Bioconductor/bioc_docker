@@ -41,7 +41,7 @@ RUN apt-get update && \
 
 
 # sourceforce is on the fritz today
-ADD JAGS-3.4.0.tar.gz /tmp
+ADD JAGS-3.4.0.tar.gz /tmp/
 
 RUN cd /tmp && \
     tar zxf JAGS-3.4.0.tar.gz && \

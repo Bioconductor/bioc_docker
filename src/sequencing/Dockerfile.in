@@ -49,7 +49,7 @@ RUN apt-get install -y -t unstable \
 
 
 # sourceforce is on the fritz today
-ADD JAGS-3.4.0.tar.gz /tmp/
+ADD JAGS-3.4.0.tar.gz /tmp/JAGS-3.4.0.tar.gz
 
 RUN cd /tmp && \
     tar zxf /tmp/JAGS-3.4.0.tar.gz && \

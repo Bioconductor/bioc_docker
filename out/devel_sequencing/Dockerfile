@@ -52,7 +52,7 @@ RUN apt-get install -y -t unstable \
 ADD JAGS-3.4.0.tar.gz /tmp/
 
 RUN cd /tmp && \
-    tar zxf JAGS-3.4.0.tar.gz && \
+    tar zxf /tmp/JAGS-3.4.0.tar.gz && \
     cd JAGS-3.4.0 && \
     ./configure --prefix=/usr/local && \
     make -j && \

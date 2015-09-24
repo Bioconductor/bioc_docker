@@ -34,7 +34,7 @@ RUN apt-get update && \
     libgtk2.0-dev \
     openjdk-8-jdk \
     tk-dev \
-    xvfb
+    Xvfb
 
 
 

@@ -69,7 +69,7 @@ ENV LD_LIBRARY_PATH=$ROOTSYS/lib:/usr/lib
 RUN cd / && \
   curl -LO http://s3.amazonaws.com/bioc-root-binary/rootbinary.tar.gz \
   && tar zxf rootbinary.tar.gz && \
-  rm rootbinary.tar.gz && cd /opt/ROOT/root && . bin/thisroot.sh
+  rm rootbinary.tar.gz 
 
 ADD startx.sh /tmp/
 

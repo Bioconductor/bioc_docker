@@ -3,6 +3,10 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
+# update installed pkgs
+biocLite(ask=FALSE)
+
+
 wantedBiocViews <- c("FlowCytometry")
 
 url <- "http://www.bioconductor.org/packages/3.1/bioc/VIEWS"

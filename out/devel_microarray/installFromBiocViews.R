@@ -3,6 +3,10 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
+# update installed pkgs
+biocLite(ask=FALSE)
+
+
 wantedBiocViews <- c("Microarray")
 
 url <- "http://www.bioconductor.org/packages/3.2/bioc/VIEWS"

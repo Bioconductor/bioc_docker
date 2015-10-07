@@ -2,6 +2,10 @@
 # use 'rake' to generate 'installFromBiocViews.R'.
 
 library(BiocInstaller) # shouldn't be necessary
+
+# update installed pkgs
+biocLite(ask=FALSE)
+
 <% if defined? biocViews %>
 wantedBiocViews <- c(<%= biocViews.map{|i| '"' + i + '"'}.join(",")  %>)
 <% else %>

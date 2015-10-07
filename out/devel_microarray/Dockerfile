@@ -67,24 +67,14 @@ RUN apt-get install -y -t unstable\
     liblapack-dev
 
 
-ENV PATH=$PATH:/usr/local/root/bin \
-    ROOTSYS=/usr/local/root
+ENV ROOTSYS=/opt/ROOT/root
+ENV PATH=$ROOTSYS/bin:$PATH
+ENV LD_LIBRARY_PATH=$ROOTSYS/lib:/usr/lib
 
- RUN cd /tmp && \
-     ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libtiff.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libXft.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libXpm.so /usr/lib && \
-     ln -s /usr/lib/x86_64-linux-gnu/libXext.so /usr/lib  && \
-     curl -kO ftp://root.cern.ch/root/root_v5.34.24.source.tar.gz && \
-     tar zxf root_v5.34.24.source.tar.gz && cd root && \
-     ./configure linuxx8664gcc --prefix=/usr/local/root && \
-     make -j2 && make install && \
-     echo /usr/local/root/lib/root > /etc/ld.so.conf.d/ROOT.conf && \
-     ldconfig
-
+RUN cd / && \
+  curl -LO http://s3.amazonaws.com/bioc-root-binary/rootbinary.tar.gz \
+  && tar zxf rootbinary.tar.gz && \
+  rm rootbinary.tar.gz && cd /opt/ROOT/root && . bin/thisroot.sh
 
 ADD startx.sh /tmp/
 

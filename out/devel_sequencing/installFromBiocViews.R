@@ -9,7 +9,7 @@ biocLite(ask=FALSE)
 
 wantedBiocViews <- c("Sequencing")
 
-url <- "http://www.bioconductor.org/packages/3.2/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.3/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)

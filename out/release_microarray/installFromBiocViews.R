@@ -9,7 +9,7 @@ biocLite(ask=FALSE)
 
 wantedBiocViews <- c("Microarray")
 
-url <- "http://www.bioconductor.org/packages/3.1/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.2/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)

@@ -34,6 +34,7 @@ RUN apt-get update && \
     libgsl0-dev \
     libgsl0ldbl \
     libgtk2.0-dev \
+    libncurses5-dev \
     openjdk-8-jdk \
     tk-dev \
     Xvfb
@@ -49,18 +50,18 @@ RUN apt-get install -y -t unstable \
 
 
 # sourceforge is on the fritz today
-COPY JAGS-3.4.0.tar.gz /tmp/JAGS-3.4.0.tar.gz
+COPY JAGS-4.0.1.tar.gz /tmp/JAGS-4.0.1.tar.gz
 
 RUN cd /tmp && \
-    tar zxf /tmp/JAGS-3.4.0.tar.gz && \
-    cd JAGS-3.4.0 && \
+    tar zxf /tmp/JAGS-4.0.1.tar.gz && \
+    cd JAGS-4.0.1 && \
     ./configure --prefix=/usr/local && \
     make -j && \
     make install 
 
 
 ENV JAGS_INCLUDE=/usr/local/include/JAGS JAGS_LIB=/usr/local/lib \
-    JAGS_MODULES=/usr/local/lib/JAGS/modules-3
+    JAGS_MODULES=/usr/local/lib/JAGS/modules-4
 
 ENV LD_LIBRARY_PATH=${JAGS_LIB}
 

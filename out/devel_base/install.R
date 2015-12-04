@@ -3,6 +3,7 @@
 
 url <- "http://bioconductor.org/packages/3.3/bioc"
 
+tryCatch(remove.packages("BiocInstaller"))
 
 
 install.packages("BiocInstaller", repos=url)

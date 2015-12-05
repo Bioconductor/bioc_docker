@@ -92,5 +92,6 @@ ADD http://master.bioconductor.org/todays-date /tmp/
 
 RUN cd /tmp && \
     ./startx.sh && \
-    export DISPLAY=:1.0 && \
-    R -f /tmp/installFromBiocViews.R
+    export DISPLAY=:1.0
+
+RUN  R -f /tmp/installFromBiocViews.R

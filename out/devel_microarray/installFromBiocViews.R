@@ -45,6 +45,9 @@ pkgs_to_install <- pkgs_to_install[grep("NGScopy", pkgs_to_install, invert=TRUE)
 # don't install seqplots because Cairo won't build
 pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE)]
 
+# don't install rMAT
+pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
+
 
 if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
      pkgs_to_install <- pkgs_to_install[!pkgs_to_install == "flowVS"]

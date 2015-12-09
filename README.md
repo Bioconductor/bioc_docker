@@ -1,25 +1,25 @@
 Information about available containers, installation and modification can be found on the [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
 
-## General Docker Usage
+### General Docker Usage
 
-### List which docker machines are available locally
+#### List which docker machines are available locally
     docker images
-### List running containers
+#### List running containers
     docker ps
-### List all containers
+#### List all containers
     docker ps -a
-### Get container IP address
+#### Get container IP address
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' <name>
-### Keep a container running at startup
+#### Keep a container running at startup
     docker run -itd <name>
-### Shutdown container
+#### Shutdown container
     docker stop <name>
-### Resume container
+#### Resume container
     docker start <name>
 
-### Delete container
+#### Delete container
     docker rm <name>
-### Shell into a running container with either of the following:
+#### Shell into a running container with either of the following:
     docker exec -it <name> /bin/bash
     docker attach <name>
 

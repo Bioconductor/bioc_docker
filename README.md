@@ -1,4 +1,4 @@
-For inforamtion about the available containers, installation and modification see the [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
+Information about available containers, installation and modification can be found on the [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
 
 ## General Docker Usage
 

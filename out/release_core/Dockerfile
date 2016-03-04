@@ -6,6 +6,8 @@
 
 FROM bioconductor/release_base
 
+
+
 MAINTAINER dtenenba@fredhutch.org
 
 ADD install.R /tmp/
@@ -15,6 +17,3 @@ ADD http://master.bioconductor.org/todays-date /tmp/
 
 
 RUN R -f /tmp/install.R
-
-
-

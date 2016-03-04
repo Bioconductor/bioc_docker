@@ -3,6 +3,15 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
+# temporary workaround since the CRAN version of matrixStats will not build
+if (!BiocInstaller:::IS_USER) # if this is devel
+{
+    biocLite("devtools")
+    library(devtools)
+    install_github("HenrikBengtsson/matrixStats")
+}
+
+
 pkgs <- c(
 "AnnotationDbi",
 "AnnotationHub",
@@ -22,7 +31,8 @@ pkgs <- c(
 "knitr",
 "RBGL",
 "RCurl",
-"ReportingTools",
+# temporarily comment out ReportingTools as it is not building:
+#"ReportingTools",
 "Rgraphviz",
 "rmarkdown",
 "XML",
@@ -36,7 +46,7 @@ pkgs_to_install <- pkgs[pkgs %in% ap]
 
 biocLite(pkgs_to_install)
 
-# just in case there were warnings, we want to see them 
+# just in case there were warnings, we want to see them
 # without having to scroll up:
 warnings()
 
@@ -46,4 +56,3 @@ if (!is.null(warnings()))
     if (length(grep("is not available|had non-zero exit status", w)))
         quit("no", 1L)
 }
-

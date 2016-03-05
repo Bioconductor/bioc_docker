@@ -35,7 +35,7 @@ RUN apt-get update && \
     libncurses5-dev \
     openjdk-8-jdk \
     tk-dev \
-    Xvfb
+    xvfb
 
 
 
@@ -49,7 +49,7 @@ RUN cd /tmp && \
     cd JAGS-4.0.1 && \
     ./configure --prefix=/usr/local && \
     make -j && \
-    make install 
+    make install
 
 
 ENV JAGS_INCLUDE=/usr/local/include/JAGS JAGS_LIB=/usr/local/lib \
@@ -73,4 +73,3 @@ RUN cd /tmp && \
     ./startx.sh && \
     export DISPLAY=:1.0 && \
     R -f /tmp/installFromBiocViews.R
-

@@ -32,4 +32,3 @@ ADD install.R /tmp/
 
 RUN R -f /tmp/install.R && \
     echo "library(BiocInstaller)" > $HOME/.Rprofile
-

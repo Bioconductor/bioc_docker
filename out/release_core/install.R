@@ -3,14 +3,6 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
-# temporary workaround since the CRAN version of matrixStats will not build
-if (!BiocInstaller:::IS_USER) # if this is devel
-{
-    biocLite("devtools")
-    library(devtools)
-    install_github("HenrikBengtsson/matrixStats")
-}
-
 
 pkgs <- c(
 "AnnotationDbi",
@@ -31,8 +23,7 @@ pkgs <- c(
 "knitr",
 "RBGL",
 "RCurl",
-# temporarily comment out ReportingTools as it is not building:
-#"ReportingTools",
+"ReportingTools",
 "Rgraphviz",
 "rmarkdown",
 "XML",

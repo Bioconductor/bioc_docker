@@ -37,6 +37,8 @@ RUN apt-get -y -t unstable install --fix-missing \
 # FIXME figure out how to REALLY remove r-base-core and deps
 # so that it does not come back.
 
+RUN rm -rf /usr/lib/R/library
+
 
 
 
@@ -45,4 +47,3 @@ ADD install.R /tmp/
 
 RUN R -f /tmp/install.R && \
     echo "library(BiocInstaller)" > $HOME/.Rprofile
-

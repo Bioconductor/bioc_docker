@@ -58,7 +58,7 @@ RUN apt-get update -qq && \
     mysql-server \
     openjdk-8-jdk \
     tk-dev \
-    Xvfb
+    xvfb
 
 
 RUN apt-get install -y -t unstable\
@@ -74,7 +74,7 @@ ENV LD_LIBRARY_PATH=$ROOTSYS/lib:/usr/lib
 RUN cd / && \
   curl -LO http://s3.amazonaws.com/bioc-root-binary/rootbinary.tar.gz \
   && tar zxf rootbinary.tar.gz && \
-  rm rootbinary.tar.gz 
+  rm rootbinary.tar.gz
 
 ADD startx.sh /tmp/
 

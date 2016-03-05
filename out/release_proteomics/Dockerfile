@@ -25,6 +25,7 @@ RUN apt-get update && \
     libcairo2-dev \
     libexpat1-dev \
     libgmp3-dev \
+    liblapack-dev \
     libnetcdf-dev \
     libopenbabel-dev \
     libgl1-mesa-dev \

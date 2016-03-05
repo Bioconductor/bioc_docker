@@ -22,6 +22,7 @@ RUN apt-get install -y -t unstable --force-yes libfreetype6
 
 RUN apt-get update && \
     apt-get install -y -t unstable \
+    libcairo2-dev \
     libexpat1-dev \
     libgmp3-dev \
     libnetcdf-dev \
@@ -34,7 +35,7 @@ RUN apt-get update && \
 
 
 RUN apt-get install -y -t unstable \
-    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev 
+    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev
 
 
 
@@ -57,4 +58,3 @@ RUN cd /tmp && \
     R -f /tmp/installFromBiocViews.R
 
 RUN R -e "biocLite(c('rols', 'RforProteomics'))"
-

@@ -37,7 +37,7 @@ RUN apt-get -y -t unstable install --fix-missing \
 # FIXME figure out how to REALLY remove r-base-core and deps
 # so that it does not come back.
 
-RUN rm -rf /usr/lib/R/library
+RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
 
 <% if use_numbered_branch.is_a? String %>
 

@@ -23,6 +23,11 @@ RUN apt-get clean -y && \
     apt-get update -y && \
     apt-get -t unstable upgrade -y
 
+<% if use_r_devel %>
+
+RUN apt-get remove -y r-base-core
+
+<% end %>
 
 RUN apt-get -t unstable install -y --force-yes libfreetype6
 

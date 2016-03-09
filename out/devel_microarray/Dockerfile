@@ -24,6 +24,11 @@ RUN apt-get clean -y && \
     apt-get -t unstable upgrade -y
 
 
+
+RUN apt-get remove -y r-base-core
+
+
+
 RUN apt-get -t unstable install -y --force-yes libfreetype6
 
 RUN echo "" | sudo debconf-set-selections

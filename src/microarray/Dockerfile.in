@@ -26,6 +26,7 @@ RUN apt-get clean -y && \
 <% if use_r_devel %>
 
 RUN apt-get remove -y r-base-core
+RUN rm -rf /usr/lib/R/library
 
 <% end %>
 

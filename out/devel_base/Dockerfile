@@ -33,7 +33,7 @@ RUN apt-get -y -t unstable install --fix-missing \
 
 
 # There should only be one version of R on this container
-RUN dpkg --purge --force-depends r-base-core
+#RUN dpkg --purge --force-depends r-base-core
 # FIXME figure out how to REALLY remove r-base-core and deps
 # so that it does not come back.
 
@@ -126,6 +126,9 @@ RUN dpkg --purge  \
 RUN apt-get autoremove -qy
 
 
+
+RUN dpkg --purge --force-depends r-base-core
+RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
 
 
 

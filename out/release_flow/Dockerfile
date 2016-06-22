@@ -6,7 +6,7 @@
 
 FROM bioconductor/release_core
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update

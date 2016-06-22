@@ -12,7 +12,7 @@ FROM <%= parent %>
 
 <% end %>
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 ADD install.R /tmp/
 

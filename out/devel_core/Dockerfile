@@ -12,7 +12,7 @@ FROM bioconductor/devel_base
 
 
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 ADD install.R /tmp/
 

@@ -8,7 +8,7 @@ FROM rocker/rstudio
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*

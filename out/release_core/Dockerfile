@@ -8,7 +8,7 @@ FROM bioconductor/release_base
 
 
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 ADD install.R /tmp/
 

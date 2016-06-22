@@ -6,7 +6,7 @@
 
 FROM bioconductor/devel_core
 
-MAINTAINER dtenenba@fredhutch.org
+MAINTAINER maintainer@bioconductor.org
 
 # temporarily block dist-upgrade:
 #   RUN apt-get dist-upgrade -y && \

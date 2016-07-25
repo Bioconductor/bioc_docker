@@ -1,3 +1,4 @@
 auth.yml
 out/*/*.log
 out/.DS_Store
+*~

@@ -36,7 +36,7 @@ RUN apt-get update && \
 
 
 RUN apt-get install -y -t unstable \
-    libbz2-dev liblzma-dev libpcre3-dev libpng12-dev
+    libbz2-dev liblzma-dev libpcre3-dev libpng-dev
 
 
 

@@ -52,7 +52,7 @@ RUN wget http://snapshot.debian.org/archive/debian/20100407T220820Z/pool/main/s/
 
 RUN dpkg -i libsundials-cvode0_2.3.0-2_amd64.deb libsundials-cvodes1_2.3.0-2_amd64.deb libsundials-ida1_2.3.0-2_amd64.deb libsundials-kinsol0_2.3.0-2_amd64.deb libsundials-nvecserial0_2.3.0-2_amd64.deb libsundials-serial_2.3.0-2_amd64.deb libsundials-serial-dev_2.3.0-2_amd64.deb
 
-RUN bash -i -c 'wget -O libSBML-5.10.2-core-src.tar.gz http://downloads.sourceforge.net/project/sbml/libsbml/5.10.2/stable/libSBML-5.10.2-core-src.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsbml%2Ffiles%2Flibsbml%2F5.10.2%2Fstable%2F && tar xzvf libSBML-5.10.2-core-src.tar.gz ; cd libsbml-5.10.2 && CXXFLAGS=-fPIC CFLAGS=-fPIC ./configure && make && make install '
+RUN bash -i -c 'wget -O libSBML-5.10.2-core-src.tar.gz http://downloads.sourceforge.net/project/sbml/libsbml/5.10.2/stable/libSBML-5.10.2-core-src.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsbml%2Ffiles%2Flibsbml%2F5.10.2%2Fstable%2F && tar xzvf libSBML-5.10.2-core-src.tar.gz ; cd libsbml-5.10.2 && CXXFLAGS=-fPIC CFLAGS=-fPIC ./configure && make && make install && ldconfig'
 RUN bash -i -c 'wget -O rsbml_2.31.0.tar.gz http://bioconductor.org/packages/3.4/bioc/src/contrib/rsbml_2.31.0.tar.gz && tar -xzvf rsbml_2.31.0.tar.gz && cd rsbml && R CMD INSTALL . '
 
 RUN R CMD javareconf

@@ -49,6 +49,8 @@ pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE
 pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
 
 
+
+
 if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
      pkgs_to_install <- pkgs_to_install[!pkgs_to_install == "flowVS"]
 

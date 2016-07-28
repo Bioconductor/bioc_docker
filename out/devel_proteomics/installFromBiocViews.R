@@ -49,6 +49,15 @@ pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE
 pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
 
 
+
+
+# don't install these because ChemmineR which is missing in BioC 3.4 because 
+# so far it was never built successfully
+pkgs_to_install <- pkgs_to_install[grep("ChemmineR", pkgs_to_install, invert=TRUE)]
+pkgs_to_install <- pkgs_to_install[grep("bioassayR", pkgs_to_install, invert=TRUE)]
+
+
+
 if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
      pkgs_to_install <- pkgs_to_install[!pkgs_to_install == "flowVS"]
 

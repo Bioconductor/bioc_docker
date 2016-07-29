@@ -8,8 +8,10 @@ versions:
     devel:
         version_number: "3.4" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
-        parent: "rocker/rstudio-daily"# specify latest?
-        use_r_devel: false # true half the year, so toggle with every release
+        parent: "rocker/rstudio" # should be rocker/rstudio-daily if
+                                 # use_r_devel is true, otherwise
+                                 # rocker/rstudio
+        use_r_devel: false # true half the year
         # The following variable (use_numbered_branch) is only relevant if
         # use_r_devel is true.
         # use_numbered_branch should be false OR should be the (quoted) version number from

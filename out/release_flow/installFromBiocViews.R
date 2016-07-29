@@ -48,6 +48,8 @@ pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE
 # don't install rMAT
 pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
 
+# don't install Rolexa - does not build (deprecated)
+pkgs_to_install <- pkgs_to_install[grep("Rolexa", pkgs_to_install, invert=TRUE)]
 
 
 

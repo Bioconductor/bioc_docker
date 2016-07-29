@@ -22,7 +22,7 @@ versions:
         # the R in trunk became R-3.3. However, the contemporaneous Bioconductor
         # devel branch uses R-3.2, NOT 3.3, so we would set the below variable
         # to "3.2" (be sure to quote the value so it's forced to be a string).
-        use_numbered_branch: "3.3"
+        use_numbered_branch: "false"
 
 containers: # FIXME (?) rename this to 'images' (?)
     base:
@@ -45,3 +45,7 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bioconductor/core
         biocViews:
             - Proteomics
+    metabolomics:
+        parent: bioconductor/core
+        biocViews:
+            - Metabolomics

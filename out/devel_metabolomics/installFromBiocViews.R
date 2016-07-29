@@ -7,9 +7,9 @@ library(BiocInstaller) # shouldn't be necessary
 biocLite(ask=FALSE)
 
 
-wantedBiocViews <- c("none")
+wantedBiocViews <- c("Metabolomics")
 
-url <- "http://www.bioconductor.org/packages/3.3/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.4/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)
@@ -50,6 +50,13 @@ pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
 
 # don't install Rolexa - does not build (deprecated)
 pkgs_to_install <- pkgs_to_install[grep("Rolexa", pkgs_to_install, invert=TRUE)]
+
+
+
+# don't install these because ChemmineR which is missing in BioC 3.4 because 
+# so far it was never built successfully
+pkgs_to_install <- pkgs_to_install[grep("ChemmineR", pkgs_to_install, invert=TRUE)]
+pkgs_to_install <- pkgs_to_install[grep("bioassayR", pkgs_to_install, invert=TRUE)]
 
 
 

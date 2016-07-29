@@ -9,7 +9,7 @@ biocLite(ask=FALSE)
 
 wantedBiocViews <- c("Sequencing")
 
-url <- "http://www.bioconductor.org/packages/3.2/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.3/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)
@@ -47,6 +47,10 @@ pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE
 
 # don't install rMAT
 pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
+
+# don't install Rolexa - does not build (deprecated)
+pkgs_to_install <- pkgs_to_install[grep("Rolexa", pkgs_to_install, invert=TRUE)]
+
 
 
 if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")

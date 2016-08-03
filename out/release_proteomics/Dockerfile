@@ -31,7 +31,6 @@ RUN apt-get update && \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
     libgsl0-dev \
-    libgsl0ldbl \
     openjdk-8-jdk
 
 

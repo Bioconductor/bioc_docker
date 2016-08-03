@@ -16,6 +16,7 @@ end
 
 CONFIG = YAML.load_file "config.yml"
 SEP = File::SEPARATOR
+REPO = 'bioconductor' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
 
 @docker_setup = nil
 
@@ -51,13 +52,13 @@ for version_name in CONFIG['versions'].keys
         vcontainer_name = version_name + "_" + container_name
         container_hash = CONFIG['containers'][container_name]
         parent = container_hash['parent']
-        parent = container_hash['parent'].sub("bioconductor/", "bioconductor/#{version_name}_")
+        parent = container_hash['parent'].sub("bioconductor/", "#{REPO}/#{version_name}_")
         if parent =~ /bogus/
           parent = version_hash['parent']
         end
         ptasks = []
-        if parent.start_with? "bioconductor/"
-            ptasks << parent.sub("bioconductor/", "")
+        if parent.start_with? "#{REPO}/"
+            ptasks << parent.sub("#{REPO}/", "")
         end
         task taskname => ptasks do |t|
            puts "running task #{t.name}..."
@@ -65,7 +66,7 @@ for version_name in CONFIG['versions'].keys
            today = Time.now.strftime "%Y%m%d"
            puts "checking for existing image #{t.name}:#{today}...."
            images = Docker::Image.all
-           existing = images.find {|i|i.info['RepoTags'].include? "bioconductor/#{t.name}:#{today}"}
+           existing = images.find {|i|i.info['RepoTags'].include? "#{REPO}/#{t.name}:#{today}"}
            unless existing.nil?
                puts "found an existing image with id #{existing.id}..."
            end
@@ -85,17 +86,17 @@ for version_name in CONFIG['versions'].keys
           wanted_tags = ['latest', today, version_number]
           wanted_tags.each do |tag|
               puts "tagging #{t.name} with tag #{tag}..."
-              image.tag("repo" => "bioconductor/" + t.name, "tag" => tag, "force" => true)
+              image.tag("repo" => "#{REPO}/" + t.name, "tag" => tag, "force" => true)
           end
           puts "image tags are: #{image.info['RepoTags'].join(", ")}"
           puts "pushing #{t.name}..."
           # see if this fixes pushing issues:
-          # image_to_push = images.find{|i| i.info['RepoTags'].include? "bioconductor/#{t.name}:latest"}
+          # image_to_push = images.find{|i| i.info['RepoTags'].include? "#{REPO}/#{t.name}:latest"}
           # image_to_push.push()
           # use docker executable instead of api
           # because api pushes seem flaky
 
-          cmd = "docker push bioconductor/#{t.name}"
+          cmd = "docker push #{REPO}/#{t.name}"
           Open3.popen2e(cmd) do |stdin, stdout_err, wait_thr|
               while line = stdout_err.gets
                   puts line
@@ -108,7 +109,7 @@ for version_name in CONFIG['versions'].keys
           end
           puts "push done!"
           # confirm that image in repo is properly tagged
-          output = `docker run --rm rufus/docker-registry-debug -q info bioconductor/#{t.name}`
+          output = `docker run --rm rufus/docker-registry-debug -q info #{REPO}/#{t.name}`
           lines = output.split("\n")
           found_tags = []
           puts "inspecting tags in image on hub..."
@@ -152,8 +153,8 @@ for version_name in CONFIG['versions'].keys
                     # make a read/only copy to get around some weirdness
                     rodata = CONFIG.dup['containers'][cont_name]
                     data = rodata.dup
-                    if data['parent'].start_with? "bioconductor/"
-                        data['parent'] = rodata['parent'].sub("bioconductor/", "bioconductor/#{version}_")
+                    if data['parent'].start_with? "#{REPO}/"
+                        data['parent'] = rodata['parent'].sub("#{REPO}/", "#{REPO}/#{version}_")
                     end
                     if data['parent'] == 'bogus'
                       data['parent'] = vhash['parent']
@@ -163,7 +164,7 @@ for version_name in CONFIG['versions'].keys
                     if vhash.has_key? 'use_numbered_branch'
                       data['use_numbered_branch'] = vhash['use_numbered_branch']
                     end
-                    data['image_name'] = "bioconductor/#{vcont_name}"
+                    data['image_name'] = "#{REPO}/#{vcont_name}"
                     data['r_url'] = vhash['r_url']
                     data['bioc_version'] = vhash['version_number']
                     vars = ErbBinding.new(data)

@@ -32,7 +32,6 @@ RUN apt-get update && \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
     libgsl0-dev \
-    libgsl0ldbl \
     libgtk2.0-dev \
     libncurses5-dev \
     openjdk-8-jdk \

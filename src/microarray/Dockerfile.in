@@ -45,7 +45,6 @@ RUN apt-get update -qq && \
     ggobi \
     libcairo2-dev \
     libgsl0-dev \
-    libgsl0ldbl \
     libjpeg-dev \
     libgtk2.0-dev \
     libgl1-mesa-dev \

@@ -35,8 +35,8 @@ E.g. the `Dockerfile` for the BioC development branch for Proteomics packages
 is created from `src/proteomics/Dockerfile.in` and placed into 
 `out/devel_proteomics/Dockerfile`. 
 
-If you want to build and push an image to dockerhub, copy the `auth.yml.template' 
-file over to `auth.yml', and add your dockerhub credentials. The pushing is done 
+If you want to build and push an image to dockerhub, copy the `auth.yml.template` 
+file over to `auth.yml`, and add your dockerhub credentials. The pushing is done 
 via the `docker push` command, so for this to succeed you'll have to `docker login` 
 first. Then all you need is:
 

@@ -30,7 +30,7 @@ RUN apt-get update && \
     libopenbabel-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
-    libgsl0-dev \
+    libgsl-dev \
     openjdk-8-jdk
 
 <% if is_devel %>

@@ -17,6 +17,7 @@ end
 CONFIG = YAML.load_file "config.yml"
 SEP = File::SEPARATOR
 REPO = 'bioconductor' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
+REPO = 'sneumann' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
 
 @docker_setup = nil
 
@@ -66,7 +67,8 @@ for version_name in CONFIG['versions'].keys
            today = Time.now.strftime "%Y%m%d"
            puts "checking for existing image #{t.name}:#{today}...."
            images = Docker::Image.all
-           existing = images.find {|i|i.info['RepoTags'].include? "#{REPO}/#{t.name}:#{today}"}
+	   existing = images.find { |i| (i.info['RepoTags'] || []).include? "#{REPO}/#{t.name}:#{today}" }
+
            unless existing.nil?
                puts "found an existing image with id #{existing.id}..."
            end
@@ -153,8 +155,8 @@ for version_name in CONFIG['versions'].keys
                     # make a read/only copy to get around some weirdness
                     rodata = CONFIG.dup['containers'][cont_name]
                     data = rodata.dup
-                    if data['parent'].start_with? "#{REPO}/"
-                        data['parent'] = rodata['parent'].sub("#{REPO}/", "#{REPO}/#{version}_")
+                    if data['parent'].start_with? "bioconductor/"
+                        data['parent'] = rodata['parent'].sub("bioconductor/", "#{REPO}/#{version}_")
                     end
                     if data['parent'] == 'bogus'
                       data['parent'] = vhash['parent']

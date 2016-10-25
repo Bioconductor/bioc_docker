@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/devel_microarray.
+# The suggested name for this image is: sneumann/devel_microarray.
 
-FROM bioconductor/devel_core
+FROM sneumann/devel_core
 
 MAINTAINER maintainer@bioconductor.org
 
@@ -25,6 +25,11 @@ RUN apt-get clean -y && \
 
 
 
+RUN apt-get remove -y r-base-core
+RUN rm -rf /usr/lib/R/library
+
+
+
 RUN apt-get -t unstable install -y --force-yes libfreetype6
 
 RUN echo "" | sudo debconf-set-selections
@@ -39,7 +44,7 @@ RUN apt-get update -qq && \
     git \
     ggobi \
     libcairo2-dev \
-    libgsl0-dev \
+    libgsl-dev \
     libjpeg-dev \
     libgtk2.0-dev \
     libgl1-mesa-dev \

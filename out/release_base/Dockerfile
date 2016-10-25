@@ -2,7 +2,7 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/release_base.
+# The suggested name for this image is: sneumann/release_base.
 
 FROM rocker/rstudio
 

@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/devel_proteomics.
+# The suggested name for this image is: sneumann/devel_proteomics.
 
-FROM bioconductor/devel_core
+FROM sneumann/devel_core
 
 MAINTAINER maintainer@bioconductor.org
 
@@ -30,7 +30,7 @@ RUN apt-get update && \
     libopenbabel-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
-    libgsl0-dev \
+    libgsl-dev \
     openjdk-8-jdk
 
 

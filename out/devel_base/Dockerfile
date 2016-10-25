@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/devel_base.
+# The suggested name for this image is: sneumann/devel_base.
 
-FROM rocker/rstudio
+FROM rocker/rstudio-daily
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 
@@ -31,6 +31,19 @@ RUN pip install awscli
 RUN apt-get -y -t unstable install --fix-missing \
     texlive texinfo  texlive-fonts-extra texlive-latex-extra
 
+
+
+
+# There should only be one version of R on this container
+#RUN dpkg --purge --force-depends r-base-core
+# FIXME figure out how to REALLY remove r-base-core and deps
+# so that it does not come back.
+
+RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
+
+
+RUN dpkg --purge --force-depends r-base-core
+RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
 
 
 

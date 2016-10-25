@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/release_flow.
+# The suggested name for this image is: sneumann/release_flow.
 
-FROM bioconductor/release_core
+FROM sneumann/release_core
 
 MAINTAINER maintainer@bioconductor.org
 
@@ -12,7 +12,7 @@ MAINTAINER maintainer@bioconductor.org
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN apt-get -t unstable install -y --force-yes libfreetype6
 RUN apt-get -t unstable install -y \
-    autoconf libcairo2-dev libgsl0-dev libgsl0ldbl libfftw3-dev \
+    autoconf libcairo2-dev libgsl-dev libgsl0ldbl libfftw3-dev \
     libgl1-mesa-dev libglu1-mesa-dev libhdf5-dev libjpeg-dev \
     libnetcdf-dev libtiff-dev libtool libxt-dev imagemagick
 

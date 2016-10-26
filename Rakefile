@@ -17,7 +17,7 @@ end
 CONFIG = YAML.load_file "config.yml"
 SEP = File::SEPARATOR
 REPO = 'bioconductor' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
-REPO = 'sneumann' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
+#REPO = 'sneumann' # That's the username in the URL https://hub.docker.com/r/bioconductor/release_base/
 
 @docker_setup = nil
 

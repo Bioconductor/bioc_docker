@@ -1,17 +1,17 @@
 ---
 versions:
     release:
-        version_number: "3.3" # change this at release time
+        version_number: "3.4" # change this at release time
         r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
         parent: "rocker/rstudio"
         use_r_devel: false # should always be false
     devel:
-        version_number: "3.4" # change this at release time
+        version_number: "3.5" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
-        parent: "rocker/rstudio" # should be rocker/rstudio-daily if
+        parent: "rocker/rstudio-daily" # should be rocker/rstudio-daily if
                                  # use_r_devel is true, otherwise
                                  # rocker/rstudio
-        use_r_devel: false # true half the year
+        use_r_devel: true # true half the year
         # The following variable (use_numbered_branch) is only relevant if
         # use_r_devel is true.
         # use_numbered_branch should be false OR should be the (quoted) version number from
@@ -22,7 +22,7 @@ versions:
         # the R in trunk became R-3.3. However, the contemporaneous Bioconductor
         # devel branch uses R-3.2, NOT 3.3, so we would set the below variable
         # to "3.2" (be sure to quote the value so it's forced to be a string).
-        use_numbered_branch: "false"
+        use_numbered_branch: false
 
 containers: # FIXME (?) rename this to 'images' (?)
     base:

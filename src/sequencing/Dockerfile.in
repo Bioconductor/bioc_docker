@@ -31,7 +31,7 @@ RUN apt-get update && \
     libcairo2-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
-    libgsl0-dev \
+    libgsl-dev \
     libgtk2.0-dev \
     libncurses5-dev \
     openjdk-8-jdk \

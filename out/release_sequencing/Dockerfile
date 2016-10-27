@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/release_sequencing.
+# The suggested name for this image is: sneumann/release_sequencing.
 
-FROM bioconductor/release_core
+FROM sneumann/release_core
 
 MAINTAINER maintainer@bioconductor.org
 
@@ -29,7 +29,7 @@ RUN apt-get update && \
     libcairo2-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
-    libgsl0-dev \
+    libgsl-dev \
     libgtk2.0-dev \
     libncurses5-dev \
     openjdk-8-jdk \

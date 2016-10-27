@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: bioconductor/release_microarray.
+# The suggested name for this image is: sneumann/release_microarray.
 
-FROM bioconductor/release_core
+FROM sneumann/release_core
 
 MAINTAINER maintainer@bioconductor.org
 
@@ -39,7 +39,7 @@ RUN apt-get update -qq && \
     git \
     ggobi \
     libcairo2-dev \
-    libgsl0-dev \
+    libgsl-dev \
     libjpeg-dev \
     libgtk2.0-dev \
     libgl1-mesa-dev \

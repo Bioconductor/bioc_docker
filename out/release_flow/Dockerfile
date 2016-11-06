@@ -10,8 +10,8 @@ MAINTAINER maintainer@bioconductor.org
 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
-RUN apt-get -t unstable install -y --force-yes libfreetype6
-RUN apt-get -t unstable install -y \
+RUN apt-get  install -y --force-yes libfreetype6
+RUN apt-get  install -y \
     autoconf libcairo2-dev libgsl-dev libgsl0ldbl libfftw3-dev \
     libgl1-mesa-dev libglu1-mesa-dev libhdf5-dev libjpeg-dev \
     libnetcdf-dev libtiff-dev libtool libxt-dev imagemagick

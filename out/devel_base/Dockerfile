@@ -18,10 +18,10 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 # RUN sed -i.bak 's!http://httpredir.debian.org/debian jessie main!http://mirrors.kernel.org/debian jessie main!' /etc/apt/sources.list
 
 # temporarily (?) remove explicit jessie source
-RUN sed -i.bak -e '/deb http:..ftp.de.debian.org.debian jessie main/d' /etc/apt/sources.list
+#RUN sed -i.bak -e '/deb http:..ftp.de.debian.org.debian jessie main/d' /etc/apt/sources.list
 
 RUN apt-get update && \
-    apt-get -y  install gdb libxml2-dev python-pip
+    apt-get -y  install --fix-missing gdb libxml2-dev python-pip
     # valgrind
 
 RUN pip install awscli

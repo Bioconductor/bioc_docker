@@ -21,7 +21,7 @@ RUN apt-get clean -y && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean -y && \
     apt-get update -y && \
-    apt-get -t unstable upgrade -y
+    apt-get  upgrade -y
 
 
 
@@ -30,12 +30,12 @@ RUN rm -rf /usr/lib/R/library
 
 
 
-RUN apt-get -t unstable install -y --force-yes libfreetype6
+RUN apt-get  install -y --force-yes libfreetype6
 
 RUN echo "" | sudo debconf-set-selections
 
 RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get -t unstable install -q -y \
+    DEBIAN_FRONTEND=noninteractive apt-get  install -q -y \
     binutils \
     curl \
     dpkg-dev \
@@ -66,7 +66,7 @@ RUN apt-get update -qq && \
     xvfb
 
 
-RUN apt-get install -y -t unstable\
+RUN apt-get install -y \
     libblas-dev \
     libbz2-dev \
     liblapack-dev

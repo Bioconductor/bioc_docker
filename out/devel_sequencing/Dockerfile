@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 
-RUN apt-get install -y -t unstable --force-yes libfreetype6
+RUN apt-get install -y  --force-yes libfreetype6
 
 
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
@@ -26,7 +26,7 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 
 RUN apt-get update && \
-    apt-get install -y -t unstable --fix-missing \
+    apt-get install -y  --fix-missing \
     curl \
     libcairo2-dev \
     libgl1-mesa-dev \
@@ -40,7 +40,7 @@ RUN apt-get update && \
 
 
 
-RUN apt-get install -y -t unstable \
+RUN apt-get install -y  \
     libblas-dev \
     libbz2-dev \
     liblapack-dev \

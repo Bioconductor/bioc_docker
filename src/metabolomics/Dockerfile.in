@@ -17,7 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y -t unstable \
     libfreetype6 \
     libcairo2-dev \
     libexpat1-dev \

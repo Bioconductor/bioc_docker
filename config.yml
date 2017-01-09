@@ -2,7 +2,7 @@
 versions:
     release:
         version_number: "3.4" # change this at release time
-        r_url: "http://cran.fhcrc.org/src/base/R-latest.tar.gz"
+        r_url: "https://cran.rstudio.com/src/base/R-latest.tar.gz"
         parent: "rocker/rstudio"
         use_r_devel: false # should always be false
     devel:

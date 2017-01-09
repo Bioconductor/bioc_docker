@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: sneumann/release_core.
+# The suggested name for this image is: bioconductor/release_core.
 
-FROM sneumann/release_base
+FROM bioconductor/release_base
 
 
 

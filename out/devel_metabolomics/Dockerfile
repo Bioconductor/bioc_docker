@@ -2,9 +2,9 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: sneumann/devel_metabolomics.
+# The suggested name for this image is: bioconductor/devel_metabolomics.
 
-FROM sneumann/devel_core
+FROM bioconductor/devel_core
 
 MAINTAINER sneumann@ipb-halle.de
 

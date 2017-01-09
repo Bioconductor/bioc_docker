@@ -2,7 +2,7 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: sneumann/devel_base.
+# The suggested name for this image is: bioconductor/devel_base.
 
 FROM rocker/rstudio-daily
 

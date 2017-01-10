@@ -1,10 +1,10 @@
 # DO NOT EDIT 'installFromBiocViews.R'; instead, edit 'installFromBiocViews.R.in' and
 # use 'rake' to generate 'installFromBiocViews.R'.
 
-library(BiocInstaller) # shouldn't be necessary
+library(BiocInstaller)
 
 # update installed pkgs
-biocLite(ask=FALSE)
+suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
 
 
 wantedBiocViews <- c("Microarray")
@@ -33,35 +33,17 @@ ap <- rownames(ap.db)
 
 pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 
-# don't install casper until it is compatible with newest VGAM
-pkgs_to_install <- pkgs_to_install[grep("casper", pkgs_to_install, invert=TRUE)]
-
-# don't install COPDSexualDimorphism (probably to be removed from bioc, depends on defunct cran pkg)
-pkgs_to_install <- pkgs_to_install[grep("COPDSexualDimorphism", pkgs_to_install, invert=TRUE)]
-
-# don't install NGScopy because it is busted
-pkgs_to_install <- pkgs_to_install[grep("NGScopy", pkgs_to_install, invert=TRUE)]
-
-# don't install seqplots because Cairo won't build
-pkgs_to_install <- pkgs_to_install[grep("seqplots", pkgs_to_install, invert=TRUE)]
-
-# don't install rMAT
-pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
-
-# don't install Rolexa - does not build (deprecated)
-pkgs_to_install <- pkgs_to_install[grep("Rolexa", pkgs_to_install, invert=TRUE)]
+# example to remove a pkg that may be failing on build
+# pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
 
 
-# don't install these because ChemmineR which is missing in BioC 3.4 because 
-# so far it was never built successfully
-
-# pkgs_to_install <- pkgs_to_install[grep("ChemmineR", pkgs_to_install, invert=TRUE)]
-# Actually, ChemmineR is installable IF gridExtra is installed manually
 
 if ("ChemmineR" %in% pkgs_to_install) 
   pkgs_to_install <- c(pkgs_to_install, "gridExtra")
 
-#pkgs_to_install <- pkgs_to_install[grep("bioassayR", pkgs_to_install, invert=TRUE)]
+# building on release 3.4 but not on devel 3.5 - remove until working 
+pkgs_to_install <- pkgs_to_install[grep("bioassayR", pkgs_to_install,
+                                        invert=TRUE)]
 
 
 
@@ -71,8 +53,9 @@ if ("ChemmineR" %in% pkgs_to_install)
 # it depends on OrganismDbi which so far it was never built successfully
 
 pkgs_to_install <- pkgs_to_install[grep("ReportingTools", pkgs_to_install, invert=TRUE)]
+# builds on 3.4 not on 3.5 (microarray)
 pkgs_to_install <- pkgs_to_install[grep("epivizr", pkgs_to_install, invert=TRUE)]
-pkgs_to_install <- pkgs_to_install[grep("ggbio", pkgs_to_install, invert=TRUE)]
+# builds on 3.4 not on 3.5
 
 
 
@@ -85,14 +68,6 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 #oldwarn <- getOption(warn)
 #on.exit(options(warn=oldwarn))
 #options(warn=1)
-
-
-builtins <- c("Matrix", "KernSmooth", "mgcv")
-
-for (builtin in builtins)
-    if(!do.call(require, list(builtin)))
-        biocLite(builtin)
-
 
 cores <- max(2, parallel::detectCores()-2)
 if (parallel::detectCores() == 1)

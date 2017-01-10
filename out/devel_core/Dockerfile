@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_core.
 
-FROM bioconductor/devel_base
+FROM bioconductor/devel_base2
 
 
 

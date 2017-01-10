@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/release_core.
 
-FROM bioconductor/release_base
+FROM bioconductor/release_base2
 
 
 

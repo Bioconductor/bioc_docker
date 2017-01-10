@@ -49,3 +49,5 @@ if (!is.null(warnings()))
     if (length(grep("is not available|had non-zero exit status", w)))
         quit("no", 1L)
 }
+
+suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))

@@ -39,9 +39,8 @@ RUN apt-get -y  install --fix-missing \
 # FIXME figure out how to REALLY remove r-base-core and deps
 # so that it does not come back.
 
-RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
-
 <% if use_numbered_branch.is_a? String %>
+RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
 
 RUN apt-get remove -y libfreetype6; echo "ignoring return value"
 
@@ -130,9 +129,11 @@ RUN apt-get autoremove -qy
 
 <% end  #  use_numbered_branch %>
 
-RUN dpkg --purge --force-depends r-base-core
-RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
-
+# issues with '/var/lib/dpkg/available' not found
+# this will recreate
+RUN dpkg --clear-avail
+RUN apt-get update 
+RUN apt-get remove -y r-base-core
 
 <% end # use_r_devel %>
 

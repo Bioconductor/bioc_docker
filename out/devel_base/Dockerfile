@@ -39,12 +39,12 @@ RUN apt-get -y  install --fix-missing \
 # FIXME figure out how to REALLY remove r-base-core and deps
 # so that it does not come back.
 
-RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
 
-
-RUN dpkg --purge --force-depends r-base-core
-RUN rm -rf /usr/lib/R/library /usr/bin/R /usr/bin/Rscript
-
+# issues with '/var/lib/dpkg/available' not found
+# this will recreate
+RUN dpkg --clear-avail
+RUN apt-get update 
+RUN apt-get remove -y r-base-core
 
 
 

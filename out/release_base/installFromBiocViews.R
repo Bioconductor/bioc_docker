@@ -33,11 +33,6 @@ ap <- rownames(ap.db)
 
 pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 
-# example to remove a pkg that may be failing on build
-# pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
-
-
-
 
 
 
@@ -46,6 +41,19 @@ if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
 
 # don't reinstall anything that's installed already
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
+
+
+# remove any packages that are currently failing to build 
+avail <- rownames(available.packages(repos=biocinstallRepos()))
+
+pkgs_to_install <- pkgs_to_install[pkgs_to_install %in% avail]
+
+# Misc packages failing
+
+# MICROARRAY
+# This package fails because dependency HTSanalyzeR depends on cellHTS2 which is
+# not building on 3.5  - 
+pkgs_to_install <- pkgs_to_install[grep("phenoTest", pkgs_to_install, invert=TRUE)]
 
 #oldwarn <- getOption(warn)
 #on.exit(options(warn=oldwarn))

@@ -33,29 +33,11 @@ ap <- rownames(ap.db)
 
 pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 
-# example to remove a pkg that may be failing on build
-# pkgs_to_install <- pkgs_to_install[grep("rMAT", pkgs_to_install, invert=TRUE)]
-
 
 
 if ("ChemmineR" %in% pkgs_to_install) 
   pkgs_to_install <- c(pkgs_to_install, "gridExtra")
 
-# building on release 3.4 but not on devel 3.5 - remove until working 
-pkgs_to_install <- pkgs_to_install[grep("bioassayR", pkgs_to_install,
-                                        invert=TRUE)]
-
-
-
-
-
-# don't install these because ReportingTools which is missing in BioC 3.5 because 
-# it depends on OrganismDbi which so far it was never built successfully
-
-pkgs_to_install <- pkgs_to_install[grep("ReportingTools", pkgs_to_install, invert=TRUE)]
-# builds on 3.4 not on 3.5 (microarray)
-pkgs_to_install <- pkgs_to_install[grep("epivizr", pkgs_to_install, invert=TRUE)]
-# builds on 3.4 not on 3.5
 
 
 
@@ -64,6 +46,19 @@ if (length(wantedBiocViews) == 1 && wantedBiocViews == "Microarray")
 
 # don't reinstall anything that's installed already
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
+
+
+# remove any packages that are currently failing to build 
+avail <- rownames(available.packages(repos=biocinstallRepos()))
+
+pkgs_to_install <- pkgs_to_install[pkgs_to_install %in% avail]
+
+# Misc packages failing
+
+# MICROARRAY
+# This package fails because dependency HTSanalyzeR depends on cellHTS2 which is
+# not building on 3.5  - 
+pkgs_to_install <- pkgs_to_install[grep("phenoTest", pkgs_to_install, invert=TRUE)]
 
 #oldwarn <- getOption(warn)
 #on.exit(options(warn=oldwarn))

@@ -43,7 +43,8 @@ RUN apt-get update && \
     texlive-pictures \
     texinfo \
     texlive-fonts-extra \
-    texlive-latex-extra
+    texlive-latex-extra \
+    libgs9
 
 
 

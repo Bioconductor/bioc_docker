@@ -29,23 +29,3 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bogus
     core:
         parent: bioconductor/base
-    flow:
-        parent: bioconductor/core
-        biocViews:
-            - FlowCytometry
-    microarray:
-        parent: bioconductor/core
-        biocViews:
-            - Microarray
-    sequencing:
-        parent: bioconductor/core
-        biocViews:
-            - Sequencing
-    proteomics:
-        parent: bioconductor/core
-        biocViews:
-            - Proteomics
-    metabolomics:
-        parent: bioconductor/core
-        biocViews:
-            - Metabolomics

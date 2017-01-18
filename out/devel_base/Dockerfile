@@ -33,7 +33,7 @@ RUN pip install awscli
 
 
 RUN apt-get update && \
-    apt-get -y -f install --fix-missing \
+    apt-get -y install --fix-missing \
     texlive \
     texlive-latex-base \
     texlive-fonts-recommended \
@@ -44,7 +44,8 @@ RUN apt-get update && \
     texinfo \
     texlive-fonts-extra \
     texlive-latex-extra \
-    libgs9
+    libgs9 \
+    libcupsimage2
 
 
 

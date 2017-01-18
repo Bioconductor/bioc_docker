@@ -33,7 +33,7 @@ RUN pip install awscli
 
 
 RUN apt-get update && \
-    apt-get -y  install --fix-missing texlive texinfo  texlive-fonts-extra texlive-latex-extra
+    apt-get -y -f install --fix-missing texlive texinfo  texlive-fonts-extra texlive-latex-extra
 
 
 

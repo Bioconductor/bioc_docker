@@ -33,7 +33,7 @@ RUN pip install awscli
 
 
 RUN apt-get update && \
-    apt-get -y install --fix-missing \
+    apt-get -y install --fix-missing --fix-broken \
     texlive \
     texlive-latex-base \
     texlive-fonts-recommended \

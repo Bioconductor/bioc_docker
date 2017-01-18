@@ -38,6 +38,9 @@ RUN apt-get update && \
     texlive-latex-base \
     texlive-fonts-recommended \
     texlive-latex-recommended \
+    texlive-base \
+    texlive-binaries \
+    texlive-pictures \
     texinfo \
     texlive-fonts-extra \
     texlive-latex-extra

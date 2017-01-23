@@ -33,19 +33,11 @@ RUN pip install awscli
 
 
 RUN apt-get update && \
-    apt-get -y install --fix-missing --fix-broken \
+    apt-get -y install --fix-missing --fix-broken -t unstable \
     texlive \
-    texlive-latex-base \
-    texlive-fonts-recommended \
-    texlive-latex-recommended \
-    texlive-base \
-    texlive-binaries \
-    texlive-pictures \
     texinfo \
     texlive-fonts-extra \
-    texlive-latex-extra \
-    libgs9 \
-    libcupsimage2
+    texlive-latex-extra 
 
 
 

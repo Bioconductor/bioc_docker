@@ -54,6 +54,9 @@ RUN dpkg --clear-avail
 RUN apt-get update 
 RUN apt-get remove -y r-base-core
 
+# devel was having trouble installing R Matrix package because of gfortran
+RUN apt-get update && apt-get -y install -t unstable gfortran gfortran-6
+
 
 
 ADD install.R /tmp/

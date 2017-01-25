@@ -130,14 +130,13 @@ for version_name in CONFIG['versions'].keys
 
         srcdir = "src" + SEP + container_name
         destdir = "out" + SEP + version_name + "_" + container_name
-        copyfiles = Rake::FileList.new(srcdir + SEP + "**" + SEP + "*", "common" +
-        SEP + "*", "common" + SEP + "hooks" + SEP + "*") do |fl|
+        copyfiles = Rake::FileList.new(srcdir + SEP + "**" + SEP + "*") do |fl|
             fl.exclude(/\.in$/)
 #            fl.exclude do |f|
 #                File.directory? f
 #            end
         end
-        infiles = Rake::FileList[srcdir + SEP + "**" + SEP  + "*.in", "common" + SEP + "*.in"]
+        infiles = Rake::FileList[srcdir + SEP + "**" + SEP  + "*.in"]
         deps = []
         for inputfile in copyfiles + infiles
             destfile = inputfile.sub(/#{srcdir}|common/, destdir)

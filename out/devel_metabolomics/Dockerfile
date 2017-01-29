@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_metabolomics.
 
-FROM bioconductor/devel_core2
+FROM bioconductor/devel_protmetcore2
 
 MAINTAINER sneumann@ipb-halle.de
 

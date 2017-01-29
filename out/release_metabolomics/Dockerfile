@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/release_metabolomics.
 
-FROM bioconductor/release_core2
+FROM bioconductor/release_protmetcore2
 
 MAINTAINER sneumann@ipb-halle.de
 

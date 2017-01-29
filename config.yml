@@ -34,7 +34,6 @@ containers: # FIXME (?) rename this to 'images' (?)
         biocViews:
             - Metabolomics
             - Proteomics
-
     metabolomics:
         parent: bioconductor/protmetcore
         biocViews:

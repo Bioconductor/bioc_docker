@@ -8,7 +8,7 @@ library(BiocInstaller) # shouldn't be necessary
 ##
 
 
-wantedBiocViews <- c("none")
+wantedBiocViews <- c("Metabolomics","Proteomics")
 
 url <- "http://www.bioconductor.org/packages/3.5/bioc/VIEWS"
 

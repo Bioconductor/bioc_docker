@@ -29,3 +29,12 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bogus
     core:
         parent: bioconductor/base
+    protmetcore:
+        parent: bioconductor/core
+        biocViews:
+            - Metabolomics
+            - Proteomics
+    metabolomics:
+        parent: bioconductor/protmetcore
+        biocViews:
+            - Metabolomics

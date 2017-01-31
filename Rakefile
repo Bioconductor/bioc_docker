@@ -50,7 +50,6 @@ for version_name in CONFIG['versions'].keys
         mkimg_deps << taskname
 
 
-        vcontainer_name = version_name + "_" + container_name
         container_hash = CONFIG['containers'][container_name]
         parent = container_hash['parent']
         parent = container_hash['parent'].sub("bioconductor/", "#{REPO}/#{version_name}_")
@@ -172,6 +171,8 @@ for version_name in CONFIG['versions'].keys
                     vars = ErbBinding.new(data)
                     erb = ERB.new(File.new(source).read, nil, "%")
                     vars_binding = vars.send(:get_binding)
+                    destfold = File.dirname(t.name)
+                    mkdir_p destfold
                     out_fh = File.open(t.name, "w")
                     out_fh.write(erb.result(vars_binding)) 
                     out_fh.close()

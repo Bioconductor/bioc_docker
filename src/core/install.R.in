@@ -14,7 +14,7 @@ pkgs <- c(
 "Biostrings",
 "BSgenome",
 # Temporarily disabled because it does not build in devel-3.5 yet
-#"epivizr",
+"epivizr",
 "GenomicFeatures",
 "GenomicRanges",
 "graph",
@@ -25,7 +25,7 @@ pkgs <- c(
 "RBGL",
 "RCurl",
 # Temporarily disabled because it does not build in devel-3.5 yet
-# "ReportingTools",
+"ReportingTools",
 "Rgraphviz",
 "rmarkdown",
 "XML",

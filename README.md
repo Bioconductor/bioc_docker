@@ -1,29 +1,78 @@
-Information about available containers, installation and modification can be found on the [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
+
+# Bioconductor Dockers #
+
+## Overview ##
+
+This repository contains Dockerfiles for different Docker containers of interest
+for Bioconductor users.  Additional information about available containers,
+installation and modification can be found on the [Bioconductor Docker
+Page](http://bioconductor.org/help/docker/) or [Docker
+installation](https://docs.docker.com/installation/).
+
+
+## Available Docker Containers ##
+
+See also [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
+
+####Maintained by the Bioconductor Core Team: bioc-issue-bot@bioconductor.org:
+
+| Docker Container  | Docker Hub Latest Version  | Image Size
+| :------------------------- | :----------------- | :----------
+| release_base2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_base)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_base2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_base2.svg)](https://hub.docker.com/r/bioconductor/release_base2/)  | [![](https://images.microbadger.com/badges/image/bioconductor/release_base2.svg)](https://hub.docker.com/r/bioconductor/release_base2/)
+| release_core2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_core)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_core2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_core2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_core2/)  | [![](https://images.microbadger.com/badges/image/bioconductor/release_core2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_core2/)
+| devel_base2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_base)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_base2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_base2.svg)](https://hub.docker.com/r/bioconductor/devel_base2/)  | [![](https://images.microbadger.com/badges/image/bioconductor/devel_base2.svg)](https://hub.docker.com/r/bioconductor/devel_base2/) 
+| devel_core2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_core)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_core2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_core2.svg)](https://hub.docker.com/r/bioconductor/devel_core2/)  | [![](https://images.microbadger.com/badges/image/bioconductor/devel_core2.svg)](https://hub.docker.com/r/bioconductor/devel_core2/)
+
+
+####Maintained by Steffen Neumann: sneumann@ipb-halle.de
+Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
+
+| Docker Container  | Docker Hub Latest Version   | Image Size        
+| :------------------------- | :------------------ | :---------- 
+| release_protmetcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_protmetcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_protmetcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_protmetcore2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_protmetcore2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/)  
+| release_metabolomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_metabolomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_metabolomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_metabolomics2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_metabolomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_metabolomics2:R3.3.2_Bioc3.4.svg)](https://hub.docker.com/r/bioconductor/release_metabolomics2/)
+| devel_protmetcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_protmetcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_protmetcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_protmetcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protmetcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_protmetcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protmetcore2/)
+| devel_metabolomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_metabolomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)
+
+
+####Maintained by Laurent Gatto: lg390@cam.ac.uk
+
+| Docker Container  | Docker Hub Latest Version   | Image Size        
+| :------------------------- | :----------------- | :----------
+| release_proteomics2 | coming soon | NA 
+| devel_proteomics2 | coming soon | NA
 
 ### General Docker Usage
 
-#### List which docker machines are available locally
+A well organized guide to popular docker commands can be found
+[here](https://github.com/wsargent/docker-cheat-sheet). For convenience, below
+are some commands to get you started.
+**Note:** You may need to add sudo before each command
+
+##### List which docker machines are available locally
     docker images
-#### List running containers
+##### List running containers
     docker ps
-#### List all containers
+##### List all containers
     docker ps -a
-#### Get container IP address
+##### Get container IP address
     docker inspect --format '{{ .NetworkSettings.IPAddress }}' <name>
-#### Keep a container running at startup
+##### Get a copy of public docker 
+    docker pull <name>
+##### Keep a container running at startup
     docker run -itd <name>
-#### Shutdown container
+##### Shutdown container
     docker stop <name>
-#### Resume container
+##### Resume container
     docker start <name>
 
-#### Delete container
+##### Delete container
     docker rm <name>
-#### Shell into a running container with either of the following:
+##### Shell into a running container with either of the following:
     docker exec -it <name> /bin/bash
     docker attach <name>
 
-#### Building and modifying the Bioconductor docker images
+##### Building and modifying the Bioconductor docker images
 
 The BioC Dockerfiles are not directly edited. Instead, 
 for each biocView, there is a common `Dockerfile.in`,
@@ -31,16 +80,6 @@ from which two output files for `release` and `devel` files are generated by run
 the `rake` command. All the creation is controlled by the `Rakefile`, 
 which will also take care if any of the dependencies (i.e. the *.in files) have changed.
 
-E.g. the `Dockerfile` for the BioC development branch for Proteomics packages 
-is created from `src/proteomics/Dockerfile.in` and placed into 
-`out/devel_proteomics/Dockerfile`. 
-
-If you want to build and push an image to dockerhub, copy the `auth.yml.template` 
-file over to `auth.yml`, and add your dockerhub credentials. The pushing is done 
-via the `docker push` command, so for this to succeed you'll have to `docker login` 
-first. Then all you need is:
-
-````
-rake devel_core 
-````
-
+E.g. the `Dockerfile` for the BioC development branch for core packages 
+is created from `src/core/Dockerfile.in` and placed into 
+`out/devel_core/Dockerfile`. 

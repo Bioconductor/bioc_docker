@@ -14,7 +14,7 @@ installation](https://docs.docker.com/installation/).
 
 See also [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
 
-####Maintained by the Bioconductor Core Team: bioc-issue-bot@bioconductor.org:
+#### Maintained by the Bioconductor Core Team: bioc-issue-bot@bioconductor.org:
 
 | Docker Container  | Docker Hub Latest Version  | Image Size
 | :------------------------- | :----------------- | :----------
@@ -24,7 +24,7 @@ See also [Bioconductor Docker Page](http://bioconductor.org/help/docker/).
 | devel_core2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_core)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_core2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_core2.svg)](https://hub.docker.com/r/bioconductor/devel_core2/)  | [![](https://images.microbadger.com/badges/image/bioconductor/devel_core2.svg)](https://hub.docker.com/r/bioconductor/devel_core2/)
 
 
-####Maintained by Steffen Neumann: sneumann@ipb-halle.de
+#### Maintained by Steffen Neumann: sneumann@ipb-halle.de
 Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
 
 | Docker Container  | Docker Hub Latest Version   | Image Size        
@@ -35,7 +35,7 @@ Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
 | devel_metabolomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_metabolomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)
 
 
-####Maintained by Laurent Gatto: lg390@cam.ac.uk
+#### Maintained by Laurent Gatto: lg390@cam.ac.uk
 
 | Docker Container  | Docker Hub Latest Version   | Image Size        
 | :------------------------- | :----------------- | :----------

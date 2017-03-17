@@ -5,32 +5,31 @@ library(BiocInstaller) # shouldn't be necessary
 
 
 pkgs <- c(
-"AnnotationDbi",
-"AnnotationHub",
-"Biobase",
-"BiocParallel",
-"biocViews",
-"biomaRt",
-"Biostrings",
-"BSgenome",
-# Temporarily disabled because it does not build in devel-3.5 yet
-"epivizr",
-"GenomicFeatures",
-"GenomicRanges",
-"graph",
-"Gviz",
-"httr",
-"IRanges",
-"knitr",
-"RBGL",
-"RCurl",
-# Temporarily disabled because it does not build in devel-3.5 yet
-"ReportingTools",
-"Rgraphviz",
-"rmarkdown",
-"XML",
-"zlibbioc"
-)
+    "OrganismDbi",
+    "ExperimentHub",
+    "Biobase",
+    "BiocParallel",
+    "biomaRt",
+    "Biostrings",
+    "BSgenome",
+    "ShortRead",
+    "IRanges",
+    "GenomicRanges",
+    "GenomicAlignments",
+    "GenomicFeatures",
+    "SummarizedExperiment",
+    "VariantAnnotation",
+    "DelayedArray",
+    "GSEABase",
+    "Gviz",
+    "graph",
+    "RBGL",
+    "Rgraphviz",
+    "rmarkdown",
+    "httr",
+    "knitr",
+    "BiocStyle"
+    )
 
 ap.db <- available.packages(contrib.url(biocinstallRepos()))
 ap <- rownames(ap.db)

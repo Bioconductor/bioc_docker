@@ -21,23 +21,29 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 #RUN sed -i.bak -e '/deb http:..ftp.de.debian.org.debian jessie main/d' /etc/apt/sources.list
 
 
+
+
 RUN apt-get update && \
-    apt-get -y  install --fix-missing -t unstable gdb libxml2-dev python-pip
+    apt-get -y  install --fix-missing gdb libxml2-dev python-pip
     # valgrind
-
-
 
 
 RUN pip install awscli
 
 
 
+
+
+
+
 RUN apt-get update && \
-    apt-get -y install --fix-missing --fix-broken -t unstable \
+    apt-get -y install --fix-missing --fix-broken \
     texlive \
     texinfo \
     texlive-fonts-extra \
     texlive-latex-extra 
+
+
 
 
 

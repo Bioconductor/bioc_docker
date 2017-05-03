@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/release_base.
 
-FROM rocker/rstudio
+FROM rocker/rstudio:3.3.3
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 

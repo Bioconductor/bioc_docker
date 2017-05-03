@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_base.
 
-FROM rocker/rstudio-daily
+FROM rocker/rstudio
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 
@@ -40,22 +40,6 @@ RUN apt-get update && \
     texlive-latex-extra 
 
 
-
-
-# There should only be one version of R on this container
-#RUN dpkg --purge --force-depends r-base-core
-# FIXME figure out how to REALLY remove r-base-core and deps
-# so that it does not come back.
-
-
-# issues with '/var/lib/dpkg/available' not found
-# this will recreate
-RUN dpkg --clear-avail
-RUN apt-get update 
-RUN apt-get remove -y r-base-core
-
-# devel was having trouble installing R Matrix package because of gfortran
-RUN apt-get update && apt-get -y install -t unstable gfortran gfortran-6
 
 
 

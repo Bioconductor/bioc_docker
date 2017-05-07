@@ -38,3 +38,10 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bioconductor/protmetcore
         biocViews:
             - Metabolomics
+    mscore:
+        parent: bioconductor/base
+    proteomics:
+        parent: bioconductor/mscore
+        biocViews:
+            - Proteomics
+            - MassSpectrometryData        

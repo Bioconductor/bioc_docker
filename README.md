@@ -39,7 +39,9 @@ Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
 
 | Docker Container  | Docker Hub Latest Version   | Image Size        
 | :------------------------- | :----------------- | :----------
+| release_mscore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_mscore)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_mscore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_mscore2:R3.4.0_Bioc3.5.svg)](https://hub.docker.com/r/bioconductor/release_mscore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_mscore2:R3.4.0_Bioc3.5.svg)](https://hub.docker.com/r/bioconductor/release_mscore2/)  
 | release_proteomics2 | coming soon | NA 
+| devel_mscore2 | coming soon | NA
 | devel_proteomics2 | coming soon | NA
 
 ### General Docker Usage

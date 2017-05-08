@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: <%= image_name %>.
 
-FROM <%= parent %>
+FROM <%= parent %>2
 
 MAINTAINER lg390@cam.ac.uk
 

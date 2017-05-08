@@ -4,12 +4,12 @@
 
 # The suggested name for this image is: <%= image_name %>.
 
-FROM <%= parent %>
+FROM <%= parent %>2
 
 MAINTAINER lg390@cam.ac.uk
 
 RUN apt-get update -qq && \
-    apt-get install -y <% if is_devel %> -t unstable <% end %> --no-install-recommends \
+    apt-get install -y <% if use_r_devel %> -t unstable <% end %> --no-install-recommends \
     libfreetype6 \
     libcairo2-dev \
     libexpat1-dev \

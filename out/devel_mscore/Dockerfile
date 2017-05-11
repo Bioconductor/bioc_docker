@@ -11,6 +11,7 @@ MAINTAINER lg390@cam.ac.uk
 RUN apt-get update -qq && \
     apt-get install -y  --no-install-recommends \
     libfreetype6 \
+    libxt-dev \
     libcairo2-dev \
     libexpat1-dev \
     libgmp3-dev \

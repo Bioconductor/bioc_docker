@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_protmetcore.
 
-FROM bioconductor/devel_core2
+FROM bioconductor/devel_mscore2
 
 MAINTAINER sneumann@ipb-halle.de
 

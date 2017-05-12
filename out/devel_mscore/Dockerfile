@@ -12,6 +12,7 @@ RUN apt-get update -qq && \
     apt-get install -y  --no-install-recommends \
     libfreetype6 \
     libxt-dev \
+    libx11-dev \
     libcairo2-dev \
     libexpat1-dev \
     libgmp3-dev \

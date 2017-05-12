@@ -2,14 +2,14 @@
 # generated. Edit 'Dockerfile.in' and generate the 'Dockerfile'
 # with the 'rake' command.
 
-# The suggested name for this image is: <%= image_name %>.
+# The suggested name for this image is: bioconductor/release_mscore.
 
-FROM <%= parent %>2
+FROM bioconductor/release_base2
 
 MAINTAINER lg390@cam.ac.uk
 
 RUN apt-get update -qq && \
-    apt-get install -y <% if use_r_devel %> -t unstable <% end %> --no-install-recommends \
+    apt-get install -y  --no-install-recommends \
     libfreetype6 \
     libxt-dev \
     libx11-dev \

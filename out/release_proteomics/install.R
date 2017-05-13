@@ -9,6 +9,8 @@ library(BiocInstaller) # shouldn't be necessary
 wantedBiocViews <- c("Proteomics","MassSpectrometryData")
 
 
+install.packages("Cairo")
+
 ## software packages
 con1 <- url("http://www.bioconductor.org/packages/3.5/bioc/VIEWS")
 dcf1 <- as.data.frame(read.dcf(con1), stringsAsFactors=FALSE)

@@ -11,6 +11,8 @@ wantedBiocViews <- c(<%= biocViews.map{|i| '"' + i + '"'}.join(",")  %>)
 wantedBiocViews <- c("none")
 <% end %>
 
+install.packages("Cairo")
+
 ## software packages
 con1 <- url("http://www.bioconductor.org/packages/<%= bioc_version %>/bioc/VIEWS")
 dcf1 <- as.data.frame(read.dcf(con1), stringsAsFactors=FALSE)

@@ -10,14 +10,11 @@ MAINTAINER lg390@cam.ac.uk
 
 RUN apt-get update -qq && \
     apt-get install -y <% if use_r_devel %> -t unstable <% end %> --no-install-recommends \
-    libfreetype6 \
-    libxt-dev \
-    libx11-dev \
-    libcairo2-dev \
+    libxt-dev libx11-dev libcairo2-dev \
+    libfreetype6 \    
     libexpat1-dev \
     libgmp3-dev \
     liblapack-dev \
-    libnetcdf-dev \
     libopenbabel-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
@@ -27,9 +24,7 @@ RUN apt-get update -qq && \
     fftw3-dev \
     libgtk2.0-dev \
     libtiff5-dev \
-    libnetcdf-dev \
     libmpfr-dev \
-    libnetcdf-dev \
     liblapack-dev \
     cmake \
     default-jdk \

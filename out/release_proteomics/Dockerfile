@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/release_proteomics.
 
-FROM bioconductor/release_mscore2
+FROM bioconductor/release_protmetcore2
 
 MAINTAINER lg390@cam.ac.uk
 

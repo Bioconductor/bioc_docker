@@ -14,12 +14,10 @@ RUN apt-get update -qq && \
     libfreetype6 \    
     libexpat1-dev \
     libgmp3-dev \
-    liblapack-dev \
     libopenbabel-dev \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
     libgsl0-dev \
-    libmpfr-dev \
     pkg-config \
     fftw3-dev \
     libgtk2.0-dev \
@@ -28,7 +26,12 @@ RUN apt-get update -qq && \
     liblapack-dev \
     cmake \
     default-jdk \
-    libnetcdf-dev libpng-dev libbz2-dev liblzma-dev libpcre3-dev libicu-dev
+    libnetcdf-dev \
+    libpng-dev \
+    libbz2-dev \
+    liblzma-dev \
+    libpcre3-dev \
+    libicu-dev
 
 RUN R CMD javareconf
 

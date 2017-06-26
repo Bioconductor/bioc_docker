@@ -35,8 +35,9 @@ pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 # don't reinstall anything that's installed already
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 
-## test
-pkgs_to_install <- pkgs_to_install[1:ceiling(length(pkgs_to_install)/2)]
+## test - there are 96 packages
+## installing 48 works
+pkgs_to_install <- pkgs_to_install[1:65]
 
 ## Start the actual installation:
 biocLite(pkgs_to_install)

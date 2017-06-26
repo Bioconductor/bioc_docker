@@ -28,7 +28,7 @@ RUN apt-get update && \
 
 <% if !use_r_devel %>
 RUN apt-get update && \
-    apt-get -y  install --fix-missing gdb libxml2-dev python-pip
+    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev
     # valgrind
 <% end %>
 

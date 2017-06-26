@@ -36,7 +36,7 @@ pkgs_to_install <- pkgs_matching_views[pkgs_matching_views %in% ap]
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 
 ## test
-pkgs_to_install <- pkgs_to_install[1:2]
+pkgs_to_install <- pkgs_to_install[1:ceiling(length(pkgs_to_install)/2)]
 
 ## Start the actual installation:
 biocLite(pkgs_to_install)

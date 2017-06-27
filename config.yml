@@ -29,6 +29,8 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bogus
     core:
         parent: bioconductor/base
+    mscore:
+        parent: bioconductor/base	
     protmetcore:
         parent: bioconductor/mscore
         biocViews:
@@ -38,10 +40,10 @@ containers: # FIXME (?) rename this to 'images' (?)
         parent: bioconductor/protmetcore
         biocViews:
             - Metabolomics
-    mscore:
-        parent: bioconductor/base
-    proteomics:
+    protcore:
         parent: bioconductor/protmetcore
+    proteomics:
+        parent: bioconductor/protcore
         biocViews:
             - Proteomics
             - MassSpectrometryData        

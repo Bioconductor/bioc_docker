@@ -3,7 +3,7 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
-pkgs <- c("biocViews", "ProtGenerics", "mzR", "msdata",
+pkgs <- c("biocViews", "ProtGenerics", "mzR", "MSnbase", "msdata",
           "BiocParallel", "knitr", "rmarkdown", "httr", "RCul", "XML",
           "zlibbioc")
 

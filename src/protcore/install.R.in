@@ -3,9 +3,11 @@
 
 library(BiocInstaller) # shouldn't be necessary
 
-pkgs <- c("biocViews", "ProtGenerics", "mzR", "MSnbase", "msdata",
-          "BiocParallel", "knitr", "rmarkdown", "httr", "RCul", "XML",
-          "zlibbioc")
+pkgs <- c("MSnbase", "cleaver", "customProDB", "DAPAR", "MSGFplus",
+          "isobar", "msmsEDA", "msmsTests", "MSnID", "MSstats",
+          "proBAMr", "Prostar", "rpx", "hpar", "RforProteomics",
+          "SWATH2stats", "specL", "PROcess", "proteoQC", "pRoloc",
+          "pRolocdata", "synapter", "synapterdata")
 
 ap.db <- available.packages(contrib.url(biocinstallRepos()))
 ap <- rownames(ap.db)

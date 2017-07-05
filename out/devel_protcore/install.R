@@ -4,10 +4,12 @@
 library(BiocInstaller) # shouldn't be necessary
 
 pkgs <- c("MSnbase", "cleaver", "customProDB", "DAPAR", "MSGFplus",
-          "isobar", "msmsEDA", "msmsTests", "MSnID", "MSstats",
-          "proBAMr", "Prostar", "rpx", "hpar", "RforProteomics",
-          "SWATH2stats", "specL", "PROcess", "proteoQC", "pRoloc",
-          "pRolocdata", "synapter", "synapterdata")
+          "MSGFgui", "rTANDEM", "MassSpecWavelet", "RankProd",
+          "ChemmineR", "isobar", "msmsEDA", "msmsTests", "MSnID",
+          "mzID", "MSstats", "proBAMr", "Prostar", "rpx", "hpar",
+          "RforProteomics", "SWATH2stats", "specL", "PROcess",
+          "proteoQC", "pRoloc", "pRolocdata", "synapter",
+          "synapterdata", "pathview", "BRAIN", "biobroom")
 
 ap.db <- available.packages(contrib.url(biocinstallRepos()))
 ap <- rownames(ap.db)

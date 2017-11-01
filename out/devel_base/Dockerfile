@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_base.
 
-FROM rocker/rstudio
+FROM rocker/rstudio-daily
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 
@@ -21,11 +21,11 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 #RUN sed -i.bak -e '/deb http:..ftp.de.debian.org.debian jessie main/d' /etc/apt/sources.list
 
 
-
-
 RUN apt-get update && \
-    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev
+    apt-get -y  install --fix-missing -t unstable gdb libxml2-dev python-pip
     # valgrind
+
+
 
 
 RUN pip install awscli
@@ -34,10 +34,8 @@ RUN pip install awscli
 
 
 
-
-
 RUN apt-get update && \
-    apt-get -y install --fix-missing --fix-broken \
+    apt-get -y install --fix-missing --fix-broken -t unstable \
     texlive \
     texinfo \
     texlive-fonts-extra \
@@ -46,6 +44,24 @@ RUN apt-get update && \
 
 
 
+
+
+
+
+# There should only be one version of R on this container
+#RUN dpkg --purge --force-depends r-base-core
+# FIXME figure out how to REALLY remove r-base-core and deps
+# so that it does not come back.
+
+
+# issues with '/var/lib/dpkg/available' not found
+# this will recreate
+RUN dpkg --clear-avail
+RUN apt-get update 
+RUN apt-get remove -y r-base-core
+
+# devel was having trouble installing R Matrix package because of gfortran
+RUN apt-get update && apt-get -y install -t unstable gfortran gfortran-6
 
 
 

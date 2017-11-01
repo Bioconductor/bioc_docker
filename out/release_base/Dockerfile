@@ -24,7 +24,7 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 
 RUN apt-get update && \
-    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev
+    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev libmariadb-client-lgpl-dev
     # valgrind
 
 

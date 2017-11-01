@@ -22,13 +22,13 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 
 <% if use_r_devel %>
 RUN apt-get update && \
-    apt-get -y  install --fix-missing -t unstable gdb libxml2-dev python-pip
+    apt-get -y  install --fix-missing -t unstable gdb libxml2-dev python-pip libmariadb-client-lgpl-dev
     # valgrind
 <% end %>
 
 <% if !use_r_devel %>
 RUN apt-get update && \
-    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev
+    apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev libmariadb-client-lgpl-dev
     # valgrind
 <% end %>
 

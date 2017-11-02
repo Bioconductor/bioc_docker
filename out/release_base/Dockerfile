@@ -20,6 +20,7 @@ RUN  rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 # temporarily (?) remove explicit jessie source
 #RUN sed -i.bak -e '/deb http:..ftp.de.debian.org.debian jessie main/d' /etc/apt/sources.list
 
+# currently unstable option not available
 
 
 

@@ -68,6 +68,9 @@ RUN apt-get remove -y r-base-core
 # RUN apt-get update && apt-get -y install -t unstable gfortran gfortran-6
 RUN apt-get update && apt-get -y install gfortran gfortran-6
 
+# trouble install XVector because of zlib.h
+RUN apt-get update && apt-get -y install libz-dev
+
 
 
 ADD install.R /tmp/

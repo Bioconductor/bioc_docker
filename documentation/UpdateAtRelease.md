@@ -81,7 +81,9 @@ C. Now Go to dockerhub
 
 5. Repeat C. 1-4 for [release_core2](https://hub.docker.com/r/bioconductor/release_core2/~/settings/automated-builds/)
 
-6. **Important** Reinitialize the  Build Setting feature on dockerhub for [bioconductor/devel_base2](https://hub.docker.com/r/bioconductor/devel_base2/~/settings/automated-builds/). The box next to `When active, builds will happen automatically on pushes` should be CHECKED!
+6. [On github] Update the README for versions and push to github
+
+7. **Important** Reinitialize the  Build Setting feature on dockerhub for [bioconductor/devel_base2](https://hub.docker.com/r/bioconductor/devel_base2/~/settings/automated-builds/). The box next to `When active, builds will happen automatically on pushes` should be CHECKED!
 
 D. On your local version of Github/bioc_docker
 
@@ -100,4 +102,4 @@ E. Back on dockerHub
 
 3. The rest of the devel builds should trigger automatically as all the resositories are linked.  
 
-4.  Manually Build any release dockers from other contributors. It is assumed the devel ones will be updated automatically as they should be linked to at the very least the devel_base2 package. 
+4.  Manually Build any release dockers from other contributors. It is assumed the devel ones will be updated automatically as they should be linked to at the very least the devel_base2 package.

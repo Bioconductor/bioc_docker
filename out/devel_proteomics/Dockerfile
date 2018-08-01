@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_proteomics.
 
-FROM bioconductor/devel_protmetcore2
+FROM bioconductor/devel_protcore2
 
 MAINTAINER lg390@cam.ac.uk
 

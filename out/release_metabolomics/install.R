@@ -10,7 +10,7 @@ library(BiocInstaller) # shouldn't be necessary
 
 wantedBiocViews <- c("Metabolomics")
 
-url <- "http://www.bioconductor.org/packages/3.4/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.7/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)

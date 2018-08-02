@@ -8,6 +8,11 @@ FROM bioconductor/release_protmetcore2
 
 MAINTAINER lg390@cam.ac.uk
 
+RUN apt-get update && apt-get -y install \
+    libudunits2-dev \
+    tcl8.6-dev \
+    tk    
+
 ADD install.R /tmp/
 
 # invalidates cache every 24 hours

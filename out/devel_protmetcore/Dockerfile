@@ -8,6 +8,8 @@ FROM bioconductor/devel_mscore2
 
 MAINTAINER sneumann@ipb-halle.de
 
+RUN apt-get update && apt-get -y install librsvg2-dev
+
 ADD install.R /tmp/
 
 # invalidates cache every 24 hours

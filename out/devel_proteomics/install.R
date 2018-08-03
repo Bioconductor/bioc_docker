@@ -1,7 +1,7 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
-library(BiocInstaller) # shouldn't be necessary
+#library(BiocInstaller) # shouldn't be necessary
 
 
 ## Obtain list of packages in view, as defined in config.yml
@@ -24,7 +24,8 @@ dcf <- rbind(dcf1[, c("Package", "biocViews")],
 i <- lapply(wantedBiocViews, grep, dcf$biocViews)
 pkgs_matching_views <- dcf$Package[unique(unlist(i))]
 
-ap.db <- available.packages(contrib.url(biocinstallRepos()))
+#ap.db <- available.packages(contrib.url(biocinstallRepos()))
+ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)
 
 ##
@@ -41,7 +42,9 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 pkgs_to_install <- pkgs_to_install[1:50]
 
 ## Start the actual installation:
-biocLite(pkgs_to_install)
+#biocLite(pkgs_to_install)
+BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE)
+
 
 # just in case there were warnings, we want to see them
 # without having to scroll up:
@@ -53,4 +56,5 @@ if (!is.null(warnings())) {
         quit("no", 1L)
 }
 
-suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
+#suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
+suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))

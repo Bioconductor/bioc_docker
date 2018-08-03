@@ -5,7 +5,9 @@ if ("BiocManager" %in% rownames(installed.packages()))
 	remove.packages("BiocManager")
 
 install.packages("BiocManager")
-BiocManager::install(version="3.7")
+library(BiocManager)
+BiocManager::install(version="3.7",
+                     update=TRUE, ask=FALSE)
 
 builtins <- c("Matrix", "KernSmooth", "mgcv")
 

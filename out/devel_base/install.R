@@ -6,8 +6,11 @@ if ("BiocManager" %in% rownames(installed.packages()))
 
 install.packages("BiocManager")
 library(BiocManager)
-BiocManager::install(version="3.8",
-                     update=TRUE, ask=FALSE)
+
+if(BiocManager::version() != "3.8"){
+    BiocManager::install(version="3.8",
+                         update=TRUE, ask=FALSE)
+}
 
 builtins <- c("Matrix", "KernSmooth", "mgcv")
 

@@ -1,6 +1,23 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
+if ("BiocManager" %in% rownames(installed.packages()))
+	remove.packages("BiocManager")
+
+install.packages("BiocManager")
+BiocManager::install(version="3.8")
+
+builtins <- c("Matrix", "KernSmooth", "mgcv")
+
+for (builtin in builtins)
+    if (!suppressWarnings(require(builtin, character.only=TRUE)))
+        suppressWarnings(BiocManager::install(builtin,
+                                              version="3.8",
+                                              update=TRUE, ask=FALSE))
+
+
+if(FALSE){
+# save BiocInstaller for final run of release 3.7
 url <- "http://bioconductor.org/packages/3.8/bioc"
 
 if ("BiocInstaller" %in% rownames(installed.packages()))
@@ -15,3 +32,5 @@ for (builtin in builtins)
         BiocInstaller::biocLite(builtin)
 
 suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
+
+}

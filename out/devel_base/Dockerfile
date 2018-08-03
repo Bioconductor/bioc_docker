@@ -56,4 +56,7 @@ RUN apt-get update && \
 ADD install.R /tmp/
 
 RUN R -f /tmp/install.R && \
-    echo "library(BiocInstaller)" > $HOME/.Rprofile
+    echo "library(BiocManager)" > $HOME/.Rprofile
+
+#RUN R -f /tmp/install.R && \
+#    echo "library(BiocInstaller)" > $HOME/.Rprofile

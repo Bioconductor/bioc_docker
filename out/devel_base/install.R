@@ -4,7 +4,7 @@
 if ("BiocManager" %in% rownames(installed.packages()))
 	remove.packages("BiocManager")
 
-install.packages("BiocManager")
+install.packages("BiocManager", repos="https://cran.rstudio.com")
 library(BiocManager)
 
 if(BiocManager::version() != "3.8"){

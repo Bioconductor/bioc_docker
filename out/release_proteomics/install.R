@@ -1,9 +1,6 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
-#library(BiocInstaller) # shouldn't be necessary
-
-
 ## Obtain list of packages in view, as defined in config.yml
 
 wantedBiocViews <- c("Proteomics","MassSpectrometryData")
@@ -24,7 +21,6 @@ dcf <- rbind(dcf1[, c("Package", "biocViews")],
 i <- lapply(wantedBiocViews, grep, dcf$biocViews)
 pkgs_matching_views <- dcf$Package[unique(unlist(i))]
 
-#ap.db <- available.packages(contrib.url(biocinstallRepos()))
 ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)
 
@@ -39,10 +35,14 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 ## test - there are 96 packages
 ## installing 48 works
 ## works with 65, R3.4.0_Bioc3.5 only though
-pkgs_to_install <- pkgs_to_install[1:50]
+#pkgs_to_install <- pkgs_to_install[1:50]
+
+# Explicitly disable broken packages:
+
+# https://github.com/Bioconductor/bioc_docker/issues/58
+pkgs_to_install <- pkgs_to_install[!grepl("prot2D", pkgs_to_install)]
 
 ## Start the actual installation:
-#biocLite(pkgs_to_install)
 BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE)
 
 
@@ -56,5 +56,4 @@ if (!is.null(warnings())) {
         quit("no", 1L)
 }
 
-#suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
 suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))

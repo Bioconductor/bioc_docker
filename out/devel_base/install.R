@@ -1,5 +1,6 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
+if(FALSE){
 
 if ("BiocManager" %in% rownames(installed.packages()))
 	remove.packages("BiocManager")
@@ -22,8 +23,9 @@ for (builtin in builtins)
                                               version="3.8",
                                               update=TRUE, ask=FALSE))
 
+}
 
-if(FALSE){
+
 # save BiocInstaller for final run of release 3.7
 url <- "http://bioconductor.org/packages/3.8/bioc"
 
@@ -40,4 +42,4 @@ for (builtin in builtins)
 
 suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
 
-}
+

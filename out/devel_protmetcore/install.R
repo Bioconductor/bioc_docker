@@ -1,7 +1,7 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
-#library(BiocInstaller) # shouldn't be necessary
+library(BiocInstaller) # shouldn't be necessary
 
 ##
 ## Obtain list of packages in view, as defined in config.yml
@@ -31,8 +31,8 @@ for (i in 1:nrow(dcf))
 length(pkgs_matching_views)
 
 
-#ap.db <- available.packages(contrib.url(biocinstallRepos()))
-ap.db <- available.packages(contrib.url(BiocManager::repositories()))
+ap.db <- available.packages(contrib.url(biocinstallRepos()))
+#ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)
 
 ##
@@ -52,8 +52,8 @@ pkgs_to_install <- c(pkgs_to_install, "gridExtra")
 pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 
 ## Start the actual installation:
-#biocLite(pkgs_to_install)
-BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE)
+biocLite(pkgs_to_install)
+#BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE)
 
 
 # just in case there were warnings, we want to see them
@@ -67,5 +67,5 @@ if (!is.null(warnings()))
         quit("no", 1L)
 }
 
-#suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
-suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))
+suppressWarnings(BiocInstaller::biocValid(fix=TRUE, ask=FALSE))
+#suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))

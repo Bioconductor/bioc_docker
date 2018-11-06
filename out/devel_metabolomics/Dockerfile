@@ -9,7 +9,7 @@ FROM bioconductor/devel_protmetcore2
 MAINTAINER sneumann@ipb-halle.de
 
 RUN apt-get update -qq && \
-    apt-get install -y  --no-install-recommends \
+    apt-get install -y  -t unstable  --no-install-recommends \
     libfreetype6 \
     libcairo2-dev \
     libexpat1-dev \

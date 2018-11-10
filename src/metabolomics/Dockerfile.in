@@ -9,7 +9,7 @@ FROM <%= parent %>2
 MAINTAINER sneumann@ipb-halle.de
 
 RUN apt-get update -qq && \
-    apt-get install -y <% if use_r_devel %> -t unstable <% end %> --no-install-recommends \
+    apt-get install -y --no-install-recommends \
     libfreetype6 \
     libcairo2-dev \
     libexpat1-dev \

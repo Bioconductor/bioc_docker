@@ -33,7 +33,7 @@ ap <- rownames(ap.db)
 fnd <- pkgs %in% ap
 pkgs_to_install <- pkgs[fnd]
 
-ok <- BiocManager::install(pkgs_to_install) %in% rownames(installed.packages())
+ok <- BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE) %in% rownames(installed.packages())
 
 if (!all(fnd))
     message("Packages not found in a valid repository (skipped):\n  ",

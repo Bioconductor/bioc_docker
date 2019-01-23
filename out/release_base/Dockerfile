@@ -34,6 +34,9 @@ RUN pip install awscli
 
 
 
+# requested install 
+RUN apt-get update && apt-get -y install libpng-dev
+
 
 ADD install.R /tmp/
 

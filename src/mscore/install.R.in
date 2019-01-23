@@ -3,7 +3,7 @@
 
 pkgs <- c("biocViews", "ProtGenerics", "mzR", "MSnbase", "msdata",
           "BiocParallel", "knitr", "rmarkdown", "httr", "RCul", "XML",
-          "zlibbioc")
+          "zlibbioc", "tofsims","proFIA","ChemmineOB","ChemmineR")
 
 ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)

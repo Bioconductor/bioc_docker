@@ -91,6 +91,7 @@ svn co https://svn.r-project.org/R/branches/R-<%= use_numbered_branch.sub(".", "
 		libncurses5-dev \
 		libpango1.0-dev \
 		libpcre3-dev \
+		libpng-dev \
 		libpng12-dev \
 		libreadline-dev \
 		libtiff5-dev \
@@ -141,6 +142,7 @@ RUN dpkg --purge  \
 		libncurses5-dev \
 		libpango1.0-dev \
 		libpcre3-dev \
+		libpng-dev \
 		libpng12-dev \
 		libreadline-dev \
 		libtiff5-dev \

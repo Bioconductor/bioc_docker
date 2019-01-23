@@ -30,20 +30,16 @@ pkgs <- c(
 
 ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)
+fnd <- pkgs %in% ap
+pkgs_to_install <- pkgs[fnd]
 
-pkgs_to_install <- pkgs[pkgs %in% ap]
+ok <- BiocManager::install(pkgs_to_install) %in% rownames(installed.packages())
 
-BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE)
-
-# just in case there were warnings, we want to see them
-# without having to scroll up:
-warnings()
-
-if (!is.null(warnings()))
-{
-    w <- capture.output(warnings())
-    if (length(grep("is not available|had non-zero exit status", w)))
-        quit("no", 1L)
-}
+if (!all(fnd))
+    message("Packages not found in a valid repository (skipped):\n  ",
+            paste(pkgs[!fnd], collapse="  \n  "))
+if (!all(ok))
+    stop("Failed to install:\n  ",
+         paste(pkgs_to_install[!ok], collapse="  \n  "))
 
 suppressWarnings(BiocManager::install(update=TRUE, ask=FALSE))

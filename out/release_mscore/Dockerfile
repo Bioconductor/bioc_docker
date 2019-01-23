@@ -31,7 +31,8 @@ RUN apt-get update -qq && \
     libbz2-dev \
     liblzma-dev \
     libpcre3-dev \
-    libicu-dev
+    libicu-dev \
+    librsvg2-dev
 
 RUN R CMD javareconf
 

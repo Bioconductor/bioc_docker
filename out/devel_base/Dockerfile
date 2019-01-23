@@ -71,6 +71,9 @@ RUN apt-get update && apt-get -y install gfortran gfortran-6
 # trouble install XVector because of zlib.h
 RUN apt-get update && apt-get -y install libz-dev
 
+# requested install 
+RUN apt-get update && apt-get -y install libpng-dev
+
 
 
 ADD install.R /tmp/

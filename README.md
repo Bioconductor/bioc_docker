@@ -29,7 +29,7 @@ Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
 
 | Docker Container  | Docker Hub Latest Version   | Image Size        
 | :------------------------- | :------------------ | :---------- 
-| release_protmetcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_protmetcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_protmetcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_protmetcore2:R3.5.0_Bioc3.7.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_protmetcore2:R3.5.0_Bioc3.7.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/)  
+| release_protmetcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_protmetcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_protmetcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_protmetcore2:R3.5.2_Bioc3.8.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_protmetcore2:R3.5.2_Bioc3.8.svg)](https://hub.docker.com/r/bioconductor/release_protmetcore2/)  
 | release_metabolomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_metabolomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_metabolomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_metabolomics2:R3.5.1_Bioc3.7.svg)](https://hub.docker.com/r/bioconductor/release_metabolomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_metabolomics2:R3.5.1_Bioc3.7.svg)](https://hub.docker.com/r/bioconductor/release_metabolomics2/)
 | devel_protmetcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_protmetcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_protmetcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_protmetcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protmetcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_protmetcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protmetcore2/)
 | devel_metabolomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_metabolomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_metabolomics2.svg)](https://hub.docker.com/r/bioconductor/devel_metabolomics2/)
@@ -76,6 +76,18 @@ are some commands to get you started.
 ##### Shell into a running container with either of the following:
     docker exec -it <name> /bin/bash
     docker attach <name>
+
+##### Mount a volume
+
+It is possible to mount/map an additional volume or directory. This might be
+useful for say mounting a local R install directory for use on the docker. The
+path on the docker image that should be mapped to the additional volume is
+`/usr/local/lib/R/host-site-library`.  The follow example would mount my locally
+installed packages to this docker directory. In turn, that path is automatically
+loaded in the R `.libPaths` on the docker image and all of my locally installed
+package would be available for use.
+
+    sudo docker run -v /home/lori/R/x86_64-pc-linux-gnu-library/3.5-BioC-3.8:/usr/local/lib/R/host-site-library -it <name>  
 
 ##### Building and modifying the Bioconductor docker images
 

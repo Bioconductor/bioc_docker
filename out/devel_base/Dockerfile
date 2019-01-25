@@ -80,5 +80,6 @@ ADD install.R /tmp/
 
 RUN R -f /tmp/install.R && \
     echo "library(BiocManager)" > $HOME/.Rprofile && \
-    echo ".libPaths('/usr/local/lib/R/host-site-library')" >> $HOME/.Rprofile
-
+    echo ".libPaths('/usr/local/lib/R/host-site-library')" >> $HOME/.Rprofile && \
+    echo "library(BiocManager)" > /home/rstudio/.Rprofile && \
+    echo ".libPaths('/usr/local/lib/R/host-site-library')" >> /home/rstudio/.Rprofile

@@ -78,8 +78,9 @@ RUN apt-get update && apt-get -y install libpng-dev
 
 ADD install.R /tmp/
 
-RUN R -f /tmp/install.R && \
-    echo "library(BiocManager)" > $HOME/.Rprofile && \
-    echo ".libPaths('/usr/local/lib/R/host-site-library')" >> $HOME/.Rprofile && \
-    echo "library(BiocManager)" > /home/rstudio/.Rprofile && \
-    echo ".libPaths('/usr/local/lib/R/host-site-library')" >> /home/rstudio/.Rprofile
+RUN R -f /tmp/install.R
+
+RUN echo "R_LIBS=/usr/local/lib/R/host-site-library:\${R_LIBS}" > /usr/local/lib/R/etc/Renviron.site
+RUN echo "R_LIBS_USER=''" >> /usr/local/lib/R/etc/Renviron.site
+RUN echo "options(defaultPackages=c('BiocManager'))" >> /usr/local/lib/R/etc/Rprofile.site
+

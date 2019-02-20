@@ -46,6 +46,12 @@ Maintained as part of the “PhenoMeNal, funded by Horizon2020 grant 654241”
 | devel_protcore2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_protcore)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_protcore2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_protcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protcore2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_protcore2.svg)](https://hub.docker.com/r/bioconductor/devel_protcore2/)
 | devel_proteomics2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_proteomics)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_proteomics2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_proteomics2.svg)](https://hub.docker.com/r/bioconductor/devel_proteomics2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_proteomics2.svg)](https://hub.docker.com/r/bioconductor/devel_proteomics2/)
 
+#### Maintained by RGLab: wjiang2@fredhutch.org
+
+| Docker Container  | Docker Hub Latest Version   | Image Size        
+| :------------------------- | :----------------- | :----------
+| release_cytometry2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/release_cytometry)) ([DockerHub](https://hub.docker.com/r/bioconductor/release_cytometry2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/release_cytometry2:R3.5.2_Bioc3.8.svg)](https://hub.docker.com/r/bioconductor/release_cytometry2/) | [![](https://images.microbadger.com/badges/image/bioconductor/release_cytometry2:R3.5.2_Bioc3.8.svg)](https://hub.docker.com/r/bioconductor/release_cytometry2/)  
+| devel_cytometry2 ([GitHub](https://github.com/Bioconductor/bioc_docker/tree/master/out/devel_cytometry)) ([DockerHub](https://hub.docker.com/r/bioconductor/devel_cytometry2/)) | [![](https://images.microbadger.com/badges/version/bioconductor/devel_cytometry2.svg)](https://hub.docker.com/r/bioconductor/devel_cytometry2/) | [![](https://images.microbadger.com/badges/image/bioconductor/devel_cytometry2.svg)](https://hub.docker.com/r/bioconductor/devel_cytometry2/)
 
 ### General Docker Usage
 

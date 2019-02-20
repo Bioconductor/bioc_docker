@@ -1,7 +1,7 @@
 # DO NOT EDIT 'install.R'; instead, edit 'install.R.in' and
 # use 'rake' to generate 'install.R'.
 
-pkgs <- c("biocViews", "CytoML")
+pkgs <- c("biocViews", "CytoML", "roxygen2", "devtools")
 
 ap.db <- available.packages(contrib.url(BiocManager::repositories()))
 ap <- rownames(ap.db)

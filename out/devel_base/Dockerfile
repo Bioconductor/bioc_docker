@@ -76,6 +76,11 @@ RUN apt-get update && apt-get -y install libz-dev
 # requested install 
 RUN apt-get update && apt-get -y install libpng-dev
 
+# install headers needed for Rhtslib
+RUN apt-get update && apt-get -y install libbz2-dev liblzma-dev
+
+
+
 ADD install.R /tmp/
 
 RUN R -f /tmp/install.R

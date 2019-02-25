@@ -50,3 +50,7 @@ containers: # FIXME (?) rename this to 'images' (?)
         biocViews:
             - Proteomics
             - MassSpectrometryData        
+    cytometry:
+            parent: bioconductor/base
+            biocViews:
+                - FlowCytometry

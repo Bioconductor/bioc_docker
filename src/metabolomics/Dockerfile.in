@@ -31,7 +31,8 @@ RUN apt-get update -qq && \
     liblapack-dev \
     cmake \
     default-jdk \
-    libnetcdf-dev libpng-dev libbz2-dev liblzma-dev libpcre3-dev libicu-dev
+    libnetcdf-dev libpng-dev libbz2-dev liblzma-dev libpcre3-dev libicu-dev \
+    libudunits2-dev libgdal-dev
 
 RUN bash -i -c 'wget -O libSBML-5.10.2-core-src.tar.gz http://downloads.sourceforge.net/project/sbml/libsbml/5.10.2/stable/libSBML-5.10.2-core-src.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsbml%2Ffiles%2Flibsbml%2F5.10.2%2Fstable%2F && tar xzvf libSBML-5.10.2-core-src.tar.gz ; cd libsbml-5.10.2 && CXXFLAGS=-fPIC CFLAGS=-fPIC ./configure --prefix=/usr && make && make install && ldconfig'
 

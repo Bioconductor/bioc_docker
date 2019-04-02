@@ -95,6 +95,13 @@ package would be available for use.
 
     sudo docker run -v /home/lori/R/x86_64-pc-linux-gnu-library/3.5-BioC-3.8:/usr/local/lib/R/host-site-library -it <name>  
 
+##### User account
+
+If running command line rather than with rstudio, please use the bioc user
+account
+
+    sudo docker run -ti --user bioc <name> R
+
 ##### Building and modifying the Bioconductor docker images
 
 The BioC Dockerfiles are not directly edited. Instead, 
@@ -106,3 +113,8 @@ which will also take care if any of the dependencies (i.e. the *.in files) have 
 E.g. the `Dockerfile` for the BioC development branch for core packages 
 is created from `src/core/Dockerfile.in` and placed into 
 `out/devel_core/Dockerfile`. 
+
+
+##### More Help
+
+Please also see https://bioconductor.org/help/docker/

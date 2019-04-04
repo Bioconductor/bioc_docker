@@ -43,6 +43,9 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 # https://github.com/Bioconductor/bioc_docker/issues/58
 pkgs_to_install <- pkgs_to_install[!grepl("mQTL.NMR", pkgs_to_install)]
 
+# https://github.com/Bioconductor/bioc_docker/issues/76
+pkgs_to_install <- pkgs_to_install[!grepl("BiGGR", pkgs_to_install)]
+
 ## Start the actual installation:
 ok <- BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE) %in% rownames(installed.packages())
 if (!all(ok))

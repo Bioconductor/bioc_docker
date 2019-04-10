@@ -13,4 +13,12 @@ ADD install.R /tmp/
 # invalidates cache every 24 hours
 ADD http://master.bioconductor.org/todays-date /tmp/
 
+# Hack for https://github.com/Bioconductor/bioc_docker/issues/79
+<% if is_devel %>
+RUN git clone https://git.bioconductor.org/packages/BiocVersion
+RUN sed -i -e 's/, R (< /, R (<= /' BiocVersion/DESCRIPTION 
+RUN R CMD INSTALL BiocVersion
+<% end %>
+
+
 RUN R -f /tmp/install.R

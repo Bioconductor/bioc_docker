@@ -182,7 +182,12 @@ RUN apt-get update && apt-get -y install libpng-dev
 # install headers needed for Rhtslib
 RUN apt-get update && apt-get -y install libbz2-dev liblzma-dev
 
-
+<% if is_devel %>
+# Hack for https://github.com/Bioconductor/bioc_docker/issues/79
+RUN git clone https://git.bioconductor.org/packages/BiocVersion
+RUN sed -i -e 's/, R (< /, R (<= /' BiocVersion/DESCRIPTION 
+RUN R CMD INSTALL BiocVersion
+<% end %>
 
 ADD install.R /tmp/
 

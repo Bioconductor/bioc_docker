@@ -80,6 +80,11 @@ RUN apt-get update && apt-get -y install libpng-dev
 RUN apt-get update && apt-get -y install libbz2-dev liblzma-dev
 
 
+# Hack for https://github.com/Bioconductor/bioc_docker/issues/79
+RUN git clone https://git.bioconductor.org/packages/BiocVersion
+RUN sed -i -e 's/, R (< /, R (<= /' BiocVersion/DESCRIPTION 
+RUN R CMD INSTALL BiocVersion
+
 
 ADD install.R /tmp/
 

@@ -40,6 +40,8 @@ RUN R CMD javareconf
 
 ENV NETCDF_INCLUDE=/usr/include
 
+ENV OPEN_BABEL_LIBDIR /usr/lib/openbabel/2.3.2/
+ENV OPEN_BABEL_INCDIR /usr/include/openbabel-2.0/
 
 ADD install.R /tmp/
 

@@ -43,6 +43,8 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 pkgs_to_install <- pkgs_to_install[!grepl("prot2D", pkgs_to_install)]
 # https://github.com/Bioconductor/bioc_docker/issues/55
 pkgs_to_install <- pkgs_to_install[!grepl("spliceSites", pkgs_to_install)]
+# https://github.com/Bioconductor/bioc_docker/issues/86
+pkgs_to_install <- pkgs_to_install[!grepl("Rchemcpp", pkgs_to_install)]
 
 ## Start the actual installation:
 ok <- BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE) %in% rownames(installed.packages())

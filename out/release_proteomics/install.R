@@ -9,10 +9,10 @@ wantedBiocViews <- c("Proteomics","MassSpectrometryData")
 install.packages("Cairo")
 
 ## software packages
-con1 <- url("http://www.bioconductor.org/packages/3.8/bioc/VIEWS")
+con1 <- url("http://www.bioconductor.org/packages/3.9/bioc/VIEWS")
 dcf1 <- as.data.frame(read.dcf(con1), stringsAsFactors=FALSE)
 ## data packages
-con2 <- url("http://www.bioconductor.org/packages/3.8/data/experiment/VIEWS")
+con2 <- url("http://www.bioconductor.org/packages/3.9/data/experiment/VIEWS")
 dcf2 <- as.data.frame(read.dcf(con2), stringsAsFactors=FALSE)
 
 dcf <- rbind(dcf1[, c("Package", "biocViews")],

@@ -1,12 +1,12 @@
 ---
 versions:
     release:
-        version_number: "3.8" # change this at release time
+        version_number: "3.9" # change this at release time
         r_url: "https://cran.rstudio.com/src/base/R-latest.tar.gz"
-        parent: "rocker/rstudio:3.5.3"
+        parent: "rocker/rstudio:3.6.0"
         use_r_devel: false # should always be false
     devel:
-        version_number: "3.9" # change this at release time
+        version_number: "3.10" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
         #parent: "rocker/rstudio:3.5.1"
         parent: "rocker/rstudio:devel"

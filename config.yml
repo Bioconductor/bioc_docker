@@ -8,8 +8,8 @@ versions:
     devel:
         version_number: "3.10" # change this at release time
         ## IMPORTANT: Change r_url at release time if new bioc devel does(not) use R-devel
-        #parent: "rocker/rstudio:3.5.1"
-        parent: "rocker/rstudio:devel"
+        parent: "rocker/rstudio:3.6.0"
+        #parent: "rocker/rstudio:devel"
         # currently known bug/issue in rocker/rstudio-daily
         #"rocker/rstudio-daily" # should be rocker/rstudio-daily if
                                  # use_r_devel is true, otherwise

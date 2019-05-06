@@ -4,7 +4,7 @@
 
 # The suggested name for this image is: bioconductor/devel_base.
 
-FROM rocker/rstudio:devel
+FROM rocker/rstudio:3.6.0
 
 # FIXME? in release, default CRAN mirror is set to rstudio....should it be fhcrc?
 

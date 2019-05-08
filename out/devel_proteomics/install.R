@@ -9,10 +9,10 @@ wantedBiocViews <- c("Proteomics","MassSpectrometryData")
 install.packages("Cairo")
 
 ## software packages
-con1 <- url("http://www.bioconductor.org/packages/3.9/bioc/VIEWS")
+con1 <- url("http://www.bioconductor.org/packages/3.10/bioc/VIEWS")
 dcf1 <- as.data.frame(read.dcf(con1), stringsAsFactors=FALSE)
 ## data packages
-con2 <- url("http://www.bioconductor.org/packages/3.9/data/experiment/VIEWS")
+con2 <- url("http://www.bioconductor.org/packages/3.10/data/experiment/VIEWS")
 dcf2 <- as.data.frame(read.dcf(con2), stringsAsFactors=FALSE)
 
 dcf <- rbind(dcf1[, c("Package", "biocViews")],
@@ -43,6 +43,8 @@ pkgs_to_install <- setdiff(pkgs_to_install, rownames(installed.packages()))
 pkgs_to_install <- pkgs_to_install[!grepl("prot2D", pkgs_to_install)]
 # https://github.com/Bioconductor/bioc_docker/issues/55
 pkgs_to_install <- pkgs_to_install[!grepl("spliceSites", pkgs_to_install)]
+# https://github.com/Bioconductor/bioc_docker/issues/86
+pkgs_to_install <- pkgs_to_install[!grepl("Rchemcpp", pkgs_to_install)]
 
 ## Start the actual installation:
 ok <- BiocManager::install(pkgs_to_install, update=FALSE, ask=FALSE) %in% rownames(installed.packages())

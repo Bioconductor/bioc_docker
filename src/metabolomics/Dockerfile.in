@@ -30,6 +30,7 @@ RUN apt-get update -qq && \
     libnetcdf-dev \
     liblapack-dev \
     cmake \
+    tcl8.6 tk8.6 \
     default-jdk \
     libnetcdf-dev libpng-dev libbz2-dev liblzma-dev libpcre3-dev libicu-dev \
     libudunits2-dev libgdal-dev

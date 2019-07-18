@@ -31,7 +31,6 @@ RUN apt-get update && \
     apt-get -y  install --fix-missing gdb libxml2-dev python-pip libz-dev libmariadb-client-lgpl-dev
 <% end %>
 
-RUN pip install awscli
 
 <% if is_devel %>
 

@@ -48,8 +48,6 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get -y install --fix-missing --fix-broken \
     texlive \
-    texinfo \
-    texlive-fonts-extra \
     texlive-latex-extra
 
 #<% end %>
@@ -162,7 +160,7 @@ RUN apt-get remove -y r-base-core
 # devel was having trouble installing R Matrix package because of gfortran
 # unstable currently unavailable
 # RUN apt-get update && apt-get -y install -t unstable gfortran gfortran-6
-RUN apt-get update && apt-get -y install gfortran gfortran-6
+RUN apt-get update && apt-get -y install gfortran-6
 
 # trouble install XVector because of zlib.h
 RUN apt-get update && apt-get -y install libz-dev

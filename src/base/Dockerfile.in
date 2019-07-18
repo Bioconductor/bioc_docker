@@ -170,7 +170,7 @@ RUN apt-get update && apt-get -y install libz-dev
 
 
 # install headers needed for Rhtslib
-RUN apt-get update && apt-get -y install libbz2-dev liblzma-dev
+RUN apt-get update && apt-get -y install liblzma-dev
 
 
 

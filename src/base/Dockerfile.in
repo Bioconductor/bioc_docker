@@ -168,12 +168,6 @@ RUN apt-get update && apt-get -y install libz-dev
 
 <% end # use_r_devel %>
 
-
-# install headers needed for Rhtslib
-RUN apt-get update && apt-get -y install liblzma-dev
-
-
-
 ADD install.R /tmp/
 
 RUN R -f /tmp/install.R

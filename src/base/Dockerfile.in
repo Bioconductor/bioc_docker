@@ -26,14 +26,16 @@ RUN apt-get update && \
 RUN apt-get update && \
 	apt-get -y --no-install-recommends install --fix-missing --fix-broken \
 	texlive \
-	texlive-latex-extra
+	texlive-latex-extra \
+	&& rm -rf /var/lib/apt/lists/*
 <% end %>
 
 #<% if !use_r_devel %>
 RUN apt-get update && \
 	apt-get -y --no-install-recommends install --fix-missing --fix-broken \
 	texlive \ 
-	texlive-latex-extra
+	texlive-latex-extra \
+	&& rm -rf /var/lib/apt/lists/*
 #<% end %>
 <% end %>
 

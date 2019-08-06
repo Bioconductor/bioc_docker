@@ -138,10 +138,6 @@ RUN dpkg --clear-avail
 RUN apt-get update
 RUN apt-get remove -y r-base-core
 
-# trouble install XVector because of zlib.h
-RUN apt-get update && apt-get -y install libz-dev
-
-
 <% end # use_r_devel %>
 
 ADD install.R /tmp/

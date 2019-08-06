@@ -3,7 +3,6 @@
 # with the 'rake' command.
 
 # The suggested name for this image is: <%= image_name %>.
-
 FROM <%= parent %>
 
 MAINTAINER maintainer@bioconductor.org
@@ -23,6 +22,8 @@ RUN apt-get update && \
 
 <% if is_devel %>
 
+## TODO: It is worth investigating why we need to install any of these
+## texlive packages.
 <% if use_r_devel %>
 RUN apt-get update && \
 	apt-get -y --no-install-recommends install --fix-missing --fix-broken \

@@ -18,7 +18,8 @@ RUN apt-get update && \
 	libxml2-dev \
 	python-pip \
 	libz-dev \
-	libmariadb-client-lgpl-dev
+	libmariadb-client-lgpl-dev \
+	&& rm -rf /var/lib/apt/lists/*
 
 <% if is_devel %>
 
@@ -40,13 +41,9 @@ RUN apt-get update && \
 <% end %>
 
 <% if is_devel %>
-
 # issues with '/var/lib/dpkg/available' not found
 # this will recreate
 RUN dpkg --clear-avail
-RUN apt-get update
-RUN apt-get remove -y r-base-core
-
 <% end %>
 
 ADD install.R /tmp/

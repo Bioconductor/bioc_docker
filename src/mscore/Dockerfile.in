@@ -10,7 +10,9 @@ MAINTAINER lg390@cam.ac.uk
 
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
-    libxt-dev libx11-dev libcairo2-dev \
+    libxt-dev \
+    libx11-dev \
+    libcairo2-dev \
     libfreetype6 \    
     libexpat1-dev \
     libgmp3-dev \
@@ -27,9 +29,6 @@ RUN apt-get update -qq && \
     cmake \
     default-jdk \
     libnetcdf-dev \
-    libpng-dev \
-    libbz2-dev \
-    liblzma-dev \
     libpcre3-dev \
     libicu-dev \
     librsvg2-dev

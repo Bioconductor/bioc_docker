@@ -17,29 +17,13 @@ RUN apt-get update && \
 	libxml2-dev \
 	python-pip \
 	libz-dev \
+	liblzma-dev \
+	libbz2-dev \
+	libpng-dev \
 	libmariadb-client-lgpl-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 <% if is_devel %>
-
-## TODO: It is worth investigating why we need to install any of these
-## texlive packages.
-<% if use_r_devel %>
-RUN apt-get update && \
-	apt-get -y --no-install-recommends install --fix-missing --fix-broken \
-	texlive \
-	texlive-latex-extra \
-	&& rm -rf /var/lib/apt/lists/*
-<% end %>
-
-#<% if !use_r_devel %>
-RUN apt-get update && \
-	apt-get -y --no-install-recommends install --fix-missing --fix-broken \
-	texlive \ 
-	texlive-latex-extra \
-	&& rm -rf /var/lib/apt/lists/*
-#<% end %>
-<% end %>
 
 <% if is_devel %>
 # issues with '/var/lib/dpkg/available' not found

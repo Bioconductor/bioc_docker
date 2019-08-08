@@ -23,11 +23,9 @@ RUN apt-get update && \
 	libmariadb-client-lgpl-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
-<% if is_devel %>
 # issues with '/var/lib/dpkg/available' not found
 # this will recreate
 RUN dpkg --clear-avail
-<% end %>
 
 ADD install.R /tmp/
 

@@ -3,7 +3,7 @@
 # with the 'rake' command.
 
 # The suggested name for this image is: bioconductor/devel_base.
-FROM rocker/rstudio:3.6.0
+FROM rocker/rstudio:3.6.1
 
 MAINTAINER maintainer@bioconductor.org
 

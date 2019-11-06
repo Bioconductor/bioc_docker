@@ -8,7 +8,7 @@
 
 wantedBiocViews <- c("Metabolomics")
 
-url <- "http://www.bioconductor.org/packages/3.10/bioc/VIEWS"
+url <- "http://www.bioconductor.org/packages/3.11/bioc/VIEWS"
 
 t <- tempfile()
 download.file(url, t)

@@ -20,7 +20,7 @@ RUN apt-get update && \
 	liblzma-dev \
 	libbz2-dev \
 	libpng-dev \
-	libmariadb-dev-compat \
+	libmariadb-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 # issues with '/var/lib/dpkg/available' not found

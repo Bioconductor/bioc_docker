@@ -32,8 +32,8 @@ ADD install.R /tmp/
 RUN R -f /tmp/install.R
 
 # Add bioc user as requested
-RUN useradd -ms /bin/bash -d /home/bioc bioc \
-	&& echo "bioc:bioc" | chpasswd && adduser bioc staff
+RUN useradd -ms /bin/bash -d /home/bioc -g staff bioc \
+	&& echo "bioc:bioc" | chpasswd
 
 USER root
 RUN echo "R_LIBS=/usr/local/lib/R/host-site-library:\${R_LIBS}" > /usr/local/lib/R/etc/Renviron.site \

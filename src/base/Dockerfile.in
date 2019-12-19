@@ -32,12 +32,9 @@ ADD install.R /tmp/
 RUN R -f /tmp/install.R
 
 # Add bioc user as requested
-RUN useradd -ms /bin/bash -d /home/bioc bioc \
-	&& echo "bioc:bioc" | chpasswd && adduser bioc sudo
-USER bioc
-RUN mkdir -p /home/bioc/R/library && \
-	echo "R_LIBS=/usr/local/lib/R/host-site-library:~/R/library" | cat > /home/bioc/.Renviron
+RUN useradd -ms /bin/bash -d /home/bioc -g staff bioc \
+	&& echo "bioc:bioc" | chpasswd
+
 USER root
 RUN echo "R_LIBS=/usr/local/lib/R/host-site-library:\${R_LIBS}" > /usr/local/lib/R/etc/Renviron.site \
-	&& echo "R_LIBS_USER=''" >> /usr/local/lib/R/etc/Renviron.site \
 	&& echo "options(defaultPackages=c(getOption('defaultPackages'),'BiocManager'))" >> /usr/local/lib/R/etc/Rprofile.site

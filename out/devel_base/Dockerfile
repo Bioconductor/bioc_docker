@@ -21,6 +21,7 @@ RUN apt-get update && \
 	libbz2-dev \
 	libpng-dev \
 	libmariadb-dev \
+	libjpeg62-turbo-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 # issues with '/var/lib/dpkg/available' not found

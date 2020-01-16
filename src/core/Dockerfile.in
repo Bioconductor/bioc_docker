@@ -8,6 +8,9 @@ FROM <%= parent %>2
 
 MAINTAINER maintainer@bioconductor.org
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
 ADD install.R /tmp/
 
 # invalidates cache every 24 hours

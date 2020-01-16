@@ -8,6 +8,9 @@ FROM bioconductor/devel_base2
 
 MAINTAINER lg390@cam.ac.uk
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     libxt-dev \

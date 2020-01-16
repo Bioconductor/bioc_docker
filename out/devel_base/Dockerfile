@@ -7,6 +7,10 @@ FROM rocker/rstudio:devel
 
 MAINTAINER maintainer@bioconductor.org
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
+
 # nuke cache dirs before installing pkgs; tip from Dirk E fixes broken img
 RUN rm -f /var/lib/dpkg/available && rm -rf  /var/cache/apt/*
 

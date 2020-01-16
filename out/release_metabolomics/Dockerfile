@@ -8,6 +8,9 @@ FROM bioconductor/release_protmetcore2
 
 MAINTAINER sneumann@ipb-halle.de
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
     libfreetype6 \

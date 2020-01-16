@@ -8,6 +8,9 @@ FROM bioconductor/devel_mscore2
 
 MAINTAINER sneumann@ipb-halle.de
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
 ADD install.R /tmp/
 
 # invalidates cache every 24 hours

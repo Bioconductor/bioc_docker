@@ -8,6 +8,9 @@ FROM bioconductor/release_protmetcore2
 
 MAINTAINER lg390@cam.ac.uk
 
+LABEL status="DEPRECATED"
+LABEL Description="Deprecated in favor of https://github.com/Bioconductor/bioconductor_docker."
+
 RUN apt-get update && apt-get -y install \
     libudunits2-dev \
     tcl8.6-dev \

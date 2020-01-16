@@ -1,5 +1,13 @@
 
-# Bioconductor Dockers #
+# Bioconductor Dockers - DEPRECATED #
+
+## Deprecation Notice
+
+These set of images and code have been DEPRECATED in favor of
+https://github.com/Bioconductor/bioconductor_docker. 
+
+We will support the containers till Release 3.11, i.e the current
+release 3.10 will be the last maintained release.
 
 ## Overview ##
 
